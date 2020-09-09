@@ -26,9 +26,13 @@ var x=0; //left값을 결정짓는 변수
 
 function moveRight(){
     //문서내에 pic이라는 요소의 css중 position의 x축 즉 left값을 증가!!
-    x = x + 10;
+    x = x + 10;//10증가 
     document.getElementById("pic").style.left=x+"px";
 }    
+function moveLeft(){
+    x = x - 10; //10감소
+    document.getElementById("pic").style.left=x+"px";
+}
 </script>    
 </head>
 <body>

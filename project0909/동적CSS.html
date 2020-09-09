@@ -25,6 +25,7 @@
     #pic{
         width:100px;
         height:100px;
+        transform:scaleX(1)
     }
 </style>   
 <script>
@@ -33,6 +34,8 @@
 */
 var w=0;//너비를 결정짓는 변수 
 var h=0;//높이를 결정짓는 변수
+var scX=1;//x스케일 결정짓는 변수 
+var scY=1;//y스케일 결정짓는 변수
 
 function setWidth(){
     //문서내의 pic 이라는 요소의 css의 너비를 늘린다
@@ -42,6 +45,17 @@ function setWidth(){
 function setHeight(){
     h = h + 10; //기존 h에 10누적
     document.getElementById("pic").style.height=h+"px";
+}
+
+function setScaleX(){
+    //문서내의 pic이라는 요소의  css의 scaleX의 값을 늘린다 
+    //참고로 스케일은 너비의 배수를 의미 ex) 2는 2배, 3은 3배 ,0.5는 절반
+    scX = scX + 0.5;
+    document.getElementById("pic").style.transform="scaleX("+scX+")";
+}
+function setScaleY(){
+    scY = scY + 0.5;
+    document.getElementById("pic").style.transform="scaleY("+scY+")";
 }
 </script>
 </head>
@@ -55,14 +69,14 @@ function setHeight(){
                     <button onClick="setHeight()">height</button>
                 </li> 
                 <li>
-                    <button>scaleX</button>
-                    <button>scaleY</button>
+                    <button onClick="setScaleX()">scaleX</button>
+                    <button onClick="setScaleY()">scaleY</button>
                 </li> 
                 <li>
-                    <button>opacity</button>
+                    <button onClick="setOpacity()">opacity</button>
                 </li>  
                 <li>
-                    <button>rotate</button>
+                    <button onClick="setRoate()">rotate</button>
                 </li>                                    
                 <li>
                     <button>position</button>

@@ -8,7 +8,6 @@
     #wrapper{
         width:800px;
         height:600px;
-        background:blue;
         margin:auto;
     }    
     #control{
@@ -20,7 +19,6 @@
     #result{
         width:600px;
         height:600px;
-        background:red;
         float:left;
     }    
     /*이미지에 대한 스타일 */
@@ -33,11 +31,18 @@
 /*여기 영역은 html 이 아닌 프로그래밍 영역임
 이 영역이 수행되는 시점은? 브라우저 실행할때
 */
+var w=0;//너비를 결정짓는 변수 
+var h=0;//높이를 결정짓는 변수
 
 function setWidth(){
     //문서내의 pic 이라는 요소의 css의 너비를 늘린다
-    document.getElementById("pic").style.width=변+"px";
+    w = w + 10;//10 증가 즉 누적시킴 
+    document.getElementById("pic").style.width=w+"px";
 }    
+function setHeight(){
+    h = h + 10; //기존 h에 10누적
+    document.getElementById("pic").style.height=h+"px";
+}
 </script>
 </head>
 <body>
@@ -47,7 +52,7 @@ function setWidth(){
             <ul>
                 <li>
                     <button onClick="setWidth()">width</button>
-                    <button>height</button>
+                    <button onClick="setHeight()">height</button>
                 </li> 
                 <li>
                     <button>scaleX</button>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+/*html은 문서이기 때문에 , tag만으로는 컨텐츠의 위치를 마음대로 
+    지정할수 없다.  css를 이용하면 html의 문서로서의 한계를 극복함..
+    css position 을 이용해보자!
+*/
+#pic{
+    position:absolute;/*절대위치(부모 요소를 기준으로 한 배치방법) */ 
+    left:270px;/*x축을 200px*/       
+    top:50px;/*y축을 50px*/
+    width:50px;
+}
+body{
+    /*배경은 다른 요소들과, 물리적인 충돌이 없다..배경에 적용되므로..*/
+    background-image: url(https://studioplumeau.com/wp-content/uploads/2017/08/SurfIdent_BG-1024x379.jpg);
+    background-repeat:repeat-x;
+}
+</style>    
+<script>
+var x=0; //left값을 결정짓는 변수
+
+function moveRight(){
+    //문서내에 pic이라는 요소의 css중 position의 x축 즉 left값을 증가!!
+    x = x + 10;
+    document.getElementById("pic").style.left=x+"px";
+}    
+</script>    
+</head>
+<body>
+    <button onClick="moveLeft()">◀</button>    
+    <button onClick="moveRight()">▶</button>    
+    <button>▲</button>    
+    <button>▼</button>    
+    <button>배경이동</button>    
+    <!-- a태그안에 b태그를 넣으면,a는 b의 부모요소가 된다..  -->
+    <img id="pic" src="https://wiki.altitudegame.com/images/1/1a/Biplane_HD.png"/>    
+</body>
+</html>

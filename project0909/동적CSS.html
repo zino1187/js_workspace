@@ -23,8 +23,22 @@
         background:red;
         float:left;
     }    
+    /*이미지에 대한 스타일 */
+    #pic{
+        width:100px;
+        height:100px;
+    }
+</style>   
+<script>
+/*여기 영역은 html 이 아닌 프로그래밍 영역임
+이 영역이 수행되는 시점은? 브라우저 실행할때
+*/
 
-</style>            
+function setWidth(){
+    //문서내의 pic 이라는 요소의 css의 너비를 늘린다
+    document.getElementById("pic").style.width=변+"px";
+}    
+</script>
 </head>
 <body>
     <div id="wrapper">
@@ -32,7 +46,7 @@
             <!-- ul이란 un ordered list 순서없는 목록 -->
             <ul>
                 <li>
-                    <button>width</button>
+                    <button onClick="setWidth()">width</button>
                     <button>height</button>
                 </li> 
                 <li>
@@ -47,14 +61,14 @@
                 </li>                                    
                 <li>
                     <button>position</button>
-                </li>li>                                    
+                </li>                                   
                 <li>
                     <button>border</button>
-                </li>li>                                    
+                </li>                                   
             </ul>                
         </div>
         <div id="result">
-            <img src="../images/hero/image1.png">                
+            <img src="../images/hero/image1.png" id="pic"/>                
         </div>
     </div>
 </body>

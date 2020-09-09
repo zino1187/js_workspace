@@ -22,7 +22,8 @@ body{
 }
 </style>    
 <script>
-var x=0; //left값을 결정짓는 변수
+var x=270; //left값을 결정짓는 변수
+var y=50; //top값을 결정짓는 변수
 
 function moveRight(){
     //문서내에 pic이라는 요소의 css중 position의 x축 즉 left값을 증가!!
@@ -33,13 +34,23 @@ function moveLeft(){
     x = x - 10; //10감소
     document.getElementById("pic").style.left=x+"px";
 }
+
+function moveDown(){
+    //문서내의 pic의 css 중 position top값을 증가
+    y = y + 5;
+    document.getElementById("pic").style.top=y+"px";
+}
+function moveUp(){
+    y = y - 5;
+    document.getElementById("pic").style.top=y+"px";
+}
 </script>    
 </head>
 <body>
     <button onClick="moveLeft()">◀</button>    
     <button onClick="moveRight()">▶</button>    
-    <button>▲</button>    
-    <button>▼</button>    
+    <button onClick="moveUp()">▲</button>    
+    <button onClick="moveDown()">▼</button>    
     <button>배경이동</button>    
     <!-- a태그안에 b태그를 넣으면,a는 b의 부모요소가 된다..  -->
     <img id="pic" src="https://wiki.altitudegame.com/images/1/1a/Biplane_HD.png"/>    

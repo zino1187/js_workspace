@@ -19,11 +19,13 @@ body{
     /*배경은 다른 요소들과, 물리적인 충돌이 없다..배경에 적용되므로..*/
     background-image: url(https://studioplumeau.com/wp-content/uploads/2017/08/SurfIdent_BG-1024x379.jpg);
     background-repeat:repeat-x;
+    background-position: 0px  0px;
 }
 </style>    
 <script>
 var x=270; //left값을 결정짓는 변수
 var y=50; //top값을 결정짓는 변수
+var bgX=0; //배경의 x축 위치를 결정짓는 변수 
 
 function moveRight(){
     //문서내에 pic이라는 요소의 css중 position의 x축 즉 left값을 증가!!
@@ -44,14 +46,23 @@ function moveUp(){
     y = y - 5;
     document.getElementById("pic").style.top=y+"px";
 }
+
+function moveBg(){
+    //body에 적용된 배경 css의 position 값을 x축의 음수값으로 감소시키자
+
+    //body는 어차피 문서내에 1개밖에 없는 유일한 요소이므로, 굳이 
+    // id 까지 부여할 필요가 없을것같다!!
+    bgX = bgX - 5;
+    document.body.style.backgroundPosition=bgX+"px  0px";
+}
 </script>    
 </head>
-<body>
+<body>   
     <button onClick="moveLeft()">◀</button>    
     <button onClick="moveRight()">▶</button>    
     <button onClick="moveUp()">▲</button>    
     <button onClick="moveDown()">▼</button>    
-    <button>배경이동</button>    
+    <button onClick="moveBg()">수동 배경이동</button>    
     <!-- a태그안에 b태그를 넣으면,a는 b의 부모요소가 된다..  -->
     <img id="pic" src="https://wiki.altitudegame.com/images/1/1a/Biplane_HD.png"/>    
 </body>

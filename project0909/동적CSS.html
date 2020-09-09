@@ -25,7 +25,10 @@
     #pic{
         width:100px;
         height:100px;
-        transform:scaleX(1)
+        transform:scaleX(1); 
+        opacity: 1;
+        transform:rotate(40deg);
+        border:1px dotted red;
     }
 </style>   
 <script>
@@ -36,6 +39,9 @@ var w=0;//너비를 결정짓는 변수
 var h=0;//높이를 결정짓는 변수
 var scX=1;//x스케일 결정짓는 변수 
 var scY=1;//y스케일 결정짓는 변수
+var op=1; //처음엔 불투명  0.9, 0.8....0
+var r = 0; //처음엔 0도 
+var b=0; //
 
 function setWidth(){
     //문서내의 pic 이라는 요소의 css의 너비를 늘린다
@@ -56,6 +62,24 @@ function setScaleX(){
 function setScaleY(){
     scY = scY + 0.5;
     document.getElementById("pic").style.transform="scaleY("+scY+")";
+}
+
+function setOpacity(){
+    //문서내의 pic 라는 요소의 css중 opacity 변경한다 
+    op = op - 0.1; //0.1 감소
+    document.getElementById("pic").style.opacity=op;
+}
+
+function setRoate(){
+    //문서내의 pic이라는 요소의 css중 rotate 를 변경한다 
+    r = r + 5; //5도 씩 양수방향으로 돌린다 (시계방향 ), 음수(시계반대방향)
+    document.getElementById("pic").style.transform="rotate("+r+"deg)";
+}
+
+function setBorder(){
+    //문서내의 pic이라는 요소의 css중 border 를 변경한다 
+    b=b+1;
+    document.getElementById("pic").style.border=b+"px dotted red";
 }
 </script>
 </head>
@@ -79,10 +103,7 @@ function setScaleY(){
                     <button onClick="setRoate()">rotate</button>
                 </li>                                    
                 <li>
-                    <button>position</button>
-                </li>                                   
-                <li>
-                    <button>border</button>
+                    <button onClick="setBorder()">border</button>
                 </li>                                   
             </ul>                
         </div>

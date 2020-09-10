@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#wrapper{
+    width:800px;
+    height:600px;
+    margin:auto;
+    overflow: hidden; /*자식이  float으로 떠있으면 부모는 컨텐츠를 제한*/
+}    
+#code{
+    width:100px;
+    height:100%;
+    background:#cccccc;
+    float:left;
+}
+#mask{
+    width:700px;
+    height:100%;
+    background:black;
+    opacity: 0.3;
+}
+#room{
+    width:100%;
+    height:100%;
+}
+</style>    
+</head>
+<body>
+    <div id="wrapper">
+        <div id="code"></div>
+        <div id="mask">
+            <div id="room">
+                <img src="../images/light/room.jpg" width="700px" height="600px">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

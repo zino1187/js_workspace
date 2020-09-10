@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    #box{
+        width:100px;
+        height:100px;
+        background:red;
+        position: absolute;
+        left:0px;
+        top:200px;
+    }
+</style>  
+<script> 
+var x=0; //박스의 x 좌표값을 결정짓는 변수
+function move(){
+    //문서내의 box라는 요소의 스타일 포지션의 left 값 변경하자
+    x+=5; //x = x + 5
+    document.getElementById("box").style.left=x+"px";    
+
+    //정보를 출력하면서 개발하기 위해 텍스트박스에 출력...
+    document.getElementById("info").value=x;
+} 
+</script>
+</head>
+<body>
+    <button onClick="move()">움직이기</button>   
+    <input type="text" id="info"/> 
+
+    <div id="box"></div>
+</body>
+</html>
+
+
+
+
+
+

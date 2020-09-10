@@ -43,9 +43,13 @@
 
 </style>  
 <script>
+var status; //on or off 를 결정할 변수     
+var flagSwitch=true; //스위치의 상태를 결정짓는 변수 true / false
 function turn(){
     //문서내의 pic 요소의 src속성을 변경하자!!
-    document.getElementById("pic").src="../images/light/switch_on.png";
+    status = (flagSwitch)? "on":"off"; 
+    document.getElementById("pic").src="../images/light/switch_"+status+".png";
+    flagSwitch=!flagSwitch; //논리값 뒤집기!!
 }    
 </script>  
 </head>

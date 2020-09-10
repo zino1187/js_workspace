@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#wrapper{
+    width:800px;
+    height:600px;
+    position: relative;
+    margin:auto;
+}    
+#code{
+    width:100px;
+    height:100%;
+    background:#cccccc;
+    position: absolute;
+}
+
+/*자식요소에 position 을 명시하면 반드시 부모에도 position이 명시되어
+있어야 한다..*/
+#content{
+    width:700px;
+    height:100%;
+    position: relative;
+    left:100px;
+    top:0px;
+}
+#mask{
+    width:700px;
+    height:100%;
+    background:black;
+    opacity: 0;
+    position:absolute; /*부모를 기준으로 한 위치설정 content 0,0*/
+    left:0px;
+    top:0px;
+}
+img{
+    position:absolute;
+    left:0px;
+    top:0px;
+}
+</style>    
+</head>
+<body>
+    <div id="wrapper">
+        <div id="code"></div>
+        <div id="content">
+            <!-- mask 와 img는 content 라는 같은 부모를 두고 
+            위치를 결정해주자 : position:absolute -->
+            <div id="mask"></div>
+            <img src="../images/light/room.jpg" width="700px" height="600px">
+        </div>
+    </div>
+</body>
+</html>

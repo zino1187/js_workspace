@@ -19,7 +19,7 @@
         position: absolute;
         left:0px;
         top:0px;
-        background:blue;
+        background:#dfdfdf;
     }
     #content{
         width:700px;
@@ -41,11 +41,19 @@
         top:0px;
     }
 
-</style>    
+</style>  
+<script>
+function turn(){
+    //문서내의 pic 요소의 src속성을 변경하자!!
+    document.getElementById("pic").src="../images/light/switch_on.png";
+}    
+</script>  
 </head>
 <body>
     <div id="wrapper">
-        <div id="code"></div>
+        <div id="code">
+            <img id="pic" src="../images/light/switch_off.png" onClick="turn()"/>
+        </div>
         <div id="content">
             <img src="../images/light/room.jpg" width="700px" height="600px">            
             <div id="mask"></div>

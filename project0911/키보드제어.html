@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#wrapper{
+    background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/c1772259824647.5a309e5d41f01.jpg);
+    background-size: 1024px 768px;
+    width:1024px;
+    height:768px;
+    margin:auto;
+    position: relative;/*자식요소에 position이 명시되어 있기 때문에
+    부모에도 반드시 포지션이 명시되어 있어야 한다*/
+}    
+#bird{
+    width:100px;
+    height:100px;
+    /*앵그리버드 이미지를 wrapper라는 div를 기준으로 즉 부모로 
+        위치를 설정하자 !!  결국 wrapper에 대한 absolute로 처리하자!
+    */
+    position: absolute; /*부모 요소를 기준으로 한 위치 설정 방법*/
+    left:100px;
+    top:50px;
+}
+</style>    
+<script>
+//키보드를 누르면, 해당 키에 맞는 움직임을 처리    
+//우측방향으로 10씩 이동하게 처리!!!
+var x=100;//전역변수
+
+function joystick(){
+    //var x=100; //지역변수
+    //문서내에 bird라는 요소의 css의 포지션 중 left, top을 변경한다 
+    document.getElementById("bird").style.left=x+"px";
+}
+</script>    
+</head>
+<!-- onKeyDown :  키보드를 누르면...  -->
+<body onKeyDown="joystick()">
+    <div id="wrapper">
+        <img id="bird" src="https://www.nicepng.com/png/detail/2-21959_angry-birds-png-angry-bird-png.png"/>
+    </div>    
+</body> 
+</html>

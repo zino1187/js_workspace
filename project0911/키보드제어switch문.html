@@ -94,6 +94,13 @@ function movieRight(){
 </head>
 <!-- onKeyDown :  키보드를 누르면...  -->
 <body onKeyDown="joystick()">
+    <!-- 과거에는 html문서에 미디어를 넣기 위해서는 상당히 복잡한 
+    외부 플러그인이 필요했다...하지만 html5가 지원되면서부터는 
+    자체적으로도 미디어 처리가 가능하다...(플래시X, 실버라이트X)  -->
+    <audio controls>
+       <source src="../sound/bgm.mp3" type="audio/mpeg">
+    </audio>
+
     <div id="wrapper">
         <img id="bird" src="https://www.nicepng.com/png/detail/2-21959_angry-birds-png-angry-bird-png.png"/>
     </div>    

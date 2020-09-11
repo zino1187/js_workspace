@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script>
+function getPoint(){
+    //마우스의 실시간 좌표를 텍스트박스에 출력해보자
+    
+    //발생하는 이벤트에 대한 모든~~정보는 event 라는 객체가 보유하고있다
+    //아까 예제에서는 키보드 이벤트에 대한 아스키코드값을 가져왔었다..
+    //이번엔, 키보드가 아니라 마우스에 관한 이벤트일 뿐이다..
+    console.log("x축: ",  event.clientX);
+    console.log("y축: ",  event.clientY);
+}    
+</script>    
+</head>
+<!-- onMouseMove :  마우스를 움직이는 동안 발생하는 이벤트를 처리하는 핸들러  -->
+<body onMouseMove="getPoint()">
+    마우스 x좌표 : <input type="text" id="tx"/>
+    마우스 y좌표 : <input type="text" id="ty"/>
+
+</body>
+</html>

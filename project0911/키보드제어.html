@@ -33,6 +33,7 @@
 var x=100;//전역변수 : 브라우저 닫을때까지 그 값이 유지되는 전역변수다!!!!!
                 //따라서 프로그램이 수행되는 동안, 어떤 값을 누적시키시고싶다면..전역변수를 이용
                 //해야 한다.. ex) 게임에서 누적될 점수...(게임 끝날때까지 유지되어야 하므로..)
+var y=50;
 
 function joystick(){
     /*
@@ -64,6 +65,14 @@ function joystick(){
         console.log("아래 이동할래요");
     }
 }
+
+function moveLeft(){
+}
+function moveUp(){
+}
+function moveDown(){
+}
+
 //우측으로 이동하는 함수 
 function movieRight(){
     //var x=100; //지역변수 : 함수호출할때마다 생성시키는것은 현재 프로그램에 맞지 않음

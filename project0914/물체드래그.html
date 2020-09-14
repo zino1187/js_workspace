@@ -8,7 +8,6 @@
 body{margin:0px;}    
 #hero{
     border:2px solid red;
-    width:60px;
     position: absolute; /*부모(wrapper)를 기준으로한 위치속성*/
     left:0px;
     top:0px;
@@ -21,6 +20,14 @@ body{margin:0px;}
 }  
 </style>
 <script>
+//함수를 정의하여, css에서 히어로의 너비,높이를 부여하자,
+//즉 프로그래밍적으로 부여하자!!
+function init(){
+    //프로그램이 가동되는 시점에, 이미지의 너비와 높이 부여하기 
+    //alert("문서가 모두 로드되었네요!!");
+    document.getElementById("hero").style.width=200+"px";
+    document.getElementById("hero").style.height=200+"px";
+}    
 function getPos(){
     //마우스의 좌표 얻기!!
 
@@ -29,20 +36,34 @@ function getPos(){
     var x = event.clientX;
     var y = event.clientY;
 
-    console.log(x," , ", y);
+    //console.log(x," , ", y);
 
     //추출된 정보를 이용하여, hero의 left, top과 일치시키자!!
     //document DOM객체의 getEl'emntById() 메서드 
     //hero는 객체다!!
     var hero = document.getElementById("hero");
-    hero.style.left=(x-30)+"px";
-    hero.style.top=(y-30)+"px";
+
+    var w=hero.style.width;//히어로의 너비 px가 붙음
+    var h=hero.style.height;//히어로의 높이 px가 붙음
+    
+    //주의 : style.width 는 숫자가 아니다, px붙어있다.따라서 문자열이다
+    //따라서 계산할때는 px 를 제거해야 한다..
+    w=parseInt(w); //px가 사라지게 된다..(숫자만 남는다)
+    h=parseInt(h); //px 가 사라지게 된다..(숫자만 남는다)
+    console.log("w=",w, "h=", h );
+
+    hero.style.left=(x- (w/2))+"px";
+    hero.style.top=(y- (h/2))+"px";
 
 }
 
 </script>
 </head>
-<body onmousemove="getPos()">
+<!-- onLoad 란?  
+    시작하는 body부터~~ 끝나는  body까지 실행부가 태그를 다 읽었을때
+    발생하는 이벤트를 감지하는 핸들러
+-->
+<body onLoad="init()" onMouseMove="getPos()">
     <!-- 물체를 대상으로 마우스를 누르고 있을때만, 옮길수 있는 효과내기
         (드래그 drag)
     -->

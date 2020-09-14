@@ -32,9 +32,11 @@ function getPos(){
     console.log(x," , ", y);
 
     //추출된 정보를 이용하여, hero의 left, top과 일치시키자!!
+    //document DOM객체의 getEl'emntById() 메서드 
+    //hero는 객체다!!
     var hero = document.getElementById("hero");
-    hero.style.left=x+"px";
-    hero.style.top=y+"px";
+    hero.style.left=(x-30)+"px";
+    hero.style.top=(y-30)+"px";
 
 }
 

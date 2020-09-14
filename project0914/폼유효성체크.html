@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+.wrapper{
+    width:700px;
+    background-color:#f2f2f2;
+    margin: auto;
+    padding:20px;
+}
+/*입력 텍스트 박스 대한 디자인 일괄처리 */
+input[type=text], input[type=password], select, textarea{
+    width:100%;
+    padding:12px; /*텍스트 박스에 쓰여질 글씨와의 간격을 두자*/
+    border-radius: 4px; /*텍스트 박스의 모서리를 부드럽게*/
+    box-sizing: border-box; /*전체 너비에 border + padding 알아서 계산*/
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+button{
+    background-color: #4CAF50;
+    color:white; /*글씨색*/
+    padding:12px 20px;  /* 위,아래 12px    좌,우 20px*/
+    border:none;
+    border-radius: 4px;
+    cursor:pointer; /*손가락 모양으로 커서를 전환*/
+}
+</style>
+<script src="http://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+<script>
+function init(){
+    CKEDITOR.replace('content'); //기존의 textarea를, 편집기 디자인으로 대체
+}
+</script>
+</head>
+<body onLoad="init()">
+    <div class="wrapper">
+        <!--눈에 보여지지는 않지만, 서버로 전송대상이 되는 컴포넌트의 범위를
+        설정하는 용도로 사용한다.  -->
+        <form>
+            <label for="user">접수자 ID</label>
+            <input type="text" id="user" placeholder="접수자 아이디 입력..."/>                        
+
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="비밀번호 입력..."/>                        
+
+            <label for="as">AS Type</label>
+            <select id="as">
+                <option>컴퓨터</option>                    
+                <option>TV</option>                    
+                <option>세탁기</option>                    
+            </select>
+            
+            <!--  input type=text는 한줄만 입력, textare 멀티라인 -->
+            <label for="content">접수하실 내용</label>
+            <textarea id="content" rows="10"></textarea>    
+             
+            <button>등록하기</button>
+        </form>                
+    </div>        
+</body>
+</html>
+
+
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>드래그 효과내기</title>
+<style>
+body{margin:0px;}    
+#hero{
+    border:2px solid red;
+    width:60px;
+    position: absolute; /*부모(wrapper)를 기준으로한 위치속성*/
+    left:0px;
+    top:0px;
+}  
+.wrapper{
+   width:100%;
+   height:700px;
+   background:yellow; 
+   position: relative;/*자식때문에...명시*/
+}  
+</style>
+<script>
+function getPos(){
+    //마우스의 좌표 얻기!!
+
+    //사용자가 브라우저상에서 일으키는 행동, 사건을 이벤트라 하고 
+    //모든 이벤트 정보는 자바스크립트의 event 객체가 보유하고 있다 
+    var x = event.clientX;
+    var y = event.clientY;
+
+    console.log(x," , ", y);
+
+    //추출된 정보를 이용하여, hero의 left, top과 일치시키자!!
+    var hero = document.getElementById("hero");
+    hero.style.left=x+"px";
+    hero.style.top=y+"px";
+
+}
+
+</script>
+</head>
+<body onmousemove="getPos()">
+    <!-- 물체를 대상으로 마우스를 누르고 있을때만, 옮길수 있는 효과내기
+        (드래그 drag)
+    -->
+    <div class="wrapper">
+        <img src="../images/hero/image1.png" id="hero"/>    
+    </div>
+</body>
+</html>
+
+
+
+
+
+

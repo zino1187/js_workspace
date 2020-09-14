@@ -46,10 +46,17 @@ function move(){
     //방법2)
     step=(x<=0 ||  x>=400)? -step:step;  
 }
+
+//자동으로 움직이게 처리 
+function auto(){
+    setInterval("move()", 10);    
+}
 </script>
 </head>
 <body onLoad="init()">
-    <button onClick="move()">움직이기</button>        
+    <button onClick="move()">수동 움직이기</button>        
+    <button onClick="auto()">자동 움직이기</button>        
     <div id="box"></div>    
 </body>
 </html>
+

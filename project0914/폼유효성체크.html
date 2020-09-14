@@ -47,11 +47,25 @@ function regist(){
     //아이디를 입력했는지 여부 체크해보자,, 만일 안했따면? 절대로 
     //아래의 전송 기능에 도달하면 안됨..
     var user=document.getElementById("user");
+    var pass=document.getElementById("password");
+    var as=document.getElementById("as");
+    var content=document.getElementById("content");
+
     //alert("당신이 입력한 아이디는 "+user.value); //텍스트박스에는 value라는
     //속성을 이용하여 현재 텍스트박스에 입력되어 있는 문자열을 얻어올수있다..
     if(user.value==""){//아무것도 입력하지 않으면...
         //욕하자!!
         alert("제발 아이디좀 입력해주세요"); 
+        user.focus(); //커서 자동올리기
+    }else if(pass.value==""){
+        alert("비밀번호를 입력하세요");
+        pass.focus();
+    }else if(as.value==""){
+        alert("as유형을 선택하세요");
+        as.focus();
+    }else if(content.value==""){
+        alert("접수내용을 입력하세요");
+        content.focus();
     }else{
         form1.action="http://naver.com"; //전송할 서버의 URL 
         form1.submit();//여기서 전송행위가 일어나는 시점!!
@@ -79,9 +93,10 @@ function regist(){
 
             <label for="as">AS Type</label>
             <select id="as">
-                <option>컴퓨터</option>                    
-                <option>TV</option>                    
-                <option>세탁기</option>                    
+                <option value="">AS유형 선택</option>                    
+                <option value="컴퓨터">컴퓨터</option>                    
+                <option value="TV">TV</option>                    
+                <option value="세탁기">세탁기</option>                    
             </select>
             
             <!--  input type=text는 한줄만 입력, textare 멀티라인 -->
@@ -93,7 +108,7 @@ function regist(){
             따라서 페이지가 깜빡거리는것을 느낄수 있다..
             방지방법? form 태그에 onSubmit="event.preventDefault()"
             -->
-            <button onClick="regist()">등록하기</button>
+            <button  onClick="regist()">등록하기</button>
         </form>                
     </div>        
 </body>

@@ -34,13 +34,43 @@ button{
 function init(){
     CKEDITOR.replace('content'); //기존의 textarea를, 편집기 디자인으로 대체
 }
+
+//서버에 전송하기 위한 함수 ( 단 유효한 데이터인지 검증 후 전송)
+function regist(){
+    //폼태그는 사용자가 입력한 데이터를 서버에 전송하는 목적의 태그이므로
+    //폼태그의 속성을 이용하면, 전송할 서버의 주소, 전송방법 등을 지정할수
+    //있다.
+
+    //아래의 이 전송이라는 행위는 아무나 하게 해줘야할까???
+    //아니다!!!, 제대로 입력양식을 작성한 사람에게만 기회를 줘야 한다.
+
+    //아이디를 입력했는지 여부 체크해보자,, 만일 안했따면? 절대로 
+    //아래의 전송 기능에 도달하면 안됨..
+    var user=document.getElementById("user");
+    //alert("당신이 입력한 아이디는 "+user.value); //텍스트박스에는 value라는
+    //속성을 이용하여 현재 텍스트박스에 입력되어 있는 문자열을 얻어올수있다..
+    if(user.value==""){//아무것도 입력하지 않으면...
+        //욕하자!!
+        alert("제발 아이디좀 입력해주세요"); 
+    }else{
+        form1.action="http://naver.com"; //전송할 서버의 URL 
+        form1.submit();//여기서 전송행위가 일어나는 시점!!
+    }
+}
 </script>
 </head>
 <body onLoad="init()">
     <div class="wrapper">
         <!--눈에 보여지지는 않지만, 서버로 전송대상이 되는 컴포넌트의 범위를
         설정하는 용도로 사용한다.  -->
-        <form>
+        <!-- 
+            id와  name의 차이점 및 공통점 
+            공통점: 식별자로서의 역할이다..
+                        즉  태그와 태그를 구분하기 위해서, id나 name 줄 수 있다.    
+            차이점: id는 말그대로 명칭이 유일해야 하지만, name은 중복이 가능                    
+         -->
+
+        <form name="form1" onSubmit="event.preventDefault()">
             <label for="user">접수자 ID</label>
             <input type="text" id="user" placeholder="접수자 아이디 입력..."/>                        
 
@@ -58,7 +88,12 @@ function init(){
             <label for="content">접수하실 내용</label>
             <textarea id="content" rows="10"></textarea>    
              
-            <button>등록하기</button>
+            <!-- form태그 안에 button 태그를 넣어두면, 무조건 
+            현재 폼을 서버에 전송하려는 특징이 있다..
+            따라서 페이지가 깜빡거리는것을 느낄수 있다..
+            방지방법? form 태그에 onSubmit="event.preventDefault()"
+            -->
+            <button onClick="regist()">등록하기</button>
         </form>                
     </div>        
 </body>

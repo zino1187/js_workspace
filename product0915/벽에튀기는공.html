@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <script>
+var ball; //전역변수로 선언해야, 다른 함수영역에서 접근이 가능하다!!
+             //즉 브라우저가 종료될때까지 살아있어야,다른 함수에서도 사용가능   
+
 /*이 예제에서는  body 에 직접 태그를 작성하지 말자!!
 순수 자바스크립트로만, 디자인까지 작성해보자...(실력향상)*/
 function init(){
@@ -20,15 +23,14 @@ function init(){
     document.body.appendChild(wrapper); // <body>태그 안에 추가
 
     //공 추가하기 
-    var ball=document.createElement("img"); // <img /> 와 동일
+    ball=document.createElement("img"); // <img /> 와 동일
     ball.src="../images/ball/ball2.png"; // <img src=""/> 와 동일
     ball.style.width=50+"px";
     ball.style.height=50+"px";
     ball.style.position="absolute"; //부모인 wrapper를 기준
     ball.style.left=100+"px";
     ball.style.top=50+"px";
-    wrapper.appendChild(ball);//body에 추가 
-    
+    wrapper.appendChild(ball);//body에 추가     
 }
 function createButton(){
     //동적으로 버튼을 생성하고,  click 이벤트 마져도 프로그래밍적으로 
@@ -40,14 +42,22 @@ function createButton(){
     bt1.addEventListener("click", function(){
         //이름없는 함수를 익명함수라 하고 , 이 영역에 코드를 작성하면
         //해당 이벤트가 발생했을때, 이 코드가 동작하게 된다..
-        alert("나 눌렀어?");       
+        //alert("나 눌렀어?");       
+        //수동 움직임..sd
+        move();
     }); //버튼에 이벤트 감지가 등록!!
 
-    
+
     bt1.innerText="수동";//<button>수동</button> 와 동일
     bt2.innerText="자동";//<button>자동</button> 와 동일
     document.body.appendChild(bt1);//body에 추가
     document.body.appendChild(bt2);//body에 추가
+}
+
+//공의 좌표를 증,감 시켜 움직임 효과를 내본다!
+function move(){
+    //공의 좌표를 변경 
+    ball.style.left=500+"px";
 }
 </script>
 </head>

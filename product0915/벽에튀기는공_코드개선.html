@@ -52,6 +52,9 @@ function createButton(){
         move();
     }); //버튼에 이벤트 감지가 등록!!
 
+    bt2.addEventListener("click", function(){
+        setInterval("move()", 5); //  30/1000분
+    });
 
     bt1.innerText="수동";//<button>수동</button> 와 동일
     bt2.innerText="자동";//<button>자동</button> 와 동일

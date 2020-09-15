@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script>
+var ball; //전역변수로 선언해야, 다른 함수영역에서 접근이 가능하다!!
+             //즉 브라우저가 종료될때까지 살아있어야,다른 함수에서도 사용가능   
+var x=0; //ball의 x 좌표를 결정짓는 전역변수: 누적이 되어야 하므로 전역
+var y=0; //ball의 y 좌표를 결정짓는 전역변수: 누적이 되어야 하므로 전역
+var stepX=5;//초기의 x의 증가량
+var stepY=4; //초기의 y의 증가량
+var wrapper; //다른 함수에서 접근하기 위해서 전역변수로 선언
+
+/*이 예제에서는  body 에 직접 태그를 작성하지 말자!!
+순수 자바스크립트로만, 디자인까지 작성해보자...(실력향상)*/
+function init(){
+    //alert('문서를 다 읽었어요');    
+    createButton();//수동, 자동 버튼 생성 
+
+    wrapper=document.createElement("div"); // <div></div>와 동일
+    wrapper.style.width=600+"px";
+    wrapper.style.height=600+"px";
+    wrapper.style.background="yellow";
+    wrapper.style.margin="auto";
+    wrapper.style.position="relative";//자식때문에...
+    document.body.appendChild(wrapper); // <body>태그 안에 추가
+
+    //공 추가하기 
+    ball=document.createElement("img"); // <img /> 와 동일
+    ball.src="../images/ball/ball2.png"; // <img src=""/> 와 동일
+    ball.style.width=50+"px";
+    ball.style.height=50+"px";
+    ball.style.position="absolute"; //부모인 wrapper를 기준
+    ball.style.left=100+"px";
+    ball.style.top=50+"px";
+    wrapper.appendChild(ball);//body에 추가     
+}
+function createButton(){
+    //동적으로 버튼을 생성하고,  click 이벤트 마져도 프로그래밍적으로 
+    //처리해보자!!
+    var bt1=document.createElement("button");//수동버튼 
+    var bt2=document.createElement("button");//자동버튼
+    
+    //버튼에 click 이벤트 추가하기!!
+    bt1.addEventListener("click", function(){
+        //이름없는 함수를 익명함수라 하고 , 이 영역에 코드를 작성하면
+        //해당 이벤트가 발생했을때, 이 코드가 동작하게 된다..
+        //alert("나 눌렀어?");       
+        //수동 움직임..sd
+        move();
+    }); //버튼에 이벤트 감지가 등록!!
+
+
+    bt1.innerText="수동";//<button>수동</button> 와 동일
+    bt2.innerText="자동";//<button>자동</button> 와 동일
+    document.body.appendChild(bt1);//body에 추가
+    document.body.appendChild(bt2);//body에 추가
+}
+
+//공의 좌표를 증,감 시켜 움직임 효과를 내본다!
+function move(){
+    //증감처리 
+    x = x + stepX; //x가 증가할지, 감소할지 여부를 결정짓지 않기 위한 변수
+    y = y + stepY; //y가 증가할지, 감소할지 여부를 결정짓지 않기 위한 변수
+
+    //공의 좌표를 변경 
+    ball.style.left=x+"px";
+    ball.style.top=y+"px";
+
+    //왼쪽이나 오른쪽 벽에 닿으면
+    /*
+    if(x >= (parseInt(wrapper.style.width) - parseInt(ball.style.width)) ||  x<=0 ){
+        //x축으로 감소하면서 이동.. 
+        ball.style.border="1px solid red";    
+        stepX = -stepX; //부호반대로 전환
+    }
+    */
+   //공이 바닥이나 천장에 닿으면..
+   /*
+   if(y>= (parseInt(wrapper.style.height) - parseInt(ball.style.height))  || y<=0){
+       //y축으로의 증가분을 반대로 
+       stepY = -stepY;
+    }
+    */
+    stepX = (x >= (parseInt(wrapper.style.width) - parseInt(ball.style.width)) ||  x<=0)?-stepX : stepX;
+    stepY = (y>= (parseInt(wrapper.style.height) - parseInt(ball.style.height)) || y<=0)? -stepY: stepY; 
+}
+</script>
+</head>
+<body onLoad="init()">
+</body>
+</html>

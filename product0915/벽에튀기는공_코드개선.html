@@ -12,6 +12,8 @@ var y=0; //ball의 y 좌표를 결정짓는 전역변수: 누적이 되어야 �
 var stepX=5;//초기의 x의 증가량
 var stepY=4; //초기의 y의 증가량
 var wrapper; //다른 함수에서 접근하기 위해서 전역변수로 선언
+var flag=true; //move 함수의 코드영역을 수행할지 여부를 결정짓는 전역변수
+                    //전역 변수는 브라우저가 살아있는 동안, 계속 사용가능..
 
 /*이 예제에서는  body 에 직접 태그를 작성하지 말자!!
 순수 자바스크립트로만, 디자인까지 작성해보자...(실력향상)*/
@@ -20,8 +22,8 @@ function init(){
     createButton();//수동, 자동 버튼 생성 
 
     wrapper=document.createElement("div"); // <div></div>와 동일
-    wrapper.style.width=600+"px";
-    wrapper.style.height=600+"px";
+    wrapper.style.width=200+"px";
+    wrapper.style.height=200+"px";
     wrapper.style.background="yellow";
     wrapper.style.margin="auto";
     wrapper.style.position="relative";//자식때문에...
@@ -42,6 +44,7 @@ function createButton(){
     //처리해보자!!
     var bt1=document.createElement("button");//수동버튼 
     var bt2=document.createElement("button");//자동버튼
+    var bt3=document.createElement("button");//Pause 버튼
     
     //버튼에 click 이벤트 추가하기!!
     bt1.addEventListener("click", function(){
@@ -56,6 +59,13 @@ function createButton(){
         setInterval("move()", 5); //  30/1000분
     });
 
+    bt3.addEventListener("click", function(){
+        //한번누르면, 동작, 또한번 누르면 멈춤 결국 멈추거나 움직이거나...(단 두가지 경우..)
+        //흑백논리의 처리는 프로그래밍 언어에서 지원하는 3가지 데이터 유형중 논리값과 
+        //연관성이 높다..
+
+    });
+
     bt1.innerText="수동";//<button>수동</button> 와 동일
     bt2.innerText="자동";//<button>자동</button> 와 동일
     document.body.appendChild(bt1);//body에 추가
@@ -64,31 +74,33 @@ function createButton(){
 
 //공의 좌표를 증,감 시켜 움직임 효과를 내본다!
 function move(){
-    //증감처리 
-    x = x + stepX; //x가 증가할지, 감소할지 여부를 결정짓지 않기 위한 변수
-    y = y + stepY; //y가 증가할지, 감소할지 여부를 결정짓지 않기 위한 변수
+    if(flag){
+        //증감처리 
+        x = x + stepX; //x가 증가할지, 감소할지 여부를 결정짓지 않기 위한 변수
+        y = y + stepY; //y가 증가할지, 감소할지 여부를 결정짓지 않기 위한 변수
 
-    //공의 좌표를 변경 
-    ball.style.left=x+"px";
-    ball.style.top=y+"px";
+        //공의 좌표를 변경 
+        ball.style.left=x+"px";
+        ball.style.top=y+"px";
 
-    //왼쪽이나 오른쪽 벽에 닿으면
+        //왼쪽이나 오른쪽 벽에 닿으면
+        /*
+        if(x >= (parseInt(wrapper.style.width) - parseInt(ball.style.width)) ||  x<=0 ){
+            //x축으로 감소하면서 이동.. 
+            ball.style.border="1px solid red";    
+            stepX = -stepX; //부호반대로 전환
+        }
+        */
+    //공이 바닥이나 천장에 닿으면..
     /*
-    if(x >= (parseInt(wrapper.style.width) - parseInt(ball.style.width)) ||  x<=0 ){
-        //x축으로 감소하면서 이동.. 
-        ball.style.border="1px solid red";    
-        stepX = -stepX; //부호반대로 전환
+    if(y>= (parseInt(wrapper.style.height) - parseInt(ball.style.height))  || y<=0){
+        //y축으로의 증가분을 반대로 
+        stepY = -stepY;
+        }
+        */
+        stepX = (x >= (parseInt(wrapper.style.width) - parseInt(ball.style.width)) ||  x<=0)?-stepX : stepX;
+        stepY = (y>= (parseInt(wrapper.style.height) - parseInt(ball.style.height)) || y<=0)? -stepY: stepY; 
     }
-    */
-   //공이 바닥이나 천장에 닿으면..
-   /*
-   if(y>= (parseInt(wrapper.style.height) - parseInt(ball.style.height))  || y<=0){
-       //y축으로의 증가분을 반대로 
-       stepY = -stepY;
-    }
-    */
-    stepX = (x >= (parseInt(wrapper.style.width) - parseInt(ball.style.width)) ||  x<=0)?-stepX : stepX;
-    stepY = (y>= (parseInt(wrapper.style.height) - parseInt(ball.style.height)) || y<=0)? -stepY: stepY; 
 }
 </script>
 </head>

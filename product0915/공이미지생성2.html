@@ -33,13 +33,17 @@ function createBall(){
     ball.style.width=50+"px";
     //body에 부착!!
     document.body.appendChild(ball);//body에 ball 추가!!
-}    
+}   
+function auto(){
+    setInterval("createBall()",500);  // 500/1000 초마다  
+} 
 </script>
 </head>
 <body>
     <input id="txt" type="text" placeholder="몇번째 마다 공을 생성할지 숫자입력"/>    
     <input id="path" type="text" placeholder="사용될 이미지 경로"/>    
     <button onclick="createBall()">공생성</button>
+    <button onclick="auto()">자동생성</button>
     <br>
 </body>
 </html>

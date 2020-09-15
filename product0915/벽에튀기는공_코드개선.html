@@ -22,8 +22,8 @@ function init(){
     createButton();//수동, 자동 버튼 생성 
 
     wrapper=document.createElement("div"); // <div></div>와 동일
-    wrapper.style.width=200+"px";
-    wrapper.style.height=200+"px";
+    wrapper.style.width=600+"px";
+    wrapper.style.height=600+"px";
     wrapper.style.background="yellow";
     wrapper.style.margin="auto";
     wrapper.style.position="relative";//자식때문에...
@@ -57,27 +57,32 @@ function createButton(){
 
     bt2.addEventListener("click", function(){
         setInterval("move()", 5); //  30/1000분
+        
+        //현재 버튼을 더이상 못누르도록 비활성화 시킨다!!
+        bt2.disabled=true;//버튼의 비활성화 여부를 true
     });
 
     bt3.addEventListener("click", function(){
         //한번누르면, 동작, 또한번 누르면 멈춤 결국 멈추거나 움직이거나...(단 두가지 경우..)
         //흑백논리의 처리는 프로그래밍 언어에서 지원하는 3가지 데이터 유형중 논리값과 
         //연관성이 높다..
-
+        flag=!flag;
     });
 
     bt1.innerText="수동";//<button>수동</button> 와 동일
     bt2.innerText="자동";//<button>자동</button> 와 동일
+    bt3.innerText="Pause";//<button>Pause</button> 와 동일
     document.body.appendChild(bt1);//body에 추가
     document.body.appendChild(bt2);//body에 추가
+    document.body.appendChild(bt3);//body에 추가
 }
 
 //공의 좌표를 증,감 시켜 움직임 효과를 내본다!
 function move(){
     if(flag){
         //증감처리 
-        x = x + stepX; //x가 증가할지, 감소할지 여부를 결정짓지 않기 위한 변수
-        y = y + stepY; //y가 증가할지, 감소할지 여부를 결정짓지 않기 위한 변수
+        x = x + stepX; //x가 증가할지, 감소할지 여부를 결정짓기 위한 변수
+        y = y + stepY; //y가 증가할지, 감소할지 여부를 결정짓기 위한 변수
 
         //공의 좌표를 변경 
         ball.style.left=x+"px";

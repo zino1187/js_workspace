@@ -1,0 +1,16 @@
+<script>
+var w = parseInt(prompt("테이블의 width 입력"));    
+var b = parseInt(prompt("테이블의 border 입력"));    
+var tr = parseInt(prompt("층수(tr의 수) 입력"));    
+var td = parseInt(prompt("호수(td의 수) 입력"));    
+
+document.write("<table border=\""+b+"px\" width=\""+w+"px\">");    
+for(var a=1;a<=tr;a++){
+    document.write("<tr>"); 
+    for(var i=1;i<=td;i++){
+        document.write("<td>"+a+"0"+i+" 호</td>");
+    }
+    document.write("</tr>");  
+}
+document.write("</table>");    
+</script>

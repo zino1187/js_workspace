@@ -37,18 +37,79 @@ button{
 }
 </style>
 <script>
+var count=0; //누른 횟수를 점점 증가시키기 위한 전역변수 
+
+function regist(){
+    count++;
+
+    //regist-area div에 등록된 사람에 대한 정보 table을 출력한다
+    //document.write(); //문서에 출력  즉 body에 출력..
+    var area=document.getElementById("result-area");
+    /*
+    document.write() 와는 틀리게, innerText는 두가지 문제가 있다..
+    1) 마지막에 수행된 innertText가, 이전 innerText를 대체해 버린다..
+        즉, 누적이 되지 않는다!!
+    2) <꺽쇠>를 넣어도 태그로 인식하지 않고 그냥 문자로 간주...
+    */
+   /*
+   매번 innerText를 작성하면 코드가 너무, 중복이 많고 코드량이 많다..
+    area.innerText="<table>";
+    area.innerText=area.innerText+"</table>";        
+    */
+    
+    /*자바스크립트립에서 문서내의 요소를 접근하는방법은 무지,무지 많다..
+    개발자는 여러방법중 원하는 방법을 선택하면 되는데, 
+    1)  id나 name을 부여한 후 가져오는 방법 
+         document.getElementById("부여한 id");
+         document.getElementsByName("부여한 이름");
+    2) css의 선택자를 이용하는 방법  
+         document.querySelector("css의 선택자 모두 표현가능함");    
+    */
+
+    //테이블 출력전에, 사용자가 입력한 데이터를 가져와 보자 
+    //문서내에 id라는 이름을 가진 요소 접근 
+   
+    var id=document.querySelector("input[name='id']");
+    var pass=document.querySelector("input[name='pass']");
+    var name=document.querySelector("input[name='name']");
+
+    //텍스트박스의 값을 얻어올때는 value로 접근하는것임 
+
+    //escape 시킨 특수문자는 일반문자화 되므로, 
+    //결국  \"  라는 두개의 특수문자가 모여서 한개의 따옴표" 를 표현하는거임
+    var str="<table width=\"100%\" border=\"1px\">"; //변수에 문자열 담기
+    str = str + "<tr>";//천장  
+    str = str + "<td>ID</td>";           
+    str = str + "<td>Password</td>";           
+    str = str + "<td>Name</td>";           
+    str = str + "</tr>";//바닥        
+    
+    //누적될 데이터를 표현할 tr 세트 
+    for(var i=1;i<=count;i++){
+        str = str+ "<tr>";
+        str = str + "<td>"+id.value+"</td>";           
+        str = str + "<td>"+pass.value+"</td>";           
+        str = str + "<td>"+name.value+"</td>";           
+        str = str+ "</tr>";
+    }
+    str = str + "</table>"; // 기존 str에 문자열 누적
+
+    area.innerHTML=str; //문자열내게 <꺾쇠>가 있다면, 태그로 해석함!
+}
 </script>
 </head>
 <body>
     
     <div class="wrapper">
         <div class="regist-area">
-            <form>
-                <input type="text" placeholder="ID입력..."/>                
-                <input type="text" placeholder="Password입력..."/>                
-                <input type="text" placeholder="Name 입력..."/>  
+            <!-- 버튼에 의한 무조건적인 전송 방지
+            방지안하게되면, 새로고침 때문에 페이지가 갱신  -->
+            <form  onsubmit="event.preventDefault()">
+                <input type="text" name="id" placeholder="ID입력..."/>                
+                <input type="text" name="pass" placeholder="Password입력..."/>                
+                <input type="text" name="name" placeholder="Name 입력..."/>  
                 
-                <button>등록</button>
+                <button onClick="regist()">등록</button>
                 <button>지우기</button>
             </form>        
         </div>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+.wrapper{
+    width:700px;
+    height:600px;
+    background:yellow;
+    margin:auto;
+    position: relative;
+    border:2px solid red;
+}  
+.regist-area{
+    width:200px;
+    height:100%;
+    background:#dfdfdf;
+    position: absolute;
+    left:0px;
+}  
+#result-area{
+    width:500px;
+    height:100%;
+    position:absolute;
+    left:200px;
+}
+input[type='text']{
+    padding:6px;
+    margin:5px 5px;
+}
+button{
+    margin:0px 5px 0px 5px;
+    width:80px;
+    padding:6px;
+}
+</style>
+<script>
+</script>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="regist-area">
+            <form>
+                <input type="text" placeholder="ID입력..."/>                
+                <input type="text" placeholder="Password입력..."/>                
+                <input type="text" placeholder="Name 입력..."/>  
+                
+                <button>등록</button>
+                <button>지우기</button>
+            </form>        
+        </div>
+        <div id="result-area">등록된 결과표 나올 영역</div>
+    </div>   
+
+</body>
+</html>
+
+
+
+
+
+

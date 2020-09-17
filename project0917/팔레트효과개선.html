@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+.wrapper{
+    width:700px;
+    height:500px;
+    background:black;
+    margin: auto;
+    overflow: hidden;/*자식이 float 되면...*/
+}   
+
+/* .wrapper라는 클래스가 적용된 요소의 하위요소 중 div는... */
+.wrapper div{
+    width:100px;
+    height:100px;
+    float:left;
+}
+
+#content{
+    width:100%;
+    height:400px;
+    background:pink;
+}
+</style>
+<script>
+//문서내의 content라는 div의 배경색을 선택한 색상으로 변경하자!!
+function setColor(bg){
+    var content=document.getElementById("content");        
+    content.style.backgroundColor=bg;
+}    
+</script>
+</head>
+<body onLoad="setColor('navy')">
+    <div class="wrapper">
+        <!-- 썸네일 7개 생성 -->
+        <!-- div은 아무런 효과가 없는 태그이다..따라서 단순히 마크업을
+        하기 위해서라면  div 이용할수 있다... 
+        block or inline(widthX heightX) ?    
+        -->
+        <div onMouseOver="setColor('red')" style="background:red">red</div>
+        <div onMouseOver="setColor('orange')" style="background:orange">orange</div>
+        <div onMouseOver="setColor('yellow')" style="background:yellow">yellow</div>
+        <div onMouseOver="setColor('green')" style="background:green">green</div>
+        <div onMouseOver="setColor('blue')" style="background:blue">blue</div>
+        <div onMouseOver="setColor('navy')" style="background:navy">navy</div>
+        <div onMouseOver="setColor('purple')" style="background:purple">purple</div>
+        <div id="content">큰 색상 나오게</div>
+    </div>
+</body>
+</html>
+
+
+
+
+

@@ -47,13 +47,20 @@ function createThumb(){
         thumbImage.src="../images/travel/"+i+".jpg"; // <img src="" />동일
         var thumbDiv=document.querySelector(".thumb"); // .thumb div
         thumbDiv.appendChild(thumbImage); //부착!!
+        console.log(i, "번째 이미지 생성");
 
         //프로그래밍 적으로 이벤트 구현하기!! 
+        //아래의 콜백함수는 click이라는 이벤트가 발생할때만 수행되므로 ,
+        //코드 위쪽에 명시된 포문의 i를 사용할 수 없다..
+        //왜? 클릭이 일어난 시점에는 이미 포문의 ,i는 11이므로...
+        //해결책?? 더 배워야 한다..
+        
         thumbImage.addEventListener("click", function(){
             //alert("나 눌렀어요?");
             //지금 선택한 썸네일과 같은 주소의 큰 이미지 나오게..
-            detailImg.src="../images/travel/"+i+".jpg";
-            console.log("지금 누른 썸네일의 i는 ", i);
+            console.log("지금 누른 이미지의 경로는 ", this.src);
+            detailImg.src=this.src;
+            //console.log("지금 누른 썸네일의 i는 ", i);
         });
     }
 }

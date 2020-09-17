@@ -28,9 +28,33 @@
 </style>
 <script>
 //문서내의 content라는 div의 배경색을 선택한 색상으로 변경하자!!
-function setColor(){
+function setColor1(){
     var content=document.getElementById("content");        
     content.style.backgroundColor="red";
+}    
+function setColor2(){
+    var content=document.getElementById("content");        
+    content.style.backgroundColor="orange";
+}    
+function setColor3(){
+    var content=document.getElementById("content");        
+    content.style.backgroundColor="yellow";
+}    
+function setColor4(){
+    var content=document.getElementById("content");        
+    content.style.backgroundColor="green";
+}    
+function setColor5(){
+    var content=document.getElementById("content");        
+    content.style.backgroundColor="blue";
+}    
+function setColor6(){
+    var content=document.getElementById("content");        
+    content.style.backgroundColor="navy";
+}    
+function setColor7(){
+    var content=document.getElementById("content");        
+    content.style.backgroundColor="purple";
 }    
 </script>
 </head>
@@ -41,13 +65,13 @@ function setColor(){
         하기 위해서라면  div 이용할수 있다... 
         block or inline(widthX heightX) ?    
         -->
-        <div onMouseOver="setColor()" style="background:red">red</div>
-        <div style="background:orange">orange</div>
-        <div style="background:yellow">yellow</div>
-        <div style="background:green">green</div>
-        <div style="background:blue">blue</div>
-        <div style="background:navy">navy</div>
-        <div style="background:purple">purple</div>
+        <div onMouseOver="setColor1()" style="background:red">red</div>
+        <div onMouseOver="setColor2()" style="background:orange">orange</div>
+        <div onMouseOver="setColor3()" style="background:yellow">yellow</div>
+        <div onMouseOver="setColor4()" style="background:green">green</div>
+        <div onMouseOver="setColor5()" style="background:blue">blue</div>
+        <div onMouseOver="setColor6()" style="background:navy">navy</div>
+        <div onMouseOver="setColor7()" style="background:purple">purple</div>
         <div id="content">큰 색상 나오게</div>
     </div>
 </body>

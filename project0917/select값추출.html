@@ -25,24 +25,33 @@ select{
 }
 </style>
 <script>
+var content;  
+
+function init(){
+    content=document.getElementById("content");   
+}
+
 function setColor(){
     //문서내의  select 박스에 현재 선택된 값을 추출해보자!!
     var sel = document.getElementById("sel");
     console.log("당신이 선택한 옵션의 값은 " , sel.value);
 
     //문서내의 content 영역에 추출한 값을 이용하여 배경색상을 부여하자!!
-    var content=document.getElementById("content");    
     content.style.backgroundColor=sel.value;
 }   
 
 //이번엔 this를 이용
 function setColor2(c){
-    var content=document.getElementById("content");   
     content.style.backgroundColor=c;
 }
+
+/*var content = document.getElementById("content");
+를 전역으로 올리면 setColor 함수가 작동이 안되는데 .. 
+왜그런지 한번만 더 설명해주실 수 있을까요?
+*/
 </script>
 </head>
-<body>
+<body onLoad="init()">
     <div class="wrapper">
         <select id="sel" onChange="setColor2(this.value)">
             <option value="red">red</option>

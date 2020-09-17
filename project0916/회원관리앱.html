@@ -96,6 +96,9 @@ function regist(){
 
     area.innerHTML=str; //문자열내게 <꺾쇠>가 있다면, 태그로 해석함!
 }
+function remove(){
+    document.getElementById("result-area").innerHTML="";
+}
 </script>
 </head>
 <body>
@@ -110,7 +113,7 @@ function regist(){
                 <input type="text" name="name" placeholder="Name 입력..."/>  
                 
                 <button onClick="regist()">등록</button>
-                <button>지우기</button>
+                <button onClick="remove()">지우기</button>
             </form>        
         </div>
         <div id="result-area">등록된 결과표 나올 영역</div>

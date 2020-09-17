@@ -32,10 +32,11 @@
 
 </style>
 <script>
-function setImage(path){
+function setImage(n){
+    alert("당신이 넘긴 숫자는 "+n);
     //큰 상세이미지의 src를 선택한 썸네일과 동일한 이미지 주소로 교체하자
     var detail = document.querySelector(".detail img");
-    detail.src=path; //이 변수는 호출자가 결정하도록 하자!!
+    detail.src="../images/travel/"+n+".jpg"; //이 변수는 호출자가 결정하도록 하자!!
 }    
 </script>
 </head>
@@ -43,8 +44,8 @@ function setImage(path){
     <div class="wrapper">
         <div class="thumb">
             <img src="../images/travel/1.jpg"/>
-            <img src="../images/travel/2.jpg" onClick="setImage('../images/travel/2.jpg')"/>
-            <img src="../images/travel/3.jpg" onClick="setImage('../images/travel/3.jpg')"/>
+            <img src="../images/travel/2.jpg" onClick="setImage(2)"/>
+            <img src="../images/travel/3.jpg" onClick="setImage(3)"/>
             <img src="../images/travel/4.jpg"/>
             <img src="../images/travel/5.jpg"/>
             <img src="../images/travel/6.jpg"/>

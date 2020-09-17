@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+.wrapper{
+    width:70%;
+    height:200px;
+    border:10px solid red;
+    margin:auto;
+    font-size:30px;
+}
+input[type='text']{
+    width:20%;
+    height:100px;
+    font-size:80px;
+    text-align: right;
+}
+button{
+    width:15%;
+    height:40px;
+    border:0px;
+    color:red;
+    font-weight:bold;
+    background:chartreuse;
+
+}
+</style>
+<script>
+//다른 함수들에서 접근할 수 있도록 미리 전역변수로 정의해놓음
+var sec;
+var bt_start;
+var bt_pause;
+var bt_reset;
+
+window.addEventListener("load",function(){
+    init();
+}); 
+
+//초기화: 프로그램 시작과 동시에 해야할 작업을 처리하는 함수
+function init(){
+    //초 영역에 0을 초기값으로 부여.. 
+    sec=document.getElementById("sec");
+    sec.value=0; //텍스트박스의 값을 지정
+
+    bt_start = document.getElementById("bt_start");
+    bt_pause = document.getElementById("bt_pause");
+    bt_reset = document.getElementById("bt_reset");
+
+    //문서내의 bt_start 라는 요소에 동적 이벤트 처리 
+    bt_start.addEventListener("click", function(){
+        //버튼을 제어하는 방법은 2가지가 있다.
+        //1) 제3자의 입장에서 바라보는 관점 제어 
+        //bt_start.style.background="red";
+        //2) 버튼의 입장에서 스스로를 제어 
+        //this.style.background="yellow";
+
+        // 여기서 코드를 짜면, 추후 자동화함수가 호출할 수 있는 단위가 
+        //아니기 때문에..별도의 함수로 정의하자~!!
+        timer();
+    });
+
+    //문서내의 bt_pause 라는 요소에 동적 이벤트 처리 
+    //문서내의 bt_reset 라는 요소에 동적 이벤트 처리 
+
+}
+
+//초단위를 1씩 증가시켜본다
+function timer(){
+    sec.value=3;
+}
+</script>
+</head>
+<body>
+    <div class="wrapper">
+        <input type="text" id="hour"/>시간    
+        <input type="text" id="min"/>분   
+        <input type="text" id="sec"/>초 
+        <button id="bt_start">시작</button>
+        <button id="bt_pause">Pause</button>
+        <button id="bt_reset">Reset</button>
+    </div>    
+</body>
+</html>
+
+
+
+

@@ -56,6 +56,10 @@ function createThumb(){
         //해결책?? 더 배워야 한다..
         
         thumbImage.addEventListener("click", function(){
+            //이벤트 해들러내에서는 ,이벤트를 일으킨 주체를 
+            //여기서 이벤트 일으킨 주체란 (버튼, 텍스트박스 등의 UI컴포넌트)
+            //this로 가리킬 수 있다. 
+
             //alert("나 눌렀어요?");
             //지금 선택한 썸네일과 같은 주소의 큰 이미지 나오게..
             console.log("지금 누른 이미지의 경로는 ", this.src);

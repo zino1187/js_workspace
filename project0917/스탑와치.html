@@ -41,6 +41,7 @@ var ss=0;//초를 누적시킬 전역변수
 var mm=0;//분을 누적시킬 전역변수
 var hh=0;//시간을 누적시킬 전역변수
 var st;  //setInterval을 가리키기 위한 변수 
+var flag=true;
 
 window.addEventListener("load",function(){
     init();
@@ -78,6 +79,9 @@ function init(){
     });
 
     //문서내의 bt_pause 라는 요소에 동적 이벤트 처리 
+    bt_pause.addEventListener("click", function(){
+        flag=!flag;
+    });
 
     //문서내의 bt_reset 라는 요소에 동적 이벤트 처리 
     bt_reset.addEventListener("click", function(){
@@ -100,29 +104,31 @@ function init(){
 
 //초단위를 1씩 증가시켜본다
 function timer(){
-    ss++;
+    if(flag){     //시계를 작동할지 여부를 결정하는 논리값 변수
+        ss++;
 
-    //ss값이 60이상일때는 mm의 값을 1증가시키고, 
-    //다시 ss값을 0으로 초기화..
-    if(ss >=60){
-        mm++;
-        ss=0;        
-    }
-    //mm 이 60이상일 경우 hh의 값을 1증가시키고 
-    //다시 mm값을 0으로 초기화..
-    if(mm >=60){
-        hh++;
-        mm=0;
-    }
+        //ss값이 60이상일때는 mm의 값을 1증가시키고, 
+        //다시 ss값을 0으로 초기화..
+        if(ss >=60){
+            mm++;
+            ss=0;        
+        }
+        //mm 이 60이상일 경우 hh의 값을 1증가시키고 
+        //다시 mm값을 0으로 초기화..
+        if(mm >=60){
+            hh++;
+            mm=0;
+        }
 
-    hour.value=hh;//시간 출력 
-    min.value=mm;//분 출력
-    sec.value=ss; //초 출력 
+        hour.value=hh;//시간 출력 
+        min.value=mm;//분 출력
+        sec.value=ss; //초 출력 
+    }
 }
 
 //지정한 시간 간격으로, 함수를 호출해주는 자동화 함수
 function auto(){
-    st=setInterval("timer()", 1000); //자동화함수 가동후, 
+    st=setInterval("timer()", 1); //자동화함수 가동후, 
                                                         //함수를 가리킬 수 있는 변수로
                                                         //대입
 }

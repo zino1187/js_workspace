@@ -30,10 +30,16 @@ button{
 </style>
 <script>
 //다른 함수들에서 접근할 수 있도록 미리 전역변수로 정의해놓음
-var sec;
-var bt_start;
-var bt_pause;
-var bt_reset;
+var sec; //초의 텍스트박스
+var min;//분의 텍스트박스
+var hour;//시간의 텍스트박스
+var bt_start;//시작버튼
+var bt_pause;//포즈버튼
+var bt_reset;//리셋버튼
+//--------------------------------------------
+var ss=0;//초를 누적시킬 전역변수 
+var mm=0;//분을 누적시킬 전역변수
+var hh=0;//시간을 누적시킬 전역변수
 
 window.addEventListener("load",function(){
     init();
@@ -43,7 +49,12 @@ window.addEventListener("load",function(){
 function init(){
     //초 영역에 0을 초기값으로 부여.. 
     sec=document.getElementById("sec");
-    sec.value=0; //텍스트박스의 값을 지정
+    min=document.getElementById("min");
+    hour=document.getElementById("hour");
+
+    sec.value=ss; //초기의 초 텍스트박스의 값을 지정
+    min.value=mm; //초기의 분 텍스트박스의 값
+    hour.value=hh;//초기의 시간 텍스트박스의 값
 
     bt_start = document.getElementById("bt_start");
     bt_pause = document.getElementById("bt_pause");
@@ -69,7 +80,24 @@ function init(){
 
 //초단위를 1씩 증가시켜본다
 function timer(){
-    sec.value=3;
+    ss++;
+
+    //ss값이 60이상일때는 mm의 값을 1증가시키고, 
+    //다시 ss값을 0으로 초기화..
+    if(ss >=60){
+        mm++;
+        ss=0;        
+    }
+    //mm 이 60이상일 경우 hh의 값을 1증가시키고 
+    //다시 mm값을 0으로 초기화..
+    if(mm >=60){
+        hh++;
+        mm=0;
+    }
+
+    hour.value=hh;//시간 출력 
+    min.value=mm;//분 출력
+    sec.value=ss; //초 출력 
 }
 </script>
 </head>

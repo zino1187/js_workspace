@@ -40,6 +40,7 @@ var bt_reset;//리셋버튼
 var ss=0;//초를 누적시킬 전역변수 
 var mm=0;//분을 누적시킬 전역변수
 var hh=0;//시간을 누적시킬 전역변수
+var st;  //setInterval을 가리키기 위한 변수 
 
 window.addEventListener("load",function(){
     init();
@@ -70,11 +71,30 @@ function init(){
 
         // 여기서 코드를 짜면, 추후 자동화함수가 호출할 수 있는 단위가 
         //아니기 때문에..별도의 함수로 정의하자~!!
-        timer();
+        //timer();
+
+        //자동화 함수한테 timer() 호출을 맡기자!!
+        auto();
     });
 
     //문서내의 bt_pause 라는 요소에 동적 이벤트 처리 
+
     //문서내의 bt_reset 라는 요소에 동적 이벤트 처리 
+    bt_reset.addEventListener("click", function(){
+        //이미 실행중인 setInterval() 을 멈춘다!!
+        
+        //clearTimeout(멈출대상setInterval); 
+        //인수(매개변수)로 전달한 자동화함수를 멈춘다 
+        clearTimeout(st);
+
+        //모든 시,분,초를 0으로 초기화
+        ss=0;
+        mm=0;
+        hh=0;
+        sec.value=ss; //텍스트박스의 값을 지정
+        min.value=mm; //텍스트박스의 값
+        hour.value=hh;//텍스트박스의 값
+    });
 
 }
 
@@ -98,6 +118,13 @@ function timer(){
     hour.value=hh;//시간 출력 
     min.value=mm;//분 출력
     sec.value=ss; //초 출력 
+}
+
+//지정한 시간 간격으로, 함수를 호출해주는 자동화 함수
+function auto(){
+    st=setInterval("timer()", 1000); //자동화함수 가동후, 
+                                                        //함수를 가리킬 수 있는 변수로
+                                                        //대입
 }
 </script>
 </head>

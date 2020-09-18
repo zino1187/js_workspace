@@ -22,6 +22,7 @@ var bg;
 var sx=1;//이미지의 x스케일을 결정하는 전역변수
 var sy=1;//이미지의 y스케일을 결정하는 전역변수
 //그렇다면 초기값은 얼마여야 할까? 본래의 사이즈 비율은 1이다!!
+var light; //반딧불을 가리키는 div
 
 window.addEventListener("load", function(){
     wrapper = document.getElementById("wrapper");
@@ -44,7 +45,7 @@ function moveBg(){
 //반딧불을 생성한다
 function createLight(){
     //없는 것을 생성하므로,  createElement 
-    var light = document.createElement("div"); // <div></div>
+    light = document.createElement("div"); // <div></div>
     light.style.width=30+"px";
     light.style.height=30+"px";
     light.style.background="yellow";
@@ -53,6 +54,17 @@ function createLight(){
     light.style.position="absolute";
     light.style.left=100+"px";
     light.style.top=150+"px";
+    
+    light.style.borderRadius=50+"px";//사각 모서리를 마모시키자 
+    light.style.opacity=0.4;//투명효과
+    wrapper.appendChild(light);//div에 추가하기 
+}
+
+//반딧불의 감속도 운동 
+function  move(){
+    //반디위치는 = 현재반디위치 + 비율계수*거리(목표지점-현재반디위치)
+    light.style.left=parseInt(light.style.left)+a*(targetX-parseInt(light.style.left))+"px";
+    light.style.top=parseInt(light.style.top)+a*(targetY-parseInt(light.style.top))+"px";
 }
 </script>
 </head>

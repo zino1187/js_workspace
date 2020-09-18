@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#box{
+    width:100px;
+    height:100px;
+    background: red;
+}    
+</style>
+<script>
+//문서가 로드되면, 박스에 대한 초기화를 진행   
+var box;//전연변수
+function init(){
+    box=document.getElementById("box");
+    box.style.position="absolute";
+    box.style.left=0+"px";
+    box.style.top=100+"px";
+}
+
+//지금까지의 움직임과는 틀리게, 목표지점으로 한꺼번에 건너뛰지말고,
+//조금씩 다가가자!! (감속도 운동)
+//목표지점은 700으로 정해놓자!~
+function move(){                            //남은거리
+    //박스의 위치는 = 현재박스위치 + a*(700 - 현재박스위치)
+    box.style.left=parseInt(box.style.left) +0.1*(700-parseInt(box.style.left))+"px";
+}
+</script>
+</head>
+<body onLoad="init()">
+    <button onClick="move()">움직이기</button>    
+    <div id="box"></div>    
+</body>
+</html>
+
+
+
+
+
+
+

@@ -56,7 +56,14 @@ function addZero(){
     var h=document.querySelector("h1");
     h.innerText=yy.value+"년"+getZeroDate(parseInt(mm.value))+"월"+getZeroDate(parseInt(dd.value))+"일";
 
-}    
+}   
+//사용자가 0접두어를 붙였을때는, 0을떼고 숫자화 시키자!
+function removeZero(){
+    //숫자를 표현한 문자열을 대상으로 parseInt() 하면, 정수화 되므로 
+    //0문자는 떨어져 나간다..
+    var h=document.querySelector("h1");
+    h.innerText=yy.value+"년"+parseInt(mm.value)+"월"+parseInt(dd.value)+"일";
+} 
 </script>
 </head>
 <body onLoad="init()">

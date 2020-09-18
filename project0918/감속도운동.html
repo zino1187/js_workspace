@@ -6,8 +6,8 @@
 <title>Document</title>
 <style>
 #box{
-    width:100px;
-    height:100px;
+    width:40px;
+    height:40px;
     background: red;
 }   
 body{
@@ -68,10 +68,10 @@ function getPos(){
 }
 </script>
 </head>
-<body onLoad="init()" onClick="getPos()">
+<body onLoad="init();auto()" onMouseMove="getPos()">
     <div class="wrapper">    
         <button onClick="move()">수동 움직이기</button>    
-        <button onClick="auto()">자동 움직이기</button>    
+        
         <div id="box"></div>    
     </div>
 </body>

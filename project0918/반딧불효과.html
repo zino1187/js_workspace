@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#wrapper{
+    width:1200px;
+    height:800px;
+    margin: auto;
+}   
+#wrpper img{
+    width:1200px;
+    height:800px;
+}
+</style>
+<script>
+var wrapper;
+var bg;
+window.addEventListener("load", function(){
+    wrapper = document.getElementById("wrapper");
+    bg=document.getElementById("bg");
+});
+
+//배경이미지를 조금씩 조금씩 크게하면, 마치 다가가는 것처럼 보일수있다..
+function moveBg(){
+    bg.style.transform="scale(2,2)";
+}
+</script>
+</head>
+<body>
+    <div id="wrapper">
+        <img id="bg" src="../images/bandi/bg.jpg" onMouseMove="moveBg()">
+    </div>    
+</body>
+</html>

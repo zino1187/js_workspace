@@ -12,6 +12,12 @@
 }    
 </style>
 <script>
+let a=0.1;//비율계수가 높아질 수록, 남은거리에 대한 움직임이 커지므로
+                //부드럽지 못하다..
+var targetX=800; //박스가 도달할 x축 목표지점
+var targetY=600; //박스가 도달할 y축 목표지점
+var deg=0; //각도를 누적시킬 전역변수
+
 //문서가 로드되면, 박스에 대한 초기화를 진행   
 var box;//전연변수
 function init(){
@@ -26,12 +32,23 @@ function init(){
 //목표지점은 700으로 정해놓자!~
 function move(){                            //남은거리
     //박스의 위치는 = 현재박스위치 + a*(700 - 현재박스위치)
-    box.style.left=parseInt(box.style.left) +0.1*(700-parseInt(box.style.left))+"px";
+    box.style.left=parseInt(box.style.left) +a*(targetX-parseInt(box.style.left))+"px";
+    console.log(box.style.left);
+    box.style.top=parseInt(box.style.top)+a*(targetY-parseInt(box.style.top))+"px"; 
+
+    //돌려보자 
+    deg+=5; //5도씩 증가
+    box.style.transform="rotate("+deg+"deg)";
+}
+
+function auto(){
+    setInterval("move()",10);
 }
 </script>
 </head>
 <body onLoad="init()">
-    <button onClick="move()">움직이기</button>    
+    <button onClick="move()">수동 움직이기</button>    
+    <button onClick="auto()">자동 움직이기</button>    
     <div id="box"></div>    
 </body>
 </html>

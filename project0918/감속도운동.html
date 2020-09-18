@@ -9,7 +9,17 @@
     width:100px;
     height:100px;
     background: red;
-}    
+}   
+body{
+    margin:0px;
+}
+/*마우스 이벤트는 body를 대상으로는 반응을 보이지 않을 경우가 있으므로
+body만한 크기의 div 로 문서 전체를 덮어버리기 위한 div*/ 
+.wrapper{
+    width:100%;
+    height:700px;
+    background:yellow;    
+}
 </style>
 <script>
 let a=0.1;//비율계수가 높아질 수록, 남은거리에 대한 움직임이 커지므로
@@ -44,12 +54,26 @@ function move(){                            //남은거리
 function auto(){
     setInterval("move()",10);
 }
+/*문서에 마우스를 누를때마다, 마우스의 좌표를 구해서 
+box 가 움직일 새로운 목표지점을 설정해주자,*/
+function getPos(){
+    var x = event.clientX;//마우스의  x좌표 
+    var y = event.clientY;//마우스의 y좌표
+    console.log("x is ", x);
+    console.log("y is ", y);
+    //구해온 좌표를 targetX와  targetY에 대입하면, 새로운 목표지점이
+    //생기므로 사각박스가 움직이게 된다 
+    targetX = x; 
+    targetY = y;
+}
 </script>
 </head>
-<body onLoad="init()">
-    <button onClick="move()">수동 움직이기</button>    
-    <button onClick="auto()">자동 움직이기</button>    
-    <div id="box"></div>    
+<body onLoad="init()" onClick="getPos()">
+    <div class="wrapper">    
+        <button onClick="move()">수동 움직이기</button>    
+        <button onClick="auto()">자동 움직이기</button>    
+        <div id="box"></div>    
+    </div>
 </body>
 </html>
 

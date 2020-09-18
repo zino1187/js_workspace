@@ -23,12 +23,17 @@ var sx=1;//이미지의 x스케일을 결정하는 전역변수
 var sy=1;//이미지의 y스케일을 결정하는 전역변수
 //그렇다면 초기값은 얼마여야 할까? 본래의 사이즈 비율은 1이다!!
 var light; //반딧불을 가리키는 div
+let a=0.1; //로직내에서 변경사항 없음 : 상수 
+var targetX=0; //반딧불이 도달할 x목표지점
+var targetY=0; //반딧불이 도달할 y목표지점
+
 
 window.addEventListener("load", function(){
     wrapper = document.getElementById("wrapper");
     bg=document.getElementById("bg");
 
-    setInterval("moveBg()",10);
+    setInterval("moveBg()",10); //배경의 움직임을 위한 자동함수 호출
+    setInterval("move()",20); //  1/1000  반딧불의 움직임을 위한 자동함수호출
 
     createLight(); //반딧불 생성
 });
@@ -65,6 +70,8 @@ function  move(){
     //반디위치는 = 현재반디위치 + 비율계수*거리(목표지점-현재반디위치)
     light.style.left=parseInt(light.style.left)+a*(targetX-parseInt(light.style.left))+"px";
     light.style.top=parseInt(light.style.top)+a*(targetY-parseInt(light.style.top))+"px";
+    //console.log("x목표지점 ", targetX);
+    //console.log("y목표지점 ", targetY);
 }
 </script>
 </head>

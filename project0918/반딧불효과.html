@@ -9,6 +9,7 @@
     width:1200px;
     height:800px;
     margin: auto;
+    position: relative; /*자식때문에...*/
 }   
 #wrpper img{
     width:1200px;
@@ -18,20 +19,46 @@
 <script>
 var wrapper;
 var bg;
+var sx=1;//이미지의 x스케일을 결정하는 전역변수
+var sy=1;//이미지의 y스케일을 결정하는 전역변수
+//그렇다면 초기값은 얼마여야 할까? 본래의 사이즈 비율은 1이다!!
+
 window.addEventListener("load", function(){
     wrapper = document.getElementById("wrapper");
     bg=document.getElementById("bg");
+
+    setInterval("moveBg()",10);
+
+    createLight(); //반딧불 생성
 });
 
 //배경이미지를 조금씩 조금씩 크게하면, 마치 다가가는 것처럼 보일수있다..
 function moveBg(){
-    bg.style.transform="scale(2,2)";
+    //스케일은 비율로 커지므로, 정수를 이용하면 너무 빨리 커진다..
+    //따라서 소수점으로 키워나가 보자!!
+    sx+=0.0002;
+    sy+=0.0002;
+    bg.style.transform="scale("+sx+", "+sy+")";
+}
+
+//반딧불을 생성한다
+function createLight(){
+    //없는 것을 생성하므로,  createElement 
+    var light = document.createElement("div"); // <div></div>
+    light.style.width=30+"px";
+    light.style.height=30+"px";
+    light.style.background="yellow";
+    //위치를  absolute 로 해야,  div 내에서 좌표가 지정되고,  img 태그와
+    //자리싸움을 벌이지 않는다 
+    light.style.position="absolute";
+    light.style.left=100+"px";
+    light.style.top=150+"px";
 }
 </script>
 </head>
 <body>
     <div id="wrapper">
-        <img id="bg" src="../images/bandi/bg.jpg" onMouseMove="moveBg()">
+        <img id="bg" src="../images/bandi/bg.jpg">
     </div>    
 </body>
 </html>

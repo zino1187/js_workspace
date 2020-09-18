@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    input{
+        width:100px;
+        height:70px;
+        font-size:40px;
+    }
+</style>
+<script>
+//각 함수마다 매번 getElemnetById 하지 않기 위해 init() 에서 최초에 한번
+//초기화 해놓자!! 그래야 편하다    
+var yy;
+var mm;
+var dd;
+
+function init(){
+    yy=document.getElementById("yy");
+    mm=document.getElementById("mm");
+    dd=document.getElementById("dd");
+}
+
+function addZero(){
+    //텍스트박스에 입력한 월, 일의 경우엔 한자리수인 경우,
+    //입력한 숫자 앞에 0을 추가하자!!(결국 문자로 간주..그래야 0이 붙음)
+
+    //(1) 텍스트박스의 입력값은 원칙상 문자열로 간주하기 때문에, 숫자로
+    //바꿔야 한다...
+    var month = parseInt(mm.value); //월의 입력값을 정수로 변환 
+    var date = parseInt(dd.value); //일의 입력값을 정수로 변환 
+
+    //숫자가 아닌 것을 판단하는 함수이기 때문에, 숫자가 아니면 true 반환
+    //결론) 숫자 false, 숫자아닌경우 true
+    console.log("숫자가 아닙니다", isNaN(month)); //is Not a Number
+
+    //(2) 한자리 인경우엔 0을 접두어로 부착!!
+    if(month >=10){ //두자리수
+        alert("두자리수를 입력햇군요");
+    }else{
+        alert("한자리수를 입력햇군요");
+    }
+
+
+}    
+</script>
+</head>
+<body onLoad="init()">
+
+    <input type="text" id="yy"/>년    
+    <input type="text" id="mm"/>월    
+    <input type="text" id="dd"/>일    
+
+    <button onClick="addZero()">0접두어 추가</button>
+    <button onClick="removeZero()">0접두어 제거</button>
+    <h1>검증 및 데이터 정제결과 나올곳</h1>
+</body>
+</html>
+
+

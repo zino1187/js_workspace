@@ -39,11 +39,17 @@ function addZero(){
 
     //(2) 한자리 인경우엔 0을 접두어로 부착!!
     if(month >=10){ //두자리수
-        alert("두자리수를 입력햇군요");
+        //alert("두자리수를 입력햇군요");
     }else{
-        alert("한자리수를 입력햇군요");
+        //alert("한자리수를 입력햇군요");
+        month="0"+month;  // + 연산자의 연산대상 중 하나라도 문자가 껴있으면
+        //전체는 문자열로 취급하여 + 연산자는 이 시점부터 연결자로 역할
+        //한다  ex) 06 반환됨        
     }
 
+    //결과 출력 
+    var h=document.querySelector("h1");
+    h.innerText=yy.value+"년"+month+"월"+date+"일";
 
 }    
 </script>

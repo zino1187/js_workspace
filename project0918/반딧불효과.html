@@ -16,6 +16,7 @@
     height:800px;
 }
 </style>
+<script src="../js/lib.js"></script>
 <script>
 var wrapper;
 var bg;
@@ -26,7 +27,7 @@ var light; //반딧불을 가리키는 div
 let a=0.1; //로직내에서 변경사항 없음 : 상수 
 var targetX=0; //반딧불이 도달할 x목표지점
 var targetY=0; //반딧불이 도달할 y목표지점
-
+var count=0; //현재 호출되고 있는 함수의 횟수를 알기위한 변수 
 
 window.addEventListener("load", function(){
     wrapper = document.getElementById("wrapper");
@@ -72,6 +73,15 @@ function  move(){
     light.style.top=parseInt(light.style.top)+a*(targetY-parseInt(light.style.top))+"px";
     //console.log("x목표지점 ", targetX);
     //console.log("y목표지점 ", targetY);
+    console.log("count = ", count++);
+    if(count%300==0){ //400의 배수, 400마다!!
+        //400마다 고정되어있으면 최초에 한번만 움직이므로.
+        //400마다 랜덤한 값으로 대체하자!!
+        //새롭게 로직을 작성하지 말고, 예전에 개발해놓았던 코드를 사용하자
+        //재사용!! 재사용은 개발시간 단축 -> 비용줄임 -> 기업 돈번다
+        targetX=getRandom(800); //0~800
+        targetY=getRandom(550); //0~550
+    }
 }
 </script>
 </head>

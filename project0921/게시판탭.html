@@ -25,15 +25,19 @@
 }
 #qna{
     background-color: gold;
+    display: none;
 }
 #board{
     background-color: dodgerblue;
+    display: none;
 }
 .tab a{
     text-decoration: none;  
     display:inline-block;
-    width:196px;
+    width:200px;
     height:50px;
+    text-align: center;
+    font-size:25px;
 }
 </style>
 </head>
@@ -41,9 +45,7 @@
     
     <div class="wrapper">
         <div class="tab">
-            <a href="#" style="background:red">공지사항</a>
-            <a href="#" style="background:gold">QnA</a>
-            <a href="#" style="background:dodgerblue">자유게시판</a>
+            <a href="#" style="background:red">공지사항</a><a href="#" style="background:gold">QnA</a><a href="#" style="background:dodgerblue">자유게시판</a>
         </div>
         <div class="content">
             <div id="notice"></div>

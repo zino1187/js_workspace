@@ -56,6 +56,9 @@ function move(){
     //박스위치는  = 현재위치 + a*(목표지점 - 현재박스의위치)
     box.style.left=parseInt(box.style.left)  +a*(targetX-parseInt(box.style.left))+"px";
     box.style.top=parseInt(box.style.top)  +a*(targetY-parseInt(box.style.top))+"px";
+
+    //박스안에 좌표도 출력해보자!!
+    box.innerText="x:"+parseInt(box.style.left)+"\ny:"+parseInt(box.style.top)
 }
 
 //오직 전역변수인 targetX,targetY만 바라보고 있는 box의 목표지점을 

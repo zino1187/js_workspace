@@ -15,7 +15,7 @@
     width:500px;
     height:400px;
     background:blue;
-    overflow:hidden;
+    /*overflow:hidden;*/
 }
 #navi{
     text-align: center; /*div의 컨텐츠를 가운데 정렬*/
@@ -30,6 +30,25 @@ a{
     background:burlywood;
 }
 </style>
+<script>
+var box; //이미지들을 담게될 div 
+
+//프로그램이 가동되자마자, 할것이 있다면 초기화함수에서 처리하면 좋다
+function init(){
+    box = document.getElementById("box");
+    //원하는 이미지 갯수만큼 반복문 수행하여 이미지 동적으로 생성하자!!
+    var img=document.createElement("img"); //<img/> 와 동일 
+    img.src="../images/travel/1.jpg"; // <img src=""/>와 동일
+    img.style.width=500+"px";
+    img.style.height=400+"px";
+
+
+}    
+window.addEventListener("load", function(){
+    init();//초기화 함수 호출!!
+});
+
+</script>
 </head>
 <body>
     <div id="wrapper">

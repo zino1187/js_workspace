@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#box{
+    width:50px;
+    height:50px;
+    background:yellow;
+}    
+</style>
+<script>
+var box;    
+var targetX=100;
+var targetY=200;
+var a=0.1;
+
+function init(){
+    box = document.getElementById("box");
+    box.style.position="absolute";
+    box.style.left=targetX+"px";
+    box.style.top=targetY+"px";
+
+    setInterval("move()",50);
+}    
+function move(){
+    box.style.left=parseInt(box.style.left) + a*(targetX-parseInt(box.style.left))+"px";
+    box.style.top=parseInt(box.style.top) + a*(targetY-parseInt(box.style.top))+"px";
+
+    box.innerText="x:"+parseInt(box.style.left)+"\n"
+    box.innerText+="y:"+parseInt(box.style.top)
+}
+
+function execute(){
+    targetX = parseInt(document.getElementById("tx").value);
+    targetY = parseInt(document.getElementById("ty").value);
+}
+</script>
+</head>
+<body onLoad="init()">
+    <input type="text" id="tx" placeholder="이동할 x좌표"/>        
+    <input type="text" id="ty" placeholder="이동할 y좌표"/>        
+    <button onClick="execute()">실행</button>
+    <div id="box"></div>
+</body>
+</html>
+
+

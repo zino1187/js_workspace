@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script>
+function init(){
+    createCard();
+}   
+function createCard(){
+    var card = document.createElement("div");
+    card.style.width=200+"px";
+    card.style.height=200+"px";
+    card.style.border="5px slid dodgerblue";
+    card.style.position="absolute";
+    card.style.left=100+"px";
+    card.style.top=200+"px";
+    card.style.transform="scale(1,1)";
+    card.style.background="blue";
+    card.style.transform="rotate(30deg)";
+    card.addEventListener("mouseover",function(){
+        move(this);
+    });
+
+    document.body.appendChild(card);
+}
+
+
+window.addEventListener("load", function(){
+    init();
+}); 
+</script>
+</head>
+<body>
+        
+</body>
+</html>

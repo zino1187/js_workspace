@@ -36,14 +36,25 @@ var box; //이미지들을 담게될 div
 //프로그램이 가동되자마자, 할것이 있다면 초기화함수에서 처리하면 좋다
 function init(){
     box = document.getElementById("box");
+    box.style.position="relative";
+    box.style.left=0+"px";
+    
     //원하는 이미지 갯수만큼 반복문 수행하여 이미지 동적으로 생성하자!!
-    var img=document.createElement("img"); //<img/> 와 동일 
-    img.src="../images/travel/1.jpg"; // <img src=""/>와 동일
-    img.style.width=500+"px";
-    img.style.height=400+"px";
+    for(var i=1;i<=7;i++){
+        var img=document.createElement("img"); //<img/> 와 동일 
+        img.src="../images/travel/"+i+".jpg"; // <img src=""/>와 동일
+        img.style.width=500+"px";
+        img.style.height=400+"px";
 
+        box.appendChild(img);
+    }
+}   
 
-}    
+//box div의 좌표를 설정한다!!
+function setTarget(){
+
+}
+
 window.addEventListener("load", function(){
     init();//초기화 함수 호출!!
 });
@@ -57,13 +68,18 @@ window.addEventListener("load", function(){
             <div id="box"></div>                
         </div>
         <div id="navi">
-            <a href="#">●</a>            
-            <a href="#">●</a>            
-            <a href="#">●</a>            
-            <a href="#">●</a>            
-            <a href="#">●</a>            
-            <a href="#">●</a>            
-            <a href="#">●</a>                    
+            <!-- 자바스크립트를 작성할 수 잇는 영역 은 총 3가지 
+                (1) <script> 태그안에서 
+                (2) onClick = "자바스크립트 영역"   
+                (3) a href="javascript:자바스크립트 영역"
+            -->
+            <a href="javascript:setTarget()">●</a>            
+            <a href="javascript:setTarget()">●</a>            
+            <a href="javascript:setTarget()">●</a>            
+            <a href="javascript:setTarget()">●</a>            
+            <a href="javascript:setTarget()">●</a>            
+            <a href="javascript:setTarget()">●</a>            
+            <a href="javascript:setTarget()">●</a>                    
         </div>
     </div>    
 </body>

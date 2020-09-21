@@ -17,7 +17,7 @@ var targetY=0; //박스가 이동할 y목표지점
 
 window.addEventListener("load", function(){
     init();//초기화 함수 호출
-    setInterval("move()",10);
+    setInterval("move()",100);
 });
 
 function init(){
@@ -54,19 +54,19 @@ function move(){
     //감속도 공식을 이용하여 움직이자
     //박스의위치는 = 현재위치 + 남은거리의 일정비율만큼..
     //박스위치는  = 현재위치 + a*(목표지점 - 현재박스의위치)
-    box.style.left=parseInt(box.style.left)  +a*(targetX-parseInt(box.style.left))+"px";
-    box.style.top=parseInt(box.style.top)  +a*(targetY-parseInt(box.style.top))+"px";
+    box.style.left=parseFloat(box.style.left)  +a*(targetX-parseFloat(box.style.left))+"px";
+    box.style.top=parseFloat(box.style.top)  +a*(targetY-parseFloat(box.style.top))+"px";
 
     //박스안에 좌표도 출력해보자!!
-    box.innerText="x:"+parseInt(box.style.left)+"\ny:"+parseInt(box.style.top)
+    box.innerText="x:"+parseFloat(box.style.left)+"\ny:"+parseFloat(box.style.top)
 }
 
 //오직 전역변수인 targetX,targetY만 바라보고 있는 box의 목표지점을 
 //아래의 함수에서 지정해보자!! 그러면 텍스트박스에 입력한 데이터가 곧
 //박스가 이동할 목표지점이 되는 것임..
 function setTarget(){
-    targetX = parseInt(tx.value);
-    targetY = parseInt(ty.value);
+    targetX = parseFloat(tx.value);
+    targetY = parseFloat(ty.value);
 }
 </script>
 </head>

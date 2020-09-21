@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#wrapper{
+    width:500px;
+    height:450px;
+    background:yellow;
+    margin: auto;
+}    
+#mask{
+    width:500px;
+    height:400px;
+    background:blue;
+    overflow:hidden;
+}
+#navi{
+    text-align: center; /*div의 컨텐츠를 가운데 정렬*/
+    font-size:30px;
+}
+a{
+    text-decoration: none; /* link 의 밑줄 없애기*/
+}
+#box{
+    width:3500px;
+    height:400px;
+    background:burlywood;
+}
+</style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="mask">
+            <!-- 사진을 품고 있을 div, 단 넘치는 컨텐츠는 mask에 의해 가려질예정 -->
+            <div id="box"></div>                
+        </div>
+        <div id="navi">
+            <a href="#">●</a>            
+            <a href="#">●</a>            
+            <a href="#">●</a>            
+            <a href="#">●</a>            
+            <a href="#">●</a>            
+            <a href="#">●</a>            
+            <a href="#">●</a>                    
+        </div>
+    </div>    
+</body>
+</html>

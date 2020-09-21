@@ -28,23 +28,35 @@
 </style>
 <script>
 var cell;//이미지를 포함할 div : 움직일거임..    
+var x=0; //cell의 x좌표 
+var y=0; //cell의 y 좌표 
 
 function init(){
     cell = document.getElementById("cell");
     cell.style.position="absolute";
-    cell.style.left=0+"px";
-    cell.style.top=0+"px";
+    cell.style.left=x+"px";
+    cell.style.top=y+"px";
 
     //문서 전체를 대상으로 키보드 이벤트 구현 
     document.body.addEventListener("keydown", function(){
+        //모든 키보드에 반응하면 안되고, 오직 방향키에만 반응하도록 조건문을 부여하자!!
+        var key = event.keyCode; //키보드에 대한 이벤트 정보 객체로부터 아스키코드 반환받음
+
+        switch(key){
+            case 37:x=x-200; break;
+            case 39:x=x+200;break;
+            case 38:y=y-200; break;
+            case 40:y=y+200;break;
+        }
+
         //셀div의 좌표를 설정해서 움직이도록 한다...
         setTarget();
     });
 }   
 
 function setTarget(){
-    cell.style.left=-200+"px";
-    cell.style.top=-200+"px";
+    cell.style.left=x+"px";
+    cell.style.top=y+"px";
 
     printPos();
 }

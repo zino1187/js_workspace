@@ -41,17 +41,20 @@ function init(){
     cell.style.top=y+"px";
 
     //생성된 셀에 이미지 9개 채우기!! (언제나 안쪽 포문을 먼저 처리하는 거임)
-    //for(3회){
-        for(var i=1;i<=3;i++){
+    var n=0;
+    for(var a=1;a<=3;a++){ //층을 결정,  top값을 결정
+        for(var i=1;i<=3;i++){//호수를 결정,  left 값을 결정
+            n++;
             var img = document.createElement("img"); //<img/>
-            img.src="../images/travel/"+i+".jpg";
+            img.src="../images/travel/"+n+".jpg";
             img.style.width=200+"px";
             img.style.height=200+"px";
             img.style.position="absolute";
             img.style.left=(i-1)*200+"px"; //0, 200,400
+            img.style.top=(a-1)*200+"px";
             cell.appendChild(img);
         }
-    //}
+    }
 
     //문서 전체를 대상으로 키보드 이벤트 구현 
     document.body.addEventListener("keydown", function(){

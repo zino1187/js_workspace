@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+.wrapper{
+    width:600px;
+    height:600px;
+    background:yellow;
+    margin: auto;    
+}    
+#mask{
+    width:200px;
+    height:200px;
+    background-color: red;
+    /*본연의 위치에서  left 200, top 200 :설정, 이유: 정중앙으로 오게 하려고*/
+    position: relative;
+    left:200px;
+    top:200px;
+}
+#cell{
+    width:600px;
+    height:600px;
+    background-color: blue;
+}
+</style>
+<script>
+var cell;//이미지를 포함할 div : 움직일거임..    
+
+function init(){
+    cell = document.getElementById("cell");
+    cell.style.position="absolute";
+    cell.style.left=0+"px";
+    cell.style.top=0+"px";
+
+    //문서 전체를 대상으로 키보드 이벤트 구현 
+    document.body.addEventListener("keydown", function(){
+        //셀div의 좌표를 설정해서 움직이도록 한다...
+        setTarget();
+    });
+}   
+
+function setTarget(){
+    cell.style.left=-200+"px";
+    cell.style.top=-200+"px";
+
+    printPos();
+}
+
+//디버깅을 위한, 좌표 출력(필수는 아님..공부목적)
+function printPos(){
+    cell.style.color="white";
+    cell.innerText="x좌표"+cell.style.left+"\n";
+    cell.innerText+="y좌표"+cell.style.top;
+}
+
+window.addEventListener("load", function(){
+    init();
+});
+</script>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="mask">
+            <div id="cell">이미지셀</div>
+        </div>
+    </div>    
+</body>
+</html>

@@ -15,7 +15,7 @@
     width:500px;
     height:400px;
     background:blue;
-    /*overflow:hidden;*/
+    overflow:hidden;
 }
 #navi{
     text-align: center; /*div의 컨텐츠를 가운데 정렬*/
@@ -32,6 +32,8 @@ a{
 </style>
 <script>
 var box; //이미지들을 담게될 div 
+let a=0.1;
+var targetX=0;
 
 //프로그램이 가동되자마자, 할것이 있다면 초기화함수에서 처리하면 좋다
 function init(){
@@ -51,12 +53,19 @@ function init(){
 }   
 
 //box div의 좌표를 설정한다!!
-function setTarget(){
+function setTarget(x){
+    targetX = x;
+}
 
+//수동 움직임 
+function move(){
+    //박스위치는 = 현재박스위치 + 비율*(목표지점-현재박스위치)
+    box.style.left =  parseFloat(box.style.left)+a*(targetX -parseFloat(box.style.left))+"px";
 }
 
 window.addEventListener("load", function(){
     init();//초기화 함수 호출!!
+    setInterval("move()",10);
 });
 
 </script>
@@ -73,13 +82,13 @@ window.addEventListener("load", function(){
                 (2) onClick = "자바스크립트 영역"   
                 (3) a href="javascript:자바스크립트 영역"
             -->
-            <a href="javascript:setTarget()">●</a>            
-            <a href="javascript:setTarget()">●</a>            
-            <a href="javascript:setTarget()">●</a>            
-            <a href="javascript:setTarget()">●</a>            
-            <a href="javascript:setTarget()">●</a>            
-            <a href="javascript:setTarget()">●</a>            
-            <a href="javascript:setTarget()">●</a>                    
+            <a href="javascript:setTarget(0)">●</a>            
+            <a href="javascript:setTarget(-500)">●</a>            
+            <a href="javascript:setTarget(-1000)">●</a>            
+            <a href="javascript:setTarget(-1500)">●</a>            
+            <a href="javascript:setTarget(-2000)">●</a>            
+            <a href="javascript:setTarget(-2500)">●</a>            
+            <a href="javascript:setTarget(-3000)">●</a>                    
         </div>
     </div>    
 </body>

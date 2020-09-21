@@ -30,6 +30,9 @@
 var cell;//이미지를 포함할 div : 움직일거임..    
 var x=0; //cell의 x좌표 
 var y=0; //cell의 y 좌표 
+var a=0.1;
+var targetX=0;//목표 x지점
+var targetY=0;//목표 y지점
 
 function init(){
     cell = document.getElementById("cell");
@@ -50,10 +53,16 @@ function init(){
         }
 
         //셀div의 좌표를 설정해서 움직이도록 한다...
-        setTarget();
+        //setTarget();
+        targetX=x;
+        targetY=y;
     });
 }   
-
+//목표지점까지 부드럽게 움직일수 있도록, 감속도로 처리..
+function move(){
+    cell.style.left = parseFloat(cell.style.left) + a*(targetX-parseFloat(cell.style.left))+"px";
+    cell.style.top = parseFloat(cell.style.top) + a*(targetY-parseFloat(cell.style.top))+"px";
+}
 function setTarget(){
     cell.style.left=x+"px";
     cell.style.top=y+"px";
@@ -70,6 +79,7 @@ function printPos(){
 
 window.addEventListener("load", function(){
     init();
+    setInterval("move()",25);
 });
 </script>
 </head>

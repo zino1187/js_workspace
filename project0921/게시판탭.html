@@ -40,12 +40,41 @@
     font-size:25px;
 }
 </style>
+<script>
+var notice;
+var qna;
+var board;
+
+function init(){
+    notice = document.getElementById("notice");
+    qna = document.getElementById("qna");
+    board = document.getElementById("board");
+}
+
+//지금 선택한 탭에 해당하는 div만 나오게 하고, 나머지는 안나오게!!    
+function showHide1(){
+}    
+
+function showHide2(){
+    //qna보이게 
+
+    //나머지는 안보이게
+}    
+function showHide3(){
+}    
+
+window.addEventListener("load", function(){
+    init();
+});
+</script>
 </head>
 <body>
     
     <div class="wrapper">
         <div class="tab">
-            <a href="#" style="background:red">공지사항</a><a href="#" style="background:gold">QnA</a><a href="#" style="background:dodgerblue">자유게시판</a>
+            <a href="javascript:showHide1()" style="background:red">공지사항</a>
+            <a href="javascript:showHide2()" style="background:gold">QnA</a>
+            <a href="javascript:showHide3()" style="background:dodgerblue">자유게시판</a>
         </div>
         <div class="content">
             <div id="notice"></div>

@@ -40,6 +40,19 @@ function init(){
     cell.style.left=x+"px";
     cell.style.top=y+"px";
 
+    //생성된 셀에 이미지 9개 채우기!! (언제나 안쪽 포문을 먼저 처리하는 거임)
+    //for(3회){
+        for(var i=1;i<=3;i++){
+            var img = document.createElement("img"); //<img/>
+            img.src="../images/travel/"+i+".jpg";
+            img.style.width=200+"px";
+            img.style.height=200+"px";
+            img.style.position="absolute";
+            img.style.left=(i-1)*200+"px"; //0, 200,400
+            cell.appendChild(img);
+        }
+    //}
+
     //문서 전체를 대상으로 키보드 이벤트 구현 
     document.body.addEventListener("keydown", function(){
         //모든 키보드에 반응하면 안되고, 오직 방향키에만 반응하도록 조건문을 부여하자!!

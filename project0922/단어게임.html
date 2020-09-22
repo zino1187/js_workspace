@@ -44,13 +44,48 @@
     text-align: center;
 }
 </style>
+<script>
+//게임에서 진행할 데이터를 생성하되, 순서를 갖게 해야 한다..
+//왜?? 엔터칠때마다 해당 단어의 다음단어, 그 다음단어....구현하려면 순서
+//라는게 존재해야 하므로...
+//배열로 준비시키자!!!! 데이터가 순서를 가지며 메모리에 올라간다!!
+var word = new Array(); //배열 준비(크기는 정하지 않았다..)
+word[0]="광화문";
+word[1]="지하철";
+word[2]="소나기";
+word[3]="블랙홀";
+word[4]="핵전쟁";
+word[5]="짜장면";
+word[6]="제주도";
+word[7]="코로나";
+word[8]="청바지";
+word[9]="카메라";
+
+var question;
+var txt;
+var feedback;
+var record;
+
+function init(){
+    //아이디가 부여된 엘리먼트들을 전역변수로 미리 선언해 놓자!
+    question = document.getElementById("question");
+    txt = document.getElementById("txt");
+    feedback = document.getElementById("feedback");
+    record = document.getElementById("record");
+}
+
+window.addEventListener("load", function(){
+    init();
+});
+
+</script>
 </head>
 <body>
     
     <div class="wrapper">
         <div id="question">단어 나올곳</div>
         <div class="word-input">
-            <input type="text" placeholder="단어 따라치세요"/>
+            <input id="txt" type="text" placeholder="단어 따라치세요"/>
         </div>
         <div id="feedback">X</div>
         <div id="record">30점</div>

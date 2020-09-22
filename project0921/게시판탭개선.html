@@ -53,7 +53,8 @@ function init(){
 }
 
 //지금 선택한 탭에 해당하는 div만 나오게 하고, 나머지는 안나오게!!    
-function showHide(){//매개변수 필요할것같은 느낌아닌 느낌..
+//매개변수 n에는 지금 유저가 선택한 탭의 정보가 넘어옴(notice=1, qna=2, board=3)
+function showHide(n){//매개변수 필요할것같은 느낌아닌 느낌..
     //if ,for, 
     /*
     box1.style.display="block";
@@ -62,8 +63,11 @@ function showHide(){//매개변수 필요할것같은 느낌아닌 느낌..
     */
     for(var i=1;i<=3;i++){
         var box = document.getElementById("box"+i);
-        box.style.display="none";//전부 안보임
-        //box.style.display="block";//전부 보임
+        if(n==i){
+            box.style.display="block";//지금 선택한 탭이라면 보인다
+        }else{
+            box.style.display="none";//지금 선택한 탭이 아니라면 안보이고
+        }
     }
 
 }   
@@ -78,9 +82,9 @@ window.addEventListener("load", function(){
     
     <div class="wrapper">
         <div class="tab">
-            <a href="javascript:showHide()" style="background:red">공지사항</a>
-            <a href="javascript:showHide()" style="background:gold">QnA</a>
-            <a href="javascript:showHide()" style="background:dodgerblue">자유게시판</a>
+            <a href="javascript:showHide(1)" style="background:red">공지사항</a>
+            <a href="javascript:showHide(2)" style="background:gold">QnA</a>
+            <a href="javascript:showHide(3)" style="background:dodgerblue">자유게시판</a>
         </div>
         <div class="content">
             <div id="box1"></div>

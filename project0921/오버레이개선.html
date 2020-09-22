@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#photo{
+    width:500px;
+    height:400px;
+    margin: auto;
+} 
+#photo img{
+    width:100%;
+    height:100%;
+} 
+</style>
+<script>
+var photo;    
+var a=0.1;
+var targetO=0; //처음에는 투명상태로 두기...마우스 올려놓으면 
+                    //그 때 투명도 값을 결정짓자!!
+var step=0.1;
+
+function init(){
+    photo = document.getElementById("photo");
+    photo.style.opacity=0.1;    
+
+    photo.addEventListener("mouseover", function(){
+        targetO=1;
+    });
+}   
+
+function setOpacity(){
+    //흐려지게 0수렴하게~~~~~
+    photo.style.opacity=photo.style.opacity + 0.2;
+    console.log(parseFloat(photo.style.opacity) + 0.32);
+}
+
+window.addEventListener("load", function(){
+    init();
+    setInterval("setOpacity()",50);
+}); 
+</script>
+</head>
+<body>
+    <div id="photo"><img src="../images/travel/6.jpg"></div>
+</body>
+</html>
+
+
+
+
+
+

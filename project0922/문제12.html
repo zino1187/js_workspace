@@ -1,0 +1,15 @@
+<script>
+var arr = new Array(40); //메모리에 빈공간을 20개 만들도, 이 공간들을
+                                    //순서있게 나열시켜라..
+
+//0~9 : 0으로 채움 
+//10~19 : 1로 채움 
+for(var i=0;i<arr.length;i++){
+    if(i<(arr.length/2)){
+        arr[i]=0;
+    }else{
+        arr[i]=1;
+    }
+}
+document.write(arr);
+</script>

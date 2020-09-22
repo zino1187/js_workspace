@@ -105,7 +105,12 @@ function init(){
 
             //다음 단어 나오게...
             n++;
-            printWord();
+            if(n>=word.length){//준비된 단어가 모두 소진되면...
+                alert("게임종료");
+                question.innerText="Game Over!!";
+            }else{
+                printWord();
+            }
         }
     });
 }

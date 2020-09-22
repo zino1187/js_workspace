@@ -70,8 +70,23 @@ function auto(){
         return; //아래의 코드로는 더이상 진행못함..즉 실행부가 되돌아감
     }
     setInterval("next()", speed);
-    
 }
+
+//경로 출력... 여러 부분에서 사용할 일이 있으므로, 재사용성을 위해 함수로 정의해놓자!
+function printPath(){
+    var path = document.getElementById("path");
+    path.innerText=imgArr[n];
+}
+function init(){
+    //처음부터 경로가 출력되어야 한다..
+    printPath();
+}
+
+//프로그램이 가동되자 마자, 처리할 것들!!
+window.addEventListener("load" , function(){
+    init();
+});
+
 </script>
 </head>
 <body>

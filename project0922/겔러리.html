@@ -15,6 +15,8 @@
 #path{
     width:100%;
     height:50px;
+    text-align: center;
+    font-size:35px;
 }
 #photo{
     width:100%;
@@ -46,18 +48,36 @@ imgArr[7]="../images/travel2/et.jpg";
 imgArr[8]="../images/travel2/ub.jpg";
 imgArr[9]="../images/travel2/ax.jpg";
 
+//자동함수 실행여부를 결정하는 논리값 실행시true, 멈춤 false
+var flag=false;  //처음에는 가동하지 않으므로  false 둠
+var st;  //setInterval을 가리키는 변수!!
+
 //문서내의  img의  src값을 변경한다    
 var n=0; //누적되어야 하므로 전역변수
 function prev(){
-    n--;
-    var pic=document.getElementById("pic");
-    pic.src=imgArr[n];//배열의 index 를 변하게하자!! +씩 증가하면서..
+    //아래의 코드는 코드들은 모두 이미지가 있을때만 실행되어야 한다.
+    if(n>=1){ //보여줄 이전 이미지가 있을때만...
+        n--;
+        var pic=document.getElementById("pic");
+        pic.src=imgArr[n];//배열의 index 를 변하게하자!! +씩 증가하면서..
+        printPath();
+        console.log("현재  n값은 %d", n);
+    }else{
+        alert("이미 처음 이미지입니다.");
+    }
 }
 
 function next(){
-    n++;
-    var pic=document.getElementById("pic");
-    pic.src=imgArr[n];//배열의 index 를 변하게하자!! +씩 증가하면서..
+    //아래의 코드도 다음 이미지가 있을때만 수행시킨다
+    if(n<imgArr.length-1){
+        n++;
+        var pic=document.getElementById("pic");
+        pic.src=imgArr[n];//배열의 index 를 변하게하자!! +씩 증가하면서..
+        printPath();
+        console.log("현재  n값은 %d", n);
+    }else{
+        alert("마지막 이미지입니다.");
+    }
 }   
 
 function auto(){
@@ -69,7 +89,28 @@ function auto(){
         alert("자동 겔러리 속도를 선택하세요");
         return; //아래의 코드로는 더이상 진행못함..즉 실행부가 되돌아감
     }
-    setInterval("next()", speed);
+
+    
+    //버튼을 누르면 논리값의 상태를 반대로 뒤집자
+    //flag = !flag; //기존값 부정!!
+    
+    //true 일때는 자동함수가 실행중으로 간주한다..
+    var bt = document.getElementById("bt");
+    
+    if(flag==false){ //자동이 멈춘 상태라면, 가동해야 한다..
+        //버튼의 제목을 pause 상태로 바꿔준다!! one touch 버튼이므로..
+        bt.innerText="Pause";
+        //flag=true;
+        //버튼을 누를때마다 새로운 setInterval 을 생성하고 있다..
+        //따라서 아래의 코드는 우리가 원할때만..조건을 주자..
+        st = setInterval("next()", speed);
+        
+    }else{
+        //flag=false;
+        bt.innerText="Auto";
+        clearTimeout(st);//이미 돌아가는 자동함수 호출을 제거
+    }
+    flag=!flag;
 }
 
 //경로 출력... 여러 부분에서 사용할 일이 있으므로, 재사용성을 위해 함수로 정의해놓자!
@@ -95,7 +136,7 @@ window.addEventListener("load" , function(){
         <div id="photo"><img id="pic" src="../images/travel2/aa.jpg"/></div>        
         <div id="control">
             <button onClick="prev()">◀</button>            
-            <button onClick="auto()">auto</button>       
+            <button id="bt" onClick="auto()">auto</button>       
             <select id="interval">
                 <option value="0">속도선택</option>
                 <option value="1000">1초</option>

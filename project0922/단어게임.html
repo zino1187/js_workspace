@@ -65,7 +65,8 @@ var question;
 var txt;
 var feedback;
 var record;
-var n=0;
+var n=0;//단어배열의 index정보를 가진변수(즉 몇번째 데이터를 보여줄지결정)
+var score=0;//점수를 누적시킬 변수
 
 function init(){
     //아이디가 부여된 엘리먼트들을 전역변수로 미리 선언해 놓자!
@@ -74,8 +75,9 @@ function init(){
     feedback = document.getElementById("feedback");
     record = document.getElementById("record");
 
-    //단어 출력!!
-    printWord();
+    
+    printWord();//단어 출력!!
+    printScore();//점수 출력!!
 
     //txt에 프로그래밍적으로 커서 올려놓기!!
     txt.focus();
@@ -92,11 +94,14 @@ function init(){
             if(txt.value==question.innerText){
                 //칭찬의 피드백 O  출력
                 feedback.innerText="O";
-                //점수도 10점 증가 
+                score+=10;//점수10점 증가 
+                printScore();//점수출력
             }else{
-               //틀렸다는 피드백 X 출력
-               feedback.innerText="X";      
+                //틀렸다는 피드백 X 출력
+                feedback.innerText="X";      
             }
+            //텍스트 박스에 입력한 데이터 초기화 
+            txt.value="";
 
             //다음 단어 나오게...
             n++;
@@ -108,6 +113,11 @@ function init(){
 //단어 출력처리
 function printWord(){
     question.innerText=word[n];
+}
+
+//점수 출력처리 
+function printScore(){
+    record.innerText=score+" 점";
 }
 
 window.addEventListener("load", function(){

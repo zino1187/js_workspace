@@ -21,6 +21,8 @@ function createFrame(){
     wrapper.style.height=(cellHeight*row)+"px";//지울거임
     //배경 사진 
     wrapper.style.backgroundImage="url(../images/travel/1.jpg)";
+    wrapper.style.backgroundSize=parseInt(wrapper.style.width)+"px "+parseInt(wrapper.style.height)+"px";
+
     document.body.appendChild(wrapper);//body에 추가!!
 }
 
@@ -34,7 +36,7 @@ function createCell(){
             cell.style.border="1px solid red"; //보더는 크기에 영향을 준다..
             cell.style.boxSizing="border-box";//크기 자동계산
             cell.style.background="yellow";
-            cell.style.opacity=1;//불투명해야 사진을 가린다..
+            cell.style.opacity=0.3;//불투명해야 사진을 가린다..
             cell.style.float="left"; //div 띄우기
 
             wrapper.appendChild(cell);//액자에 셀 추가!!

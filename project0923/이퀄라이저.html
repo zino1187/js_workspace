@@ -13,6 +13,7 @@
     position: relative;
 }    
 </style>
+<script src="../js/lib.js"></script>
 <script>
 var wrapper;
 var barArray=new Array();//공간 확보는 하지 않고, 배열만 선언한 것임
@@ -20,7 +21,7 @@ var barArray=new Array();//공간 확보는 하지 않고, 배열만 선언한 �
 var colorArray=["red","orange","yellow","green","blue","navy","purple"]; //각 div 에 적용할 색상 배열 
 //alert(barArray.length);
 var a=0.1;
-var targetH=20; //바의 목표 높이
+var targetH=500; //바의 목표 높이
 var barWidth=65; //막대바의 너비
 
 //막대생성 
@@ -46,8 +47,11 @@ function createBar(){
 
 //막대크기 변경 함수 
 function move(){
-    bar.style.height = parseFloat(bar.style.height) + a*(targetH-parseFloat(bar.style.height))+"px";
-    bar.innerText=parseFloat(bar.style.height);
+    targetH=getRandomBetween(20,500);
+    
+    var index=getRandom(barArray.length-1); //0~6 사이의 랜덤한 숫자를 추출
+    barArray[index].style.height = parseFloat(barArray[index].style.height) + a*(targetH-parseFloat(barArray[index].style.height))+"px";
+    barArray[index].innerText=parseFloat(barArray[index].style.height);
 }
 
 function init(){
@@ -63,7 +67,7 @@ function init(){
     colorArray[6]="purple";
     */
     createBar();
-    //setInterval("move()",10);
+    setInterval("move()",5);
 }   
 window.addEventListener("load",function(){
     init();

@@ -58,10 +58,17 @@ function setPoint(){
     dotArray.push(point); //dotArray에 추가 
 
     //현재 배열의 누적된 상황을 우측 정보창에 출력하자
-    printInfo(x, y);
+    printInfo();
 }
-function printInfo(px , py){
-    info.innerText="[ "+px+" , "+py+"]";
+function printInfo(){
+    //이차원 배열인 dotArray에 들어있는 모든 데이터를 출력해서 보여주자
+    var str="";
+    for(var i=0;i<dotArray.length;i++){
+        var point=dotArray[i]; //dotArray의 각 요소에 들어있는
+                                        //일차원 배열 반환
+        str+="[ "+point[0]+" , "+ point[1]+"]<br/>";
+    }
+    info.innerHTML=str;
 }
 
 function init(){

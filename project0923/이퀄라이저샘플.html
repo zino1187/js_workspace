@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#wrapper{
+    width:700px;
+    height:600px;
+    border:2px solid red;
+    margin: auto;
+    position: relative;
+}    
+</style>
+<script src="../js/lib.js"></script>
+<script>
+var wrapper;
+var a=0.1;
+var barArray=new Array(7);
+var colorArray=new Array(7);
+var index=0;
+var count=0;
+var targetH=0;
+
+//막대생성 
+function createBar(){
+    for(var i=0;i<barArray.length;i++){
+        var bar=document.createElement("div");
+        bar.style.width=65+"px";
+        bar.style.height=20+"px";
+        bar.style.position="absolute";
+        bar.style.left=(65*i)+"px";
+        bar.style.top=0+"px";
+        bar.style.borderRadius="4px";
+        bar.style.background=colorArray[i];
+
+        wrapper.appendChild(bar);//wrapper에 추가!!
+        barArray[i]=bar;
+    }
+}    
+function createColor(){
+    colorArray[0]="red";    
+    colorArray[1]="orange";    
+    colorArray[2]="yellow";    
+    colorArray[3]="green";    
+    colorArray[4]="blue";    
+    colorArray[5]="navy";    
+    colorArray[6]="purple";    
+}
+
+//막대크기 변경 함수 
+function move(){
+    //count++;
+    if(count%2==0){
+        index = getRandom(barArray.length-1);
+        targetH = getRandomBetween(20, 500);
+    }
+    barArray[index].style.height = parseFloat(barArray[index].style.height) + a*(targetH-parseFloat(barArray[index].style.height))+"px";
+    barArray[index].innerText=parseFloat(barArray[index].style.height);    
+}
+
+function init(){
+    wrapper=document.getElementById("wrapper");
+    createColor();
+    createBar();
+    setInterval("move()",5);
+}   
+window.addEventListener("load",function(){
+    init();
+}); 
+</script>
+</head>
+<body>
+    <div id="wrapper"></div>
+</body>
+</html>
+
+
+
+
+
+

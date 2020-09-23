@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#wrapper{
+    width:400px;
+    height:75px;
+    margin:auto;
+    position: relative;
+    overflow: hidden;
+    border:10px solid white;
+}    
+</style>
+<script>
+var wrapper;
+var arr=new Array(5);
+
+window.addEventListener("load", function(){
+    wrapper = document.getElementById("wrapper");
+    createRect();
+    auto();
+});    
+
+function createRect(){
+    for(var i=0;i<arr.length;i++){
+        var div = document.createElement("div");
+        div.style.width=100+"px";
+        div.style.height=75+"px";
+        div.style.boxSizing="border-box";
+        
+        div.style.border=5+"px solid white";
+        div.style.position="absolute";
+        div.style.left=(100*i)+"px";
+        var img = document.createElement("img");
+        img.src="../images/travel/"+(i+1)+".jpg";
+        img.style.width=100+"px";
+        img.style.height=75+"px";
+        div.appendChild(img);
+
+        //div.innerText=div.style.left;
+        wrapper.appendChild(div);
+        arr[i]=div;
+    }
+}
+function move(){
+    for(var i=0;i<arr.length;i++){
+        arr[i].style.left= (parseFloat(arr[i].style.left) - 1)+"px";
+        if(parseFloat(arr[i].style.left) <=-100){
+            arr[i].style.left=405+"px";
+        }
+    }
+}
+function auto(){
+    setInterval("move()",25);
+}
+</script>
+</head>
+<body>
+    <div id="wrapper"></div>    
+</body>
+</html>

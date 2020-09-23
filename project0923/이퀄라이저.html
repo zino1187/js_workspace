@@ -16,6 +16,8 @@
 <script>
 var wrapper;
 var bar;
+var a=0.1;
+var targetH=20; //바의 목표 높이
 
 //막대생성 
 function createBar(){
@@ -23,7 +25,7 @@ function createBar(){
     bar.style.position="absolute";
     bar.style.left=0+"px";
     bar.style.top=0+"px";
-    bar.style.width=50+"px";
+    bar.style.width=65+"px";
     bar.style.height=20+"px";
     bar.style.borderRadius="4px";
     bar.style.background="red";
@@ -32,18 +34,24 @@ function createBar(){
     
     //막대에 마우스 오버 이벤트 구현하기 
     bar.addEventListener("mouseover", function(){
-        move();
+        targetH=500;
     });
+    bar.addEventListener("mouseout", function(){
+        targetH=20;
+    });
+
 }    
 
 //막대크기 변경 함수 
 function move(){
-    bar.style.height = 500+"px";
+    bar.style.height = parseFloat(bar.style.height) + a*(targetH-parseFloat(bar.style.height))+"px";
+    bar.innerText=parseFloat(bar.style.height);
 }
 
 function init(){
     wrapper=document.getElementById("wrapper");
     createBar();
+    setInterval("move()",10);
 }   
 window.addEventListener("load",function(){
     init();

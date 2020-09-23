@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <script>
-var cellWidth=40; //셀의 너비
-var cellHeight=40;//셀의 높이
+var cellWidth=30; //셀의 너비
+var cellHeight=30;//셀의 높이
+var row=20;
+var col=20;
 var wrapper;
 
 //액자만들기 
@@ -15,24 +17,28 @@ function createFrame(){
     wrapper.style.margin="auto";    
     wrapper.style.background="dodgerblue";
     wrapper.style.overflow="hidden";//자식 때문에...
-    //wrapper.style.width=600+"px"; //지울거임
-    //wrapper.style.height=600+"px";//지울거임
+    wrapper.style.width=(cellWidth*col)+"px"; //지울거임
+    wrapper.style.height=(cellHeight*row)+"px";//지울거임
+    //배경 사진 
+    wrapper.style.backgroundImage="url(../images/travel/1.jpg)";
     document.body.appendChild(wrapper);//body에 추가!!
 }
 
 //셀 생성 
 function createCell(){
-    for(var i=0;i<20;i++){
-        var cell=document.createElement("div");// <div></div>와 동일
-        cell.style.width=cellWidth+"px";
-        cell.style.height=cellHeight+"px";
-        cell.style.border="1px solid red"; //보더는 크기에 영향을 준다..
-        cell.style.boxSizing="border-box";//크기 자동계산
-        cell.style.background="yellow";
-        cell.style.opacity=1;//불투명해야 사진을 가린다..
-        cell.style.float="left"; //div 띄우기
+    for(var a=0;a<row;a++){ //층수와 관련..
+        for(var i=0;i<col;i++){ //호수와 관련...
+            var cell=document.createElement("div");// <div></div>와 동일
+            cell.style.width=cellWidth+"px";
+            cell.style.height=cellHeight+"px";
+            cell.style.border="1px solid red"; //보더는 크기에 영향을 준다..
+            cell.style.boxSizing="border-box";//크기 자동계산
+            cell.style.background="yellow";
+            cell.style.opacity=1;//불투명해야 사진을 가린다..
+            cell.style.float="left"; //div 띄우기
 
-        wrapper.appendChild(cell);//액자에 셀 추가!!
+            wrapper.appendChild(cell);//액자에 셀 추가!!
+        }
     }
 }
 

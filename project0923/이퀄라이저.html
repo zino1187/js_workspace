@@ -15,31 +15,33 @@
 </style>
 <script>
 var wrapper;
-var bar;
+var barArray=new Array();//공간 확보는 하지 않고, 배열만 선언한 것임
+//배열 선언과 동시에 초기화가 가능하다(데이터량이 많지 않을 경우, 반복문과 상관없을시..)
+var colorArray=["red","orange","yellow","green","blue","navy","purple"]; //각 div 에 적용할 색상 배열 
+//alert(barArray.length);
 var a=0.1;
 var targetH=20; //바의 목표 높이
+var barWidth=65; //막대바의 너비
 
 //막대생성 
 function createBar(){
-    bar=document.createElement("div");
-    bar.style.position="absolute";
-    bar.style.left=0+"px";
-    bar.style.top=0+"px";
-    bar.style.width=65+"px";
-    bar.style.height=20+"px";
-    bar.style.borderRadius="4px";
-    bar.style.background="red";
+    for(var i=0;i<7;i++){
+        var bar=document.createElement("div");
+        bar.style.position="absolute";
+        bar.style.left=(barWidth*i)+"px";
+        bar.style.top=0+"px";
+        bar.style.width=barWidth+"px";
+        bar.style.height=20+"px";
+        bar.style.borderRadius="4px";
+        bar.style.background=colorArray[i]; //배열색상을 적용
 
-    wrapper.appendChild(bar);//wrapper에 추가!!
-    
-    //막대에 마우스 오버 이벤트 구현하기 
-    bar.addEventListener("mouseover", function(){
-        targetH=500;
-    });
-    bar.addEventListener("mouseout", function(){
-        targetH=20;
-    });
-
+        wrapper.appendChild(bar);//wrapper에 추가!!
+        //사이즈가 0인 배열에 , 방금 생성된 바를 추가하자!!
+        //개발자가 그 크기를 정해놓지 못할 경우엔 아주 유용하다!!
+        //ex) 채팅서버 구축시 사용자가 몇명이 들어올지 알수가 없다..
+        barArray.push(bar);
+        console.log("현재까지의 배열의 길이는 ", barArray.length);
+    }
 }    
 
 //막대크기 변경 함수 
@@ -50,8 +52,18 @@ function move(){
 
 function init(){
     wrapper=document.getElementById("wrapper");
+    //barArray보다 색상을 먼저 존재시키자 
+    /*
+    colorArray[0]="red";
+    colorArray[1]="orange";
+    colorArray[2]="yellow";
+    colorArray[3]="green";
+    colorArray[4]="blue";
+    colorArray[5]="navy";
+    colorArray[6]="purple";
+    */
     createBar();
-    setInterval("move()",10);
+    //setInterval("move()",10);
 }   
 window.addEventListener("load",function(){
     init();

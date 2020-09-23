@@ -48,7 +48,10 @@ function createCell(){
             n++;
 
             //지금 생성된 셀에 클릭이벤트 구현하기 
-            cell.addEventListener("mousemove", function(){
+            //click : 대상에 마우스를 누를때 
+            //mousedown : 그냥 마우스 버튼을 누를때 
+            //mousemove : 마우스를 움직이는 동안(누르지 않아도 발생)
+            cell.addEventListener("mousedown", function(){
                 //콜백함수내에서는 이벤트를 발생시킨 주체 컴포넌트를 
                 //사용할 수 있다..이때 사용되는 this 란 변수이며, 이 변수명은
                 //이미 시스템에서 정해놓은것이다..즉 물체 스스로를 가리키는

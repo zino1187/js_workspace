@@ -1,0 +1,32 @@
+<script>
+var fruit=["apple", "banana", "graph","orange"];
+var car=["bmw", "audi", "benz","kia"];
+
+var box=[]; //1차원? 2차원?
+//var box = new Array(); 위와 동일
+
+box.push(fruit); //기존의 1차원 이었떤 box에 또다른 배열 추가
+box.push(car); //기존의 1차원 이었떤 box에 또다른 배열 추가
+
+for(var i=0;i<box.length;i++){
+    for(var a=0;a<box[i].length ;a++){
+        document.write(box[i][a]);
+    }
+    document.write("<br/>");
+}
+
+
+
+//자바스크립트 배열은 자바의 어레이리스트 같은건가요!?? 
+//비슷하다... 
+//자바의 ArrayList 는 객체만을 담을 수 있다.. 
+//자바스크립트는 객체뿐만 아니라 숫자,문자,논리값 모두 담을수 있다.
+//단 비슷한게 있다면, 동적으로 늘어난다는 것이다..(고무줄처럼..)
+/*
+for(바깥쪽 배열의 크기){
+    for(안쪽배열의 크기){
+
+    }
+}
+*/
+</script>

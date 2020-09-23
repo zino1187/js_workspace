@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이차원 배열은 데이터베이스다</title>
+<style>
+/*margin:auto 주지 않은 이유? 
+마우스 좌표는 모니터를 기준으로 하므로,  div 중앙으로  옮기면 
+오차가 생긴다..
+*/
+body{margin:0px;}   
+.wrapper{
+    width:1200px;
+    height:700px;
+    background:yellow;
+    overflow: hidden;
+}    
+#content{
+    width:1000px;
+    height:100%;
+    background:url(https://image.freepik.com/free-vector/scene-with-roller-coaster-track-in-the-field_1308-38332.jpg);
+    background-size: 1000px 100%;
+    float: left;
+}
+#info{
+    width:200px;
+    height:100%;
+    background-color:#cccccc;
+    float: left;
+}
+</style>
+<script>
+var content; //좌표 점을 찍고, 이미지도 추가 
+var info;//이차원 배열에 쌓여진 데이터 현황 출력    
+function init(){
+    content=document.getElementById("content");
+    info=document.getElementById("info");
+}   
+
+window.addEventListener("load",function(){
+    init();
+}); 
+</script>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="content" onClick="setPoint()"></div>
+        <div id="info"></div>
+    </div>    
+</body>
+</html>
+
+
+
+
+

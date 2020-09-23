@@ -20,7 +20,7 @@ var barArray=new Array();//공간 확보는 하지 않고, 배열만 선언한 �
 var colorArray=["red","orange","yellow","green","blue","navy","purple"]; //각 div 에 적용할 색상 배열 
 //alert(barArray.length);
 var a=0.1;
-var targetH=20; //바의 목표 높이
+var targetH=[20,20,20,20,20,20,20]; //bar 들의 각자의 목표 높이
 var barWidth=65; //막대바의 너비
 var index=0 //어떤 막대를 움직일지를 결정짓는 전역변수
 
@@ -40,12 +40,18 @@ function createBar(){
         //여기서, 전역변수 index값을 어떻게 주느냐에 따라 움직일막대가 결정된다!!
         bar.addEventListener("mouseover", function(){
             //this.style.height=targetH+"px";
-            targetH=500;
             //this 를 이용하면, 이벤트를 일으킨 막대 정보를 얻을 수 있다.
             //즉 this 가 바로 내가 마우스 올린 막대이다!!
             //첫번째 막대  index=0, 두번째 index=1.....마지막 index=6
             //alert("저의 아이디는 "+this.id);
-            index=this.id;
+            index=this.id; //0
+            targetH[index]=500;
+        });
+
+        //원위치로 되돌리기 
+        bar.addEventListener("mouseout", function(){
+            index=this.id;            
+            targetH[index]=20;
         });
 
         wrapper.appendChild(bar);//wrapper에 추가!!
@@ -61,7 +67,7 @@ function createBar(){
 function move(){
     //선택한 막대에 대해서만...
     //어떤 막대를 움직일지는 변수로 결정짓자!!
-    barArray[index].style.height = parseFloat(barArray[index].style.height) + a*(targetH-parseFloat(barArray[index].style.height))+"px";
+    barArray[index].style.height = parseFloat(barArray[index].style.height) + a*(targetH[index]-parseFloat(barArray[index].style.height))+"px";
     barArray[index].innerText=parseFloat(barArray[index].style.height);
 
 }

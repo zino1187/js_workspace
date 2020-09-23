@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <script>
-var cellWidth=10; //셀의 너비
-var cellHeight=10;//셀의 높이
-var row=50;
-var col=50;
+var cellWidth=30; //셀의 너비
+var cellHeight=30;//셀의 높이
+var row=20;
+var col=20;
 var wrapper;
 var cellArray=new Array(row*col);//모든 셀을 순서있게 담아놓을 배열 선언!!!
 var index=0; //몇번째 배열을 접근할지를 결정짓는 전역변수
@@ -46,6 +46,15 @@ function createCell(){
             //지금 생성된 이 셀을 배열에 넣자!!
             cellArray[n]=cell;
             n++;
+
+            //지금 생성된 셀에 클릭이벤트 구현하기 
+            cell.addEventListener("mousemove", function(){
+                //콜백함수내에서는 이벤트를 발생시킨 주체 컴포넌트를 
+                //사용할 수 있다..이때 사용되는 this 란 변수이며, 이 변수명은
+                //이미 시스템에서 정해놓은것이다..즉 물체 스스로를 가리키는
+                //변수이다
+                this.style.opacity=0;
+            });
         }
     }
 }
@@ -65,12 +74,23 @@ function setOpacity(){
     }
     //}
 }
+//해답보기 버튼을 생성하여  body 에 부착
+function createButton(){
+    var bt = document.createElement("button");
+    bt.innerText="해답보기";
+    document.body.appendChild(bt);
 
+    //클릭시, 해답보기 setOpacity 함수 호출 
+    bt.addEventListener("click", function(){
+        setInterval("setOpacity()",1);
+    });
+}
 function init(){
     createFrame();
     createCell();
+    createButton();
     //setOpacity();
-    setInterval("setOpacity()",1);
+    //setInterval("setOpacity()",1);
 }   
 window.addEventListener("load",function(){
     init();

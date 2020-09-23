@@ -14,7 +14,7 @@ body{
     background-color: white;
     margin: auto;
     position: relative; /*자식 때문에...*/
-    /*overflow: hidden;*/
+    overflow: hidden;
 }    
 </style>
 <script>
@@ -54,6 +54,10 @@ function move(){
             arr[i].style.left=400+"px";
         }
     }
+}
+
+function auto(){
+    setInterval("move()",10);
 }
 
 window.addEventListener("load", function(){

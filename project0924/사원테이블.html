@@ -33,6 +33,7 @@
 }
 </style>
 <script>
+var empno,ename,job,mgr,hiredate,sal,comm,deptno;
 //EMP 테이블을 구성하는 사원 한명에 대한 정보를 등록한다!!
 //사원 1명은 1차원배열에 대응된다!!    
 function regist(){
@@ -46,6 +47,19 @@ function regist(){
     member[6] =  ; //COMM
     member[7] =  ; //DEPTNO
 }    
+function init(){
+    empno=document.getElementById("empno");
+    ename=document.getElementById("ename");
+    job=document.getElementById("job");
+    mgr=document.getElementById("mgr");
+    hiredate=document.getElementById("hiredate");
+    sal=document.getElementById("sal");
+    comm=document.getElementById("comm");
+    deptno=document.getElementById("deptno");
+}
+window.addEventListener("load", function(){
+    init();
+});
 </script>
 </head>
 <body>

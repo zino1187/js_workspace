@@ -36,7 +36,28 @@ var word=[
     ["귤","가평","태권도","연습장","3호선","감자","토성","메모리","호주","흑해"],
     ["배","붓","안양","고구마","펜싱","돌풍","화성","네덜란드","지중해","하드"]
 ];
+var stage;
+var level=0; //게이머의 현재 레벨을 표현하는 변수, 우리 게임은 0~4 레벨까지있다
 
+function init(){
+    stage = document.getElementById("stage");
+}
+
+//화면에 등장할 단어를 감쌀 태그 생성
+function createWord(){
+    //해당 stage에 등장할 단어만큼 생성
+    for(var i=0;i<word[level].length;i++){
+        var span=document.createElement("span"); //inline 이므로 너비,높이가질수없고,
+                                                                        //내부의 컨텐츠만큼만 감싼다 wrapping       
+        span.innerHTML=word[level][i];
+        stage.appendChild(span);
+    }
+}
+
+window.addEventListener("load", function(){
+    init();//초기화
+    createWord();//단어 화면에 출력
+});
 </script>
 </head>
 <body>

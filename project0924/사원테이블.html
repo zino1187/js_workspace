@@ -28,26 +28,50 @@
 .content{
     width:800px;
     height:100%;
-    background: darkgoldenrod;
+    background: yellow;
     float: left;
 }
 </style>
+<script>
+//EMP 테이블을 구성하는 사원 한명에 대한 정보를 등록한다!!
+//사원 1명은 1차원배열에 대응된다!!    
+function regist(){
+    var member=new Array(8);
+    member[0] =텍스트박스값 ; //EMPNO
+    member[1] =  ; //ENAME
+    member[2] =  ; //JOB
+    member[3] =  ; //MGR
+    member[4] =  ; //HIREDATE
+    member[5] =  ; //SAL
+    member[6] =  ; //COMM
+    member[7] =  ; //DEPTNO
+}    
+</script>
 </head>
 <body>
     <div class="wrapper">
         <div class="regist-form">
             <!-- 전송범위를 설정할 수 있는 전용 태그 -->
-            <form>
-                <input type="text" placeholder="EMPNO"/>
-                <input type="text" placeholder="ENAME"/>
-                <input type="text" placeholder="JOB"/>
-                <input type="text" placeholder="MGR"/>
-                <input type="text" placeholder="HIREDATE"/>
-                <input type="text" placeholder="SAL"/>
-                <input type="text" placeholder="COMM"/>
-                <input type="text" placeholder="DEPTNO"/>
-                <button>사원등록</button>
-            </form>
+            <!-- onSubmit이란?  전송이벤트 발생을 처리하는 이벤트핸들러 
+                preventDefault() 함수에 의해 버튼에 설정된 '무조건 전송' 기능을
+                비활성화시킴
+            -->
+            <form onSubmit="event.preventDefault()">
+                <input type="text" id="empno" placeholder="EMPNO"/>
+                <input type="text" id="ename" placeholder="ENAME"/>
+                <input type="text" id="job" placeholder="JOB"/>
+                <input type="text" id="mgr" placeholder="MGR"/>
+                <input type="text" id="hiredate" placeholder="HIREDATE"/>
+                <input type="text" id="sal" placeholder="SAL"/>
+                <input type="text" id="comm" placeholder="COMM"/>
+                <input type="text" id="deptno" placeholder="DEPTNO"/>
+                <!--form 안에 있는 버튼은 무조건 전송을 일으킨다..
+                    html5의 button부터 이 기능이 추가..
+                    개발자가 전송 주소를 명시하지 않으면, 현재 페이지로 전송
+                    하므로, 새로고침이 일어난다..
+                 -->
+                 <button onClick="regist()">사원등록</button>
+                </form>
         </div>
         <div class="content"></div>
     </div>

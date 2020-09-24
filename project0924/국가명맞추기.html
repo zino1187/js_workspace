@@ -52,15 +52,15 @@
 </style>
 <script src="./nation.js"></script>
 <script>
-var box;    
+var pic;
 var question;
 var txt;
 var feedback;
 var record;
-var n=0;//단어배열의 index정보를 가진변수(즉 몇번째 데이터를 보여줄지결정)
+var n=0;//전체 2차원 배열의 index정보를 가진변수(즉 몇번째 데이터를 보여줄지결정)
 var score=0;//점수를 누적시킬 변수
 
-//단어 출력처리
+//힌트 출력처리
 function printWord(){
     question.innerText=data[n][1];
 }
@@ -70,20 +70,19 @@ function printScore(){
     record.innerText=score+" 점";
 }
 
+//국기 출력
+function printFlag(){
+    pic.src=data[n][0]; //국기
+}
+
 
 function init(){
     //아이디가 부여된 엘리먼트들을 전역변수로 미리 선언해 놓자!
+    pic = document.getElementById("pic");
     question = document.getElementById("question");
     txt = document.getElementById("txt");
     feedback = document.getElementById("feedback");
     record = document.getElementById("record");
-
-
-    printWord();//단어 출력!!
-    printScore();//점수 출력!!
-
-    //txt에 프로그래밍적으로 커서 올려놓기!!
-    txt.focus();
 
     //txt를 대상으로 키보드 이벤트 구현
     //총알이라면, 눌렀다는 이벤트에 반응하면 되지만, 
@@ -120,15 +119,17 @@ function init(){
 
 window.addEventListener("load", function(){
     init();
-    setInterval("move()",50);
-    //move();
+    printFlag();//국기 출력
+    printWord();//단어 출력!!
+    printScore();//점수 출력!!
+    txt.focus();//txt에 프로그래밍적으로 커서 올려놓기!!
 });
 
 </script>
 </head>
 <body>
     <div class="wrapper">
-        <img id="pic" src="../images/nation/1.png"/>
+        <img id="pic" src="#"/>
         <div id="question">단어 나올곳</div>
         <div class="word-input">
             <input id="txt" type="text" placeholder="단어 따라치세요"/>

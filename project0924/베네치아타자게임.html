@@ -47,6 +47,7 @@ var word=[
 var stage;
 var level=0; //게이머의 현재 레벨을 표현하는 변수, 우리 게임은 0~4 레벨까지있다
 var spanArray=[]; //단어 10개의 span을 모아놓을 배열..
+var stepY=5; //몇 걸음씩 내려올지를 결정하는 변수
 
 function init(){
     stage = document.getElementById("stage");
@@ -69,13 +70,16 @@ function createWord(){
 
 //단어 내려오기 함수 
 function move(){
-    spanArray[1].style.top=500+"px";
+    //모든 단어를 대상으로 내려와야 함
+    for(var i=0;i<spanArray.length;i++){
+        spanArray[i].style.top=parseInt(spanArray[i].style.top)+stepY+"px";
+    }
 }
 
 window.addEventListener("load", function(){
     init();//초기화
     createWord();//단어 화면에 출력
-    move();
+    setInterval("move()",500);
 });
 </script>
 </head>

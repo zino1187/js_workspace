@@ -11,6 +11,7 @@
     background: yellow;    
     margin: auto;
     overflow: hidden;
+    
 }    
 .dash{
     width:200px;
@@ -23,6 +24,12 @@
     height:100%;
     background:dodgerblue;
     float: left;
+    position: relative; /*자식 때문에*/
+}
+#stage span{
+    color:white;
+    font-weight: bold;
+    font-size:16px;
 }
 </style>
 <script>
@@ -50,6 +57,8 @@ function createWord(){
         var span=document.createElement("span"); //inline 이므로 너비,높이가질수없고,
                                                                         //내부의 컨텐츠만큼만 감싼다 wrapping       
         span.innerHTML=word[level][i];
+        span.style.position="absolute";
+        span.style.left=(i*95)+"px";
         stage.appendChild(span);
     }
 }

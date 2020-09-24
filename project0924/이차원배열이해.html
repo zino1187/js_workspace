@@ -1,0 +1,36 @@
+<script>
+/*방법1,new 연산자로 선언 후 각 요소를 index 명시하여 구성하는 법*/        
+//var box = new Array(); //emp와 동일
+var box=[
+    ["호랑이","사자","말"], //0 box[0]
+    ["장미","튤립","백합"], //1 box[1]
+    ["java","oracle","spring"] //2 box[2]
+];
+/*
+                     //  0       1        2 
+var animal = ["호랑이","사자","말"]; //0층
+var flower = ["장미","튤립","백합"];//1층
+var it = ["java","oracle","spring"];//2층
+*/
+
+//box.push(animal);
+//box.push(flower);
+//box.push(it);
+/*
+for(var i=0;i<box.length;i++){//층수  tr
+    for(var a=0;a<box[i].length;a++){//호수   td
+        document.write(box[i][a]);
+    }
+    document.write("<br/>");
+}
+*/
+document.write("<table border='1px' width='300px'>");
+for(var i=0;i<box.length;i++){//층수  tr
+    document.write("<tr>");
+    for(var a=0;a<box[i].length;a++){//호수   td
+        document.write("<td>"+box[i][a]+"</td>");
+    }
+    document.write("</tr>");
+}
+document.write("</table>");
+</script>

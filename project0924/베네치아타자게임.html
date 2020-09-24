@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>베네치아 타자게임</title>
+<style>
+.wrapper{
+    width:1200px;
+    height:700px;
+    background: yellow;    
+    margin: auto;
+    overflow: hidden;
+}    
+.dash{
+    width:200px;
+    height:100%;
+    background: gold;
+    float: left;
+}
+#stage{
+    width:1000px;
+    height:100%;
+    background:dodgerblue;
+    float: left;
+}
+</style>
+<script>
+/* 타자게임에 등장할 모든 단어 데이터베이스 2차원 배열인 이유는?
+    stage가 여러판이기 때문에...
+*/
+var word=[
+    ["쌀","마우스","사과","한국","태평양","눈","태양","야구","볼펜","제주도"],
+    ["홍천","노트","광화문","농구","키보드","오렌지","미국","대서양","비","목성"],
+    ["양수리","보리","축구","소나기","금성","모니터","포도","영국","인도양","태풍"],
+    ["귤","가평","태권도","연습장","3호선","감자","토성","메모리","호주","흑해"],
+    ["배","붓","안양","고구마","펜싱","돌풍","화성","네덜란드","지중해","하드"]
+];
+
+</script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="dash"></div>
+        <div id="stage"></div>
+    </div>    
+</body>
+</html>

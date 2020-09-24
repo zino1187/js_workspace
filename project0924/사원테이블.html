@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이차원 배열을 이용한 사원정보</title>
+<style>
+.wrapper{
+    width:1000px;
+    height:700px;
+    background:yellow;
+    margin: auto;
+    overflow: hidden;
+}    
+.regist-form{
+    width: 200px;
+    height:100%;
+    background:#cccccc;
+    float:left;
+    text-align: center;
+}
+.regist-form input,button{
+    width:90%;
+    height:35px;
+    font-size:20px;
+    margin-bottom: 2px;
+}
+.content{
+    width:800px;
+    height:100%;
+    background: darkgoldenrod;
+    float: left;
+}
+</style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="regist-form">
+            <!-- 전송범위를 설정할 수 있는 전용 태그 -->
+            <form>
+                <input type="text" placeholder="EMPNO"/>
+                <input type="text" placeholder="ENAME"/>
+                <input type="text" placeholder="JOB"/>
+                <input type="text" placeholder="MGR"/>
+                <input type="text" placeholder="HIREDATE"/>
+                <input type="text" placeholder="SAL"/>
+                <input type="text" placeholder="COMM"/>
+                <input type="text" placeholder="DEPTNO"/>
+                <button>사원등록</button>
+            </form>
+        </div>
+        <div class="content"></div>
+    </div>
+</body>
+</html>

@@ -32,6 +32,7 @@
     font-size:16px;
 }
 </style>
+<script src="../js/lib.js"></script>
 <script>
 /* 타자게임에 등장할 모든 단어 데이터베이스 2차원 배열인 이유는?
     stage가 여러판이기 때문에...
@@ -59,8 +60,14 @@ function createWord(){
         span.innerHTML=word[level][i];
         span.style.position="absolute";
         span.style.left=(i*95)+"px";
+        span.style.top=150+getRandomBetween(-100, 0)+"px";
         stage.appendChild(span);
     }
+}
+
+//단어 내려오기 함수 
+function move(){
+    
 }
 
 window.addEventListener("load", function(){

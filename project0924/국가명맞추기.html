@@ -93,7 +93,7 @@ function init(){
         //키보드 중, 엔터키를 누를때 다음 단어 나오게 처리...
         if(event.keyCode==13){//Enter 아스키 코드값
             //입력값과 출력된 단어와의 일치성을 판단한 후, 피드백 처리 
-            if(txt.value==question.innerText){
+            if(txt.value==data[n][2]){
                 //칭찬의 피드백 O  출력
                 feedback.innerText="O";
                 score+=10;//점수10점 증가 
@@ -107,11 +107,12 @@ function init(){
 
             //다음 단어 나오게...
             n++;
-            if(n>=word.length){//준비된 단어가 모두 소진되면...
+            if(n>=data.length){//준비된 단어가 모두 소진되면...
                 alert("게임종료");
                 question.innerText="Game Over!!";
             }else{
-                printWord();
+                printFlag();//국기 출력
+                printWord();//힌트 출력
             }
         }
     });

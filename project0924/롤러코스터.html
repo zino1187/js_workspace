@@ -94,6 +94,9 @@ function move(){
         index++; //무조건하면, 배열의 범위를 넘어설때 에러가 발생  
     }
 }
+function auto(){
+    setInterval("move()",50);
+}
 
 function init(){
     content=document.getElementById("content");

@@ -46,6 +46,26 @@ var content; //표를 출력할 div
 var emp = new Array(); //사원정보를 누적시킬 배열
                                     //(사원정보를 담는  1차원 member 배열을 담을 예정)
                                     //js에서는 배열의 크기를 명시하지 않아도 됨
+
+function createDump(){
+   emp=[
+        [7369, "SMITH", "CLERK",7902,"80/12/17",800,"NULL",20],
+        [7499, "ALLEN","SALESMAN",7698,"81/02/20",1600,300,30],
+        [7521, "WARD","SALESMAN",7698,"81/02/22",1250,500,30],
+        [7566, "JONES","MANAGER",7839,"81/04/02",2975,"NULL",20],
+        [7654, "MARTIN","SALESMAN",7698,"81/09/28",1250,1400,30],
+        [7698, "BLAKE","MANAGER",7839,"81/05/01",2850,"NULL",30],
+        [7782, "CLARK" ,"MANAGER",7839,"81/06/09",2450,"NULL",10],
+        [7788, "SCOTT","ANALYST",7566,"87/04/19",3000,"NULL",20],
+        [7839, "KING","PRESIDENT","NULL","81/11/17",5000,"NULL",10],
+        [7844, "TURNER","SALESMAN",7698,"81/09/08",1500,0,30],
+        [7876, "ADAMS","CLERK",7788,"87/05/23",1100,"NULL",20],
+        [7900, "JAMES","CLERK",7698,"81/12/03",950,"NULL",30],
+        [7902, "FORD","ANALYST",7566,"81/12/03",3000,"NULL",20],
+        [7934, "MILLER","CLERK",7782,"82/01/23",1300,"NULL",10]    
+   ]; 
+}   
+
 function regist(){
     var member=new Array(8);
     member[0] =empno.value; //EMPNO
@@ -68,10 +88,15 @@ function getList(){
     var str="";
     str+="<table border='1px' width='100%'>";
     //층수는 emp 배열의 크기와 관련됨..
-    //사원번호, 사원명, 급여, 입사일, 부서번호만 출력...
-
+    //모두 출력...
+    for(var i=0;i<emp.length;i++){//층수 tr
+        str+="<tr>";
+        for(var a=0;a<emp[i].length;a++){ //호수 td
+            str+="<td>"+emp[i][a]+"</td>";
+        }
+        str+="</tr>";
+    }
     str+="</table>";
-
     content.innerHTML=str;
 }
 
@@ -88,6 +113,8 @@ function init(){
 }
 window.addEventListener("load", function(){
     init();
+    createDump();
+    getList();
 });
 </script>
 </head>

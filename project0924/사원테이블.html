@@ -19,11 +19,16 @@
     float:left;
     text-align: center;
 }
-.regist-form input,button{
+.regist-form input,button,select{
     width:90%;
     height:35px;
     font-size:20px;
     margin-bottom: 2px;
+}
+select{
+    background-color: dodgerblue;
+    color:white;
+    font-weight: bold;
 }
 .content{
     width:800px;
@@ -38,14 +43,14 @@ var empno,ename,job,mgr,hiredate,sal,comm,deptno;
 //사원 1명은 1차원배열에 대응된다!!    
 function regist(){
     var member=new Array(8);
-    member[0] =텍스트박스값 ; //EMPNO
-    member[1] =  ; //ENAME
-    member[2] =  ; //JOB
-    member[3] =  ; //MGR
-    member[4] =  ; //HIREDATE
-    member[5] =  ; //SAL
-    member[6] =  ; //COMM
-    member[7] =  ; //DEPTNO
+    member[0] =empno.value; //EMPNO
+    member[1] =ename.value; //ENAME
+    member[2] =job.value; //JOB
+    member[3] =mgr.value; //MGR
+    member[4] =hiredate.value; //HIREDATE
+    member[5] =sal.value; //SAL
+    member[6] =comm.value; //COMM
+    member[7] =deptno.value; //DEPTNO
 }    
 function init(){
     empno=document.getElementById("empno");
@@ -73,12 +78,25 @@ window.addEventListener("load", function(){
             <form onSubmit="event.preventDefault()">
                 <input type="text" id="empno" placeholder="EMPNO"/>
                 <input type="text" id="ename" placeholder="ENAME"/>
-                <input type="text" id="job" placeholder="JOB"/>
+                <select id="job">
+                    <option value="0">담당업무</option>
+                    <option value="CLERK">CLERK</option>
+                    <option value="SALESMAN">SALESMAN</option>
+                    <option value="MANAGER">MANAGER</option>
+                    <option value="ANALYST">ANALYST</option>
+                    <option value="PRESIDENT">PRESIDENT</option>
+                </select>
                 <input type="text" id="mgr" placeholder="MGR"/>
                 <input type="text" id="hiredate" placeholder="HIREDATE"/>
                 <input type="text" id="sal" placeholder="SAL"/>
                 <input type="text" id="comm" placeholder="COMM"/>
-                <input type="text" id="deptno" placeholder="DEPTNO"/>
+                <select id="deptno">
+                    <option value="0">부서번호</option>
+                    <option value="10">10번 부서</option>
+                    <option value="20">20번 부서</option>
+                    <option value="30">30번 부서</option>
+                    <option value="40">40번 부서</option>
+                </select>
                 <!--form 안에 있는 버튼은 무조건 전송을 일으킨다..
                     html5의 button부터 이 기능이 추가..
                     개발자가 전송 주소를 명시하지 않으면, 현재 페이지로 전송

@@ -14,15 +14,13 @@ class Arrow{
 
     //ES 2015년에 발표된 js에 의해서, 클래스가 소유한 변수는 constructor() 라는 생성자 함수
     //에 넣어둬야 한다..
-    constructor(){
-        this.arrow;
-        this.stepX=10; // 몇픽셀씩 움직일지 결정하는 변수
-    }
-    
+   
     //화살 생성
     //클래스안에 선언된 , 즉 클래스가 보유한 함수는 해당 사물의 동작방법을 결정짓는다 하여
     //메서드라 한다...method(방법)
-    createArrow(x, y){
+    constructor(x, y){
+        this.arrow;
+        this.stepX=10; // 몇픽셀씩 움직일지 결정하는 변수
         this.arrow=document.createElement("span"); //<span></span>
         this.arrow.innerText="→";//<span>→</span>
         this.arrow.style.position="absolute";    

@@ -18,6 +18,18 @@
     height:100%;
     background: gold;
     float: left;
+    text-align: center;
+}
+.dash button, select, input{
+    width:90%;
+    height:40px;
+    margin-bottom: 4px;
+}
+#hpBox{
+    width:100%;
+    height:200px;
+    background: white;
+    overflow: hidden;
 }
 #stage{
     width:1000px;
@@ -45,6 +57,8 @@ var word=[
     ["배","붓","안양","고구마","펜싱","돌풍","화성","네덜란드","지중해","하드"]
 ];
 var stage;
+var sel; //level을 선택할 select box
+var hpBox;//hp를 동적으로 추가하게 될 div
 var level=0; //게이머의 현재 레벨을 표현하는 변수, 우리 게임은 0~4 레벨까지있다
 var spanArray=[]; //단어 10개의 span을 모아놓을 배열..
 var stepY=5; //몇 걸음씩 내려올지를 결정하는 변수
@@ -81,13 +95,40 @@ function startGame(){
     flag=true;
 }
 
+//레벨을 선택할 옵션을 동적으로 생성 
+function createLevelOption(){
+    for(var i=0;i<word.length;i++){
+        var op=document.createElement("option"); //<option></option>과 동일
+        op.text="레벨"+(i+1); //<option>레벨1</option>과 동일
+        op.value=i;//<option value="1">레벨1</option>과 동일
+        sel.add(op);//select박스에 자식으로 추가!! 
+    }
+}
+
+//hp 생성하기 
+function createHp(){
+    for(var i=0;i<9;i++){
+        var hp=document.createElement("div");
+        hp.style.width=60+"px";
+        hp.style.height=60+"px";
+        hp.style.background="red";
+        hp.style.float="left";
+        hp.style.border="2px solid yellow";
+        hpBox.appendChild(hp);//hpBox에 부착 
+    }
+}
+
 function init(){
     stage = document.getElementById("stage");
+    sel=document.getElementById("sel");
+    hpBox=document.getElementById("hpBox");
 }
 
 window.addEventListener("load", function(){
     init();//초기화
     createWord();//단어 화면에 출력
+    createLevelOption();
+    createHp();
     setInterval("move()",500);
 });
 </script>
@@ -96,6 +137,9 @@ window.addEventListener("load", function(){
     <div class="wrapper">
         <div class="dash">
             <button onclick="startGame()">Start</button>
+            <select id="sel"></select>
+            <input type="text" placeholder="단어입력"/>
+            <div id="hpBox"></div>
         </div>
         <div id="stage"></div>
     </div>    

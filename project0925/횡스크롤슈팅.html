@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+body{margin:0px;}
+
+#wrapper{
+    width:100%;
+    height:640px;
+    background-image: url(../images/shooting/bg.jpg);
+}    
+</style>
+<script>
+/*
+게임에 움직임을 처리하기 위해 서는 setInterval과 같은 자동함수의 사용이 필수이다.
+이때, 이 자동함수는 가급적 1개만 만들어야 동기화에 문제가 생기지 않는다...
+게임 가동과 함께, 엔진이라고 할 수 있는 setInterval 을 작동시켜놓자!!
+*/
+//모든 게임의 객체들을 대상으로 주기적 함수 호출을 시도할 엔진 루프
+var count=0;
+function gameLoop(){
+    count++;
+    console.log("count : ", count);
+}
+function init(){
+    setInterval("gameLoop()",100); //게임 루프 가동 시작!!
+}
+window.addEventListener("load", function(){
+     init();    
+});
+</script>
+</head>
+<body>
+    <div id="wrapper"></div>        
+</body>
+</html>
+
+
+
+
+
+

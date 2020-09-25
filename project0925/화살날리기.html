@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script src="./Arrow.js"></script>
+<script>
+/*화살 하나를 생성하여 날려보자*/
+/*
+클래스는 사물 자체가 아닌, 틀에 불과하므로 반드시 쇳물을 부어서 물건을 만드는 과정이 필요하다
+이때 , 클래스로부터 생성되는 물체 한단위를 가리켜 인스턴스라 한다!!\
+*/
+function init(){
+    for(var i=0; i<5;i++){
+        //인스턴스 생성하기 
+        var arrow = new Arrow(); //클래스로부터 인스턴스 생성하는 문법
+        //함수는 반드시 호출해야 동작한다!! 원칙 
+        arrow.createArrow();
+    }
+
+    setInterval(function(){
+        //arrow.move();
+    } , 10);
+}
+
+window.addEventListener("load", function(){
+    init();
+});
+
+</script>
+</head>
+<body>
+</body>
+</html>

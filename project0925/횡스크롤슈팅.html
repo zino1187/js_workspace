@@ -14,6 +14,12 @@ body{margin:0px;}
 }    
 </style>
 <script>
+/*어떤 경우에  .js 로 분리시켜야 하는가?
+기준: 재사용성이 기준임!!  ex) 
+*/
+</script>
+<script src="./Hero.js"></script>
+<script>
 /*
 게임에 움직임을 처리하기 위해 서는 setInterval과 같은 자동함수의 사용이 필수이다.
 이때, 이 자동함수는 가급적 1개만 만들어야 동기화에 문제가 생기지 않는다...
@@ -21,12 +27,34 @@ body{margin:0px;}
 */
 //모든 게임의 객체들을 대상으로 주기적 함수 호출을 시도할 엔진 루프
 var count=0;
+var wrapper;
+var bgX=0;//배경의 움직임 속도를 결정짓는 변수 좌측으로 움직여야 하므로..
+
+//주인공 등장시키는 함수 
+function createHero(){
+    //주인공 거푸집인 Hero 클래스로부터 주인공 인스턴스 1개를 생성해본다
+    //container,x,y,width,height
+    new Hero(wrapper, 150, 250, 100,65);
+}
+//배경 움직임 처리 
+function moveBg(){
+    bgX-=1; //누적
+    wrapper.style.backgroundPosition=bgX+"px  0px";
+}
+
+//게임에 등장하는 모든~~요소를 움직여주는 심장박동!!
 function gameLoop(){
     count++;
     console.log("count : ", count);
+    moveBg();
 }
 function init(){
-    setInterval("gameLoop()",100); //게임 루프 가동 시작!!
+    wrapper = document.getElementById("wrapper");
+    //interval에 지정한 시간은 게임의 실행속도를 좌우한다 (Frame Per Second)1초마다 몇번의
+    //실행을 하는지에 대한 빈도수
+    setInterval("gameLoop()",1); //게임 루프 가동 시작!! 
+    createHero();
+
 }
 window.addEventListener("load", function(){
      init();    

@@ -47,6 +47,10 @@
     background:dodgerblue;
     float: left;
     position: relative; /*자식 때문에*/
+    font-size: 150px;
+    text-align: center;
+    padding-top:200px;
+    box-sizing: border-box;
 }
 #stage span{
     color:white;
@@ -74,6 +78,7 @@ var keyword; //텍스트 입력 박스
 var score=0;//점수
 var level=0; //게이머의 현재 레벨을 표현하는 변수, 우리 게임은 0~4 레벨까지있다
 var spanArray=[]; //단어 10개의 span을 모아놓을 배열..
+var hpArray=[];
 var stepY=5; //몇 걸음씩 내려올지를 결정하는 변수
 var flag=false; //단어가 움직일지 여부를 결정짓는 논리값 변수!!!
                       //start 버튼 등으로 이 변수를 제어하면 된다!!  
@@ -98,11 +103,12 @@ function createWord(){
 //단어 내려오기 함수 
 function move(){
     if(flag){
+
+        var hitCount=0;
+        var hitIndex=0;
+
         //모든 단어를 대상으로 내려와야 함
-        var len=spanArray.length;
-
-        for(var i=0;i<len;i++){
-
+        for(var i=0;i<spanArray.length;i++){
             //한걸음씩 이동
             spanArray[i].style.top=parseInt(spanArray[i].style.top)+stepY+"px";
             
@@ -113,14 +119,42 @@ function move(){
                 //span이 닿았을때, 배열에서 제거하지 않으면 끝없이 if 조건에 해당되므로 
                 //끝없이 닿은 처리가 되버린다..해결책) 실제로, 물리적으로 제거해버리되, 
                 //배열에서도 삭제해야 남은 span을 대상으로 로직이 실행될것이다..
-                console.log(word[level][i]+" 닿았어요");
                 //배열에서 제거!!
-                spanArray.splice(i, 1);
+                //spanArray.splice(i, 1);
+                hitIndex=i;
+                hitCount++;
+                if(hitCount>0)break;
             }
-
         }
+        
+        if(hitCount>0){
+            removeSpan(hitIndex);
+            removeHp();
+        }
+        
+        //hp가 소진되면 게임 종료 처리 
+        checkHp();
     }
 }
+
+function checkHp(){
+    if(hpArray.length==0){
+        stage.innerHTML="게임 종료";
+        flag=false;
+    }
+}
+
+function removeHp(){
+    hpBox.removeChild(hpArray[hpArray.length-1]);
+    hpArray.splice(hpArray.length-1,1);
+}
+
+function removeSpan(n){
+    console.log("%d번째 %s닿았어요", n, word[level][n]);
+    stage.removeChild(spanArray[n]); //화면에서 제거
+    spanArray.splice(n ,1);//배열에서 제거
+}
+
 function startGame(){
     flag=true;
     //keyword.focus();//입력박스에 커서 올려놓기!!
@@ -146,6 +180,7 @@ function createHp(){
         hp.style.float="left";
         hp.style.border="2px solid yellow";
         hpBox.appendChild(hp);//hpBox에 부착 
+        hpArray.push(hp);//hpArray배열에 추가
     }
 }
 

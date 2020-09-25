@@ -11,16 +11,21 @@
 클래스는 사물 자체가 아닌, 틀에 불과하므로 반드시 쇳물을 부어서 물건을 만드는 과정이 필요하다
 이때 , 클래스로부터 생성되는 물체 한단위를 가리켜 인스턴스라 한다!!\
 */
+var arr=new Array(5);
+
 function init(){
     for(var i=0; i<5;i++){
         //인스턴스 생성하기 
-        var arrow = new Arrow(); //클래스로부터 인스턴스 생성하는 문법
+        arrow = new Arrow(); //클래스로부터 인스턴스 생성하는 문법
         //함수는 반드시 호출해야 동작한다!! 원칙 
-        arrow.createArrow();
+        arr[i]=arrow; //배열에 하나씩 담자!!
+        arrow.createArrow(100 , i*70);
     }
 
     setInterval(function(){
-        //arrow.move();
+        for(var i=0;i<arr.length;i++){
+            arr[0].move();
+        }
     } , 10);
 }
 

@@ -70,6 +70,7 @@ var stage;
 var sel; //level을 선택할 select box
 var hpBox;//hp를 동적으로 추가하게 될 div
 var scoreBox; //점수를 출력할 div
+var score=0;//점수
 var level=0; //게이머의 현재 레벨을 표현하는 변수, 우리 게임은 0~4 레벨까지있다
 var spanArray=[]; //단어 10개의 span을 모아놓을 배열..
 var stepY=5; //몇 걸음씩 내려올지를 결정하는 변수
@@ -129,10 +130,16 @@ function createHp(){
     }
 }
 
+//점수를 출력하는 함수 
+function printScore(){
+    scoreBox.innerHTML=score+" 점";
+}
+
 function init(){
     stage = document.getElementById("stage");
     sel=document.getElementById("sel");
     hpBox=document.getElementById("hpBox");
+    scoreBox=document.getElementById("scoreBox");
 }
 
 window.addEventListener("load", function(){
@@ -140,6 +147,7 @@ window.addEventListener("load", function(){
     createWord();//단어 화면에 출력
     createLevelOption();
     createHp();
+    printScore();
     setInterval("move()",500);
 });
 </script>

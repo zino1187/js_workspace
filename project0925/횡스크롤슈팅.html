@@ -19,6 +19,7 @@ body{margin:0px;}
 */
 </script>
 <script src="./Hero.js"></script>
+<script src="./Enemy.js"></script>
 <script>
 /*
 게임에 움직임을 처리하기 위해 서는 setInterval과 같은 자동함수의 사용이 필수이다.
@@ -29,15 +30,34 @@ body{margin:0px;}
 var count=0;
 var wrapper;
 var bgX=0;//배경의 움직임 속도를 결정짓는 변수 좌측으로 움직여야 하므로..
-
+var enemySrc=[
+    "../images/shooting/e1.png",
+    "../images/shooting/e2.png",
+    "../images/shooting/e3.png",
+    "../images/shooting/e4.png",
+    "../images/shooting/e5.png"
+];
 
 //주인공 등장시키는 함수 
 function createHero(){
     //주인공 거푸집인 Hero 클래스로부터 주인공 인스턴스 1개를 생성해본다
     //container,x,y,width,height
     new Hero(wrapper, 150, 250, 100,65);
+}
+
+//적군 생성
+function createEnemy(){
+    //container, width,height, x, y,src
+    //alert("당신의 모니터 스크린의 너비"+screen.width+", 높이는 "+screen.height);
+
+    //사용자마다 모니터 너비,높이가 틀리므로 프로그래밍적으로 얻어온 결과에 대해서 
+    //위치를 설정해보자
+    for(var i=0;i<enemySrc.length;i++){
+        new Enemy(wrapper,70,50, screen.width-150, 100 + i*70 , enemySrc[i]);
+    }
 
 }
+
 //배경 움직임 처리 
 function moveBg(){
     bgX-=1; //누적
@@ -50,13 +70,14 @@ function gameLoop(){
     console.log("count : ", count);
     moveBg();
 }
+
 function init(){
     wrapper = document.getElementById("wrapper");
     //interval에 지정한 시간은 게임의 실행속도를 좌우한다 (Frame Per Second)1초마다 몇번의
     //실행을 하는지에 대한 빈도수
     setInterval("gameLoop()",1); //게임 루프 가동 시작!! 
     createHero();
-
+    createEnemy();
 }
 addEventListener("load", function(){
      init();    

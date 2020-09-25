@@ -30,11 +30,13 @@ var count=0;
 var wrapper;
 var bgX=0;//배경의 움직임 속도를 결정짓는 변수 좌측으로 움직여야 하므로..
 
+
 //주인공 등장시키는 함수 
 function createHero(){
     //주인공 거푸집인 Hero 클래스로부터 주인공 인스턴스 1개를 생성해본다
     //container,x,y,width,height
     new Hero(wrapper, 150, 250, 100,65);
+
 }
 //배경 움직임 처리 
 function moveBg(){
@@ -56,7 +58,7 @@ function init(){
     createHero();
 
 }
-window.addEventListener("load", function(){
+addEventListener("load", function(){
      init();    
 });
 </script>

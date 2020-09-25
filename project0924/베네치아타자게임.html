@@ -89,7 +89,7 @@ function createWord(){
         span.innerHTML=word[level][i];
         span.style.position="absolute";
         span.style.left=(i*95)+"px";
-        span.style.top=150+getRandomBetween(-100, 0)+"px";
+        span.style.top=150+getRandomBetween(-200, 0)+"px";
         stage.appendChild(span);
         spanArray.push(span);//스팬을 배열에 보관!! 왜 보관? 추후 움직일거니깐..
     }
@@ -99,14 +99,30 @@ function createWord(){
 function move(){
     if(flag){
         //모든 단어를 대상으로 내려와야 함
-        for(var i=0;i<spanArray.length;i++){
+        var len=spanArray.length;
+        
+        for(var i=0;i<len;i++){
+            //한걸음씩 이동
             spanArray[i].style.top=parseInt(spanArray[i].style.top)+stepY+"px";
+
+            //바닥에 닿았는지까지 판단!!
+            if(parseInt(spanArray[i].style.top) >=700){
+                //hpArray로부터 요소 하나를 제거
+                //hpArray
+                //span이 닿았을때, 배열에서 제거하지 않으면 끝없이 if 조건에 해당되므로 
+                //끝없이 닿은 처리가 되버린다..해결책) 실제로, 물리적으로 제거해버리되, 
+                //배열에서도 삭제해야 남은 span을 대상으로 로직이 실행될것이다..
+                console.log(word[level][i]+" 닿았어요");
+                //배열에서 제거!!
+                spanArray.splice(i, 1);
+            }
+
         }
     }
 }
 function startGame(){
     flag=true;
-    keyword.focus();//입력박스에 커서 올려놓기!!
+    //keyword.focus();//입력박스에 커서 올려놓기!!
 }
 
 //레벨을 선택할 옵션을 동적으로 생성 
@@ -151,9 +167,18 @@ function init(){
         if(e.keyCode==13){//ascii 코드가 13일때만..
             //alert("엔터쳤어?");
             //입력텍스트와 배열안의 텍스트들을 모두~~비교하자!!
-            if(keyword.value==word[level][0]){
-                alert("일치하는 단어 찾음");
+            for(var i=0;i<word[level].length;i++){
+                if(keyword.value==word[level][i]){
+                    //alert(i+"번째에서 일치하는 단어 찾음");
+                    //spanArray[i].style.color="red";
+                    //span 엘리먼트 자체를 제거해보자!!
+                    stage.removeChild(spanArray[i]);//부모로부터 삭제
+
+                    score+=10;//10점 누적!!
+                    printScore();//화면에 출력
+                }
             }
+            keyword.value="";//다시 입력박스 초기화 
         }
     });
 
@@ -165,7 +190,7 @@ window.addEventListener("load", function(){
     createLevelOption();
     createHp();
     printScore();
-    setInterval("move()",500);
+    setInterval("move()",100);
 });
 </script>
 </head>

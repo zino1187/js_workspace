@@ -20,6 +20,7 @@ body{margin:0px;}
 </script>
 <script src="./Hero.js"></script>
 <script src="./Enemy.js"></script>
+<script src="./Bullet.js"></script>
 <script>
 /*
 게임에 움직임을 처리하기 위해 서는 setInterval과 같은 자동함수의 사용이 필수이다.
@@ -29,6 +30,7 @@ body{margin:0px;}
 //모든 게임의 객체들을 대상으로 주기적 함수 호출을 시도할 엔진 루프
 var count=0;
 var wrapper;
+var hero; //주인공을 가리키는 변수
 var bgX=0;//배경의 움직임 속도를 결정짓는 변수 좌측으로 움직여야 하므로..
 var enemySrc=[
     "../images/shooting/e1.png",
@@ -42,7 +44,8 @@ var enemySrc=[
 function createHero(){
     //주인공 거푸집인 Hero 클래스로부터 주인공 인스턴스 1개를 생성해본다
     //container,x,y,width,height
-    new Hero(wrapper, 150, 250, 100,65);
+    //생성된 객체를 제어하려면, 반드시 변수나 배열이 있어야 한다
+    hero=new Hero(wrapper, 150, 250, 100,65);
 }
 
 //적군 생성
@@ -63,10 +66,15 @@ function moveBg(){
     wrapper.style.backgroundPosition=bgX+"px  0px";
 }
 
+//총알 생성 
+function createBullet(){
+    new Bullet(wrapper, hero.x, hero.y);
+}
+
 //게임에 등장하는 모든~~요소를 움직여주는 심장박동!!
 function gameLoop(){
     count++;
-    console.log("count : ", count);
+    //console.log("count : ", count);
     moveBg();
 }
 
@@ -77,6 +85,13 @@ function init(){
     setInterval("gameLoop()",1); //게임 루프 가동 시작!! 
     createHero();
     createEnemy();
+    //키보드 이벤트 구현하기 
+    document.body.addEventListener("keydown", function(e){
+        //alert(e.keyCode);
+        if(e.keyCode==32){
+            createBullet();//총알 생성 함수 호출
+        }
+    });
 }
 addEventListener("load", function(){
      init();    

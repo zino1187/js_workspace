@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <script>
-var a1,a2,a3;
+var arr=new Array(); //화살을 다량으로 담게될 배열
 
 /*현실의 화살을 표현하기 위해, 변수와 함수를 조합하면 충분히
 수행이 가능함...
@@ -50,20 +50,25 @@ class Arrow{
 
 function gameLoop(){//끝없이, 실행되는 게임 루프 영역
     console.log("gameLoop called...");
-    a1.tick();
-    a1.render();
-    a2.tick();
-    a2.render();
-    a3.tick();
-    a3.render();
+    for(){
+        arr[0].tick();
+        arr[0].render();
+    }
+
+  
 }
 /* 객체의 개념 잡기 */
 window.addEventListener("load", function(){
     //화살의 인스턴스 3개를 생성해보자!!
-    a1=new Arrow(0,50,5); //클래스명으로 된, 함수를 가리켜 생성자 함수라한다
+    //a1=new Arrow(0,50,5); //클래스명으로 된, 함수를 가리켜 생성자 함수라한다
                         //따라서 Arrow() 란 constructor()를 호출한 것이다
-    a2=new Arrow(0,150,2); 
-    a3=new Arrow(0,200,8); 
+    //a2=new Arrow(0,150,2); 
+    //a3=new Arrow(0,200,8); 
+
+    //다량의 화살 생성 
+    for(var i=0;i<100;i++){
+        arr.push(new Arrow(0,i*3, i+1));
+    }
 
     setInterval("gameLoop()", 10); //fps 프레임 퍼 세컨즈
 });

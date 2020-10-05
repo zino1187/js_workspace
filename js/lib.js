@@ -42,6 +42,28 @@ function getZeroDate(n){
 }
 
 
+function hitTest(me, target , nextX , nextY) {
+    //두물체간 충돌 여부 판단 
+    me_x= parseInt(me.div.style.left);
+    me_y= parseInt(me.div.style.top);
+    me_width=parseInt(me.div.style.width);
+    me_height=parseInt(me.div.style.height);
+
+
+    target_x= parseInt(target.div.style.left);
+    target_y= parseInt(target.div.style.top);
+    target_width=parseInt(target.div.style.width);
+    target_height=parseInt(target.div.style.height);
+
+    nextX=parseInt(nextX);
+    nextY=parseInt(nextY);
+
+    var result1=(me_x+nextX >= target_x) && (me_x+nextX <= (target_x+target_width));//나의 x좌표위치가 타겟의 x range 내에 있는지 판단 
+    var result2=((me_x+me_width+nextX) >= target_x) && ((me_x+me_width+nextX) <= (target_x+target_width));  //나의 가로폭이 타겟의 가로폭 내에 있는지 판단
+    var result3=((me_y+nextY) >= target_y) && ((me_y+nextY) <= (target_y+target_height));//나의 y좌표위치가 타겟의 세로폭 내에 있는지 판단
+    var result4=((me_y+me_height+nextY) >= target_y) && ((me_y+me_height+nextY) <= (target_y+target_height));//나의 y폭이 타겟의 세로폭 내에 있는지 판단
+    return (result1 || result2) && (result3 || result4);
+}
 
 
 

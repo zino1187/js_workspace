@@ -27,14 +27,50 @@ function getPos(){
 
 //박스 나르기 
 function drag(x, y){
+    //마우스 좌표를 구해온 후, b1박스의 x,y좌표값에 대입..
+    //그래야 정보가 계속 유지됨..(그래야 박스가 정보를 보유하니깐..)
+    b1.x=x;
+    b1.y=y;
+
     //박스1의 좌표를 마우스의 좌표와 일치시키자!
-    b1.div.style.left=x+"px";
-    b1.div.style.top=y+"px";
+    b1.div.style.left=b1.x+"px";
+    b1.div.style.top=b1.y+"px";
+
+    //좌표출력 
+    b1.div.innerText="x:"+b1.x+"\n y:"+b1.y;//마우스 좌표정보 
+    b2.div.innerText="x:"+b2.x+"\n y:"+b2.y;//원래 자기 자신의 정보
+
+    //충돌판단 (  x축이 교차하고 and(&&) y축도 교차해야 함)
+    /*
+    if(빨간사각형의 x축+너비 >= 목표사각형의x ){
+    }
+    */
+   /*
+   if(b1.x + b1.width  >= b2.x){
+        alert("x좌표가 교차하네요..");    
+   }
+   */
+   /*
+   if(빨간사각형의 y축 +높이 >= 목표사각형의y){
+   }
+   */
+   /*
+   if(b1.y+b1.height >=b2.y ){
+        alert("y좌표가 교차하네요");
+   }
+   */
+  if((b1.x + b1.width  >= b2.x) && (b1.y+b1.height >=b2.y)){
+    //alert("충돌이네요");
+    b1.div.style.background="green";
+  }else{
+    b1.div.style.background="red";
+  }
+
 }
 
 function init(){
     b1=new Box("red",100,200)//빨간상자 
-    b2 = new Box("blue",500,200);//파란상자
+    b2 = new Box("dodgerblue",500,200);//파란상자
 }    
 window.addEventListener("load", function(){
     init();

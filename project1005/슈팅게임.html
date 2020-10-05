@@ -47,7 +47,8 @@ function createHero(){
 
 //총알 생성 
 function createBullet(){
-    
+    //src, 주인공의.x, 주인공의.y, width, height, velX 0 위로날아갈것이기에, velY -10
+    var bullet = new Bullet("../images/shooting/ball.png", hero.x, hero.y,25,25,0, -10);
 }
 
 
@@ -64,11 +65,14 @@ window.addEventListener("load", function(){
     //게임화면인 div에 키보드 이벤트 구현 
     document.body.addEventListener("keydown", function(e){
         var key=e.keyCode;
+        //alert(key);
         switch(key){
             case 37:hero.velX=-5;break; //velX=-5, velY=0
             case 39:hero.velX=5;break;
             case 38:hero.velY=-5;break;
             case 40:hero.velY=5;break;
+            case 32:createBullet();break; //총알 발사
+
         }
     });
 

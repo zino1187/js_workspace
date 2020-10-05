@@ -37,6 +37,12 @@ function bgSound(){
     bgAudio.play(); //사운드 실행
 }
 
+//주인공 등장 
+function createHero(){
+   
+    var hero = new Hero((screen.width/2)-40, 550, 80,65);
+}
+
 /*게임에서는 무조건 게임루프가 존재해야, 사물을 움직일 수 있다.. */
 function gameLoop(){
     console.log("gameLoop() called...");
@@ -46,7 +52,8 @@ function gameLoop(){
 
 window.addEventListener("load", function(){
     wrapper = document.getElementById("wrapper");
-    bgSound();
+    //bgSound();
+    createHero();
     setInterval("gameLoop()",1);
 });
 </script>

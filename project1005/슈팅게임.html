@@ -12,6 +12,8 @@ body{
     width:100%;
     height:700px;
     background-image: url(../images/shooting/bg.png);
+    overflow: hidden;
+    position: relative;
 }    
 </style>
 <script src="./Hero.js"></script>
@@ -62,6 +64,18 @@ window.addEventListener("load", function(){
             case 40:hero.velY=5;break;
         }
     });
+
+    //키보드에서 손을 떼면...
+    document.body.addEventListener("keyup", function(e){
+        var key=e.keyCode;
+        switch(key){
+            case 37:hero.velX=0;break;
+            case 39:hero.velX=0;break;
+            case 38:hero.velY=0;break;
+            case 40:hero.velY=0;break;
+        }
+    });
+
 
     //bgSound();
     createHero();

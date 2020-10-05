@@ -14,15 +14,27 @@ body{
     background-image: url(../images/shooting/bg.png);
 }    
 </style>
+<script src="./Hero.js"></script>
 <script>
 var wrapper;
 var bgY=0; //배경의 y축을 결정할 변수
+
 
 /*배경 처리*/
 function bgEffect(){
     //y축의 음수방향으로 배경을 움직이자 
     bgY++;
     wrapper.style.backgroundPosition="0px "+bgY+"px";
+}
+
+//사운드 효과 
+function bgSound(){
+    //audio 태그 생성 
+    var bgAudio=document.createElement("audio"); // <audio></audio> 와 동일
+    bgAudio.src="../images/shooting/bgm.mp3";
+    bgAudio.loop="yes"; //끝없이 루프로 실행..
+    //사운드 자동실행, 보안정책으로 막혀있음(크롬에서..)
+    bgAudio.play(); //사운드 실행
 }
 
 /*게임에서는 무조건 게임루프가 존재해야, 사물을 움직일 수 있다.. */
@@ -34,6 +46,7 @@ function gameLoop(){
 
 window.addEventListener("load", function(){
     wrapper = document.getElementById("wrapper");
+    bgSound();
     setInterval("gameLoop()",1);
 });
 </script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+body{margin:0px;}    
+#wrapper{
+    width:100%;
+    height:800px;
+    background:yellow;
+}    
+</style>
+<script src="./Box.js"></script>
+<script>
+//마우스를 움직이는 동안, 호출할 함수    
+function getPos(){
+    var x=event.clientX;//마우스 x좌표
+    var y=event.clientY;//마우스 y좌표
+    console.log("x=%d, y=%d", x, y );
+}    
+function init(){
+    var b1=new Box("red",100,200)//빨간상자 
+    var b2 = new Box("blue",500,200);//파란상자
+}    
+window.addEventListener("load", function(){
+    init();
+})    
+</script>
+</head>
+<body onMouseMove="getPos()">
+    <div id="wrapper"></div>    
+</body>
+</html>

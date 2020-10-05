@@ -27,6 +27,7 @@ var bullet; //총알(변수하나이기 때문에 , 한개의 총알만 담을�
 var bulletArray=new Array(); //내장 객체중 Array() 객체는 배열을 제어할 수 있다
 var bombArray=new Array(); //폭탄을 담을 배열!!
 var enemyArray=new Array();//적군을 담을 배열
+var enemyImg=["e1.png","e2.png","e3.png","e4.png","e5.png"];
 
 /*배경 처리*/
 function bgEffect(){
@@ -80,9 +81,11 @@ function createBomb(){
 //적군 생성 
 function createEnemy(){
     //src,x,y,width,height,velX,velY
-    for(var i=0;i<20;i++){
-        var en=new Enemy("../images/shooting/e1.png",100+(i*90),50, 75,65,0,0);
-        enemyArray.push(en);//배열에 담기!!
+    for(var a=0;a<2;a++){ //층
+        for(var i=0;i<20;i++){//호
+            var en=new Enemy("../images/shooting/"+enemyImg[a],100+(i*90),50+(a*70), 75,65,0,0);
+            enemyArray.push(en);//배열에 담기!!
+        }
     }
 }
 

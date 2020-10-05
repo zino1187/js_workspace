@@ -17,6 +17,7 @@ body{
 }    
 </style>
 <script src="./Hero.js"></script>
+<script src="./Bullet.js"></script>
 <script>
 var wrapper;
 var bgY=0; //배경의 y축을 결정할 변수
@@ -43,6 +44,12 @@ function bgSound(){
 function createHero(){
     hero = new Hero((screen.width/2)-40, 550, 80,65, 0, 0);
 }
+
+//총알 생성 
+function createBullet(){
+    
+}
+
 
 /*게임에서는 무조건 게임루프가 존재해야, 사물을 움직일 수 있다.. */
 function gameLoop(){

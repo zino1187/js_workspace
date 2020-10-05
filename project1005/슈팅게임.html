@@ -18,7 +18,7 @@ body{
 <script>
 var wrapper;
 var bgY=0; //배경의 y축을 결정할 변수
-
+var hero;
 
 /*배경 처리*/
 function bgEffect(){
@@ -39,8 +39,7 @@ function bgSound(){
 
 //주인공 등장 
 function createHero(){
-   
-    var hero = new Hero((screen.width/2)-40, 550, 80,65);
+    hero = new Hero((screen.width/2)-40, 550, 80,65);
 }
 
 /*게임에서는 무조건 게임루프가 존재해야, 사물을 움직일 수 있다.. */
@@ -52,6 +51,12 @@ function gameLoop(){
 
 window.addEventListener("load", function(){
     wrapper = document.getElementById("wrapper");
+    //게임화면인 div에 키보드 이벤트 구현 
+    document.body.addEventListener("keydown", function(){
+        hero.tick();
+        hero.render();        
+    });
+
     //bgSound();
     createHero();
     setInterval("gameLoop()",1);

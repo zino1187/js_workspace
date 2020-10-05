@@ -29,4 +29,16 @@ class Hero{
         //화면에 부착!!
         wrapper.appendChild(this.img);
     }
+
+    //주인공의 물리량 변화 
+    tick(){
+        this.x+=5;
+        this.y+=5;
+    }
+
+    //화면에 그래픽 처리 
+    render(){
+        this.img.style.left=this.x+"px";
+        this.img.style.top=this.y+"px";
+    }
 }

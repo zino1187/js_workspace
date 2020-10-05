@@ -15,7 +15,7 @@ class Bullet{
         this.img=document.createElement("img");
         this.img.src=this.src;//폭탄, 총알, 등등의 웨폰이 여러가지가 있으므로 변수로...
         this.img.style.position="absolute";
-        this.img.style.left=this.x+"px";
+        this.img.style.left=this.x+"px"; //우주선의 너비의 절반을 우측...
         this.img.style.top=this.y+"px";
         this.img.style.width=this.width+"px";
         this.img.style.height=this.height+"px";

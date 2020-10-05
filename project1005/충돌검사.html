@@ -14,15 +14,27 @@ body{margin:0px;}
 </style>
 <script src="./Box.js"></script>
 <script>
+var b1,b2;
+
 //마우스를 움직이는 동안, 호출할 함수    
 function getPos(){
     var x=event.clientX;//마우스 x좌표
     var y=event.clientY;//마우스 y좌표
     console.log("x=%d, y=%d", x, y );
+
+    drag(x, y);
 }    
+
+//박스 나르기 
+function drag(x, y){
+    //박스1의 좌표를 마우스의 좌표와 일치시키자!
+    b1.div.style.left=x+"px";
+    b1.div.style.top=y+"px";
+}
+
 function init(){
-    var b1=new Box("red",100,200)//빨간상자 
-    var b2 = new Box("blue",500,200);//파란상자
+    b1=new Box("red",100,200)//빨간상자 
+    b2 = new Box("blue",500,200);//파란상자
 }    
 window.addEventListener("load", function(){
     init();

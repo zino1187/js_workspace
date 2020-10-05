@@ -13,6 +13,7 @@ body{margin:0px;}
 }    
 </style>
 <script src="./Box.js"></script>
+<script src="../js/lib.js"></script>
 <script>
 var b1,b2;
 
@@ -59,13 +60,21 @@ function drag(x, y){
         alert("y좌표가 교차하네요");
    }
    */
+  /*
   if((b1.x + b1.width  >= b2.x) && (b1.y+b1.height >=b2.y)){
     //alert("충돌이네요");
     b1.div.style.background="green";
   }else{
     b1.div.style.background="red";
   }
-
+    */
+    var result = collisionCheck(b1.div , b2.div);      
+    console.log("충돌여부 : ", result);
+    if(result){
+        b1.div.style.background="green";
+    }else{
+        b1.div.style.background="red";
+    }
 }
 
 function init(){

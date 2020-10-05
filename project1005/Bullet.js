@@ -22,9 +22,16 @@ class Bullet{
         wrapper.appendChild(this.img);//화면에 부착!!
     }
     tick(){
-
+        //총알의 물리량 변화 
+        this.y+=this.velY;
     }
-    render(){
 
+    render(){
+        //변화된 물리량을 화면에 표시한다(그래픽 처리)
+        this.img.style.top=this.y+"px";
     }
 }
+
+
+
+

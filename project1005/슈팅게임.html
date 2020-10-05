@@ -21,7 +21,8 @@ body{
 <script>
 var wrapper;
 var bgY=0; //배경의 y축을 결정할 변수
-var hero;
+var hero;//주인공
+var bullet; //총알(변수하나이기 때문에 , 한개의 총알만 담을수있음을 염두...)
 
 /*배경 처리*/
 function bgEffect(){
@@ -48,7 +49,7 @@ function createHero(){
 //총알 생성 
 function createBullet(){
     //src, 주인공의.x, 주인공의.y, width, height, velX 0 위로날아갈것이기에, velY -10
-    var bullet = new Bullet("../images/shooting/ball.png", hero.x, hero.y,25,25,0, -10);
+    bullet = new Bullet("../images/shooting/ball.png", hero.x, hero.y,25,25,0, -10);
 }
 
 
@@ -57,6 +58,13 @@ function gameLoop(){
     console.log("gameLoop() called...");
     hero.tick();
     hero.render();
+    //총알을 아직 생성된 적이 없기 때문에 bullet변수에는 undefined 값이 들어있다..
+    //따라서 존재하지 않는 객체의 메서드를 호출하게되면 에러가 발생한다..
+    if(bullet !=undefined){//태어났을때만..
+        bullet.tick();
+        bullet.render();
+    }
+
     bgEffect();
 }
 

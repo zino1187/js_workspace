@@ -11,6 +11,7 @@ class Enemy{
         this.velX=velX;
         this.velY=velY;
 
+        this.img.src=this.src;
         this.img.style.position="absolute";
         this.img.style.left=this.x+"px";
         this.img.style.top=this.y+"px";

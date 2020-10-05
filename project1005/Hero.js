@@ -35,8 +35,8 @@ class Hero{
     //주인공의 물리량 변화 
     tick(){
         //속도는, 키보드에 의해 제어하자!!
-        this.x+=5;
-        this.y+=5;
+        this.x+=this.velX;
+        this.y+=this.velY;
     }
 
     //화면에 그래픽 처리 

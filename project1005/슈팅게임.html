@@ -45,7 +45,8 @@ function createHero(){
 /*게임에서는 무조건 게임루프가 존재해야, 사물을 움직일 수 있다.. */
 function gameLoop(){
     console.log("gameLoop() called...");
-
+    hero.tick();
+    hero.render();
     bgEffect();
 }
 
@@ -53,8 +54,7 @@ window.addEventListener("load", function(){
     wrapper = document.getElementById("wrapper");
     //게임화면인 div에 키보드 이벤트 구현 
     document.body.addEventListener("keydown", function(){
-        hero.tick();
-        hero.render();        
+       
     });
 
     //bgSound();

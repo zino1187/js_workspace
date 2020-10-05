@@ -26,6 +26,7 @@ var hero;//주인공
 var bullet; //총알(변수하나이기 때문에 , 한개의 총알만 담을수있음을 염두...)
 var bulletArray=new Array(); //내장 객체중 Array() 객체는 배열을 제어할 수 있다
 var bombArray=new Array(); //폭탄을 담을 배열!!
+var enemyArray=new Array();//적군을 담을 배열
 
 /*배경 처리*/
 function bgEffect(){
@@ -76,6 +77,15 @@ function createBomb(){
 
 }
 
+//적군 생성 
+function createEnemy(){
+    //src,x,y,width,height,velX,velY
+    for(var i=0;i<20;i++){
+        var en=new Enemy("../images/shooting/e1.png",100+(i*90),50, 75,65,0,0);
+        enemyArray.push(en);//배열에 담기!!
+    }
+}
+
 /*게임에서는 무조건 게임루프가 존재해야, 사물을 움직일 수 있다.. */
 function gameLoop(){
     console.log("gameLoop() called...");
@@ -98,6 +108,10 @@ function gameLoop(){
     for(var i=0;i<bombArray.length;i++){
         bombArray[i].tick();
         bombArray[i].render();
+    }
+    for(var i=0;i<enemyArray.length;i++){
+        enemyArray[i].tick();
+        enemyArray[i].render();
     }
 
     bgEffect();
@@ -133,6 +147,7 @@ window.addEventListener("load", function(){
 
     //bgSound();
     createHero();
+    createEnemy();
     setInterval("gameLoop()",1);
 });
 </script>

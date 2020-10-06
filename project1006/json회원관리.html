@@ -37,7 +37,34 @@ button{
 }
 </style>
 <script>
+var id,n,pass; // text 박스
+var memberArray=new Array(); //회원객체들을 모아놓을 1차원 배열..
 
+//한 사람에 대한 정보 입력!!    
+function regist(){
+    //아이디, 패스워드, 이름 
+
+    //지금까지는 일차원배열에 데이터를 보관했으나, 아무래도 index (0,1,2..순번)를 이용하다
+    //보니 직관성이 떨어진다..따라서 객체지향언어에서는 데이터에 대한 보관을 보다 직권성을
+    //높이기 위해 객체를 이용한다.
+    
+    var member={
+        uid:id.value, 
+        uname:n.value,
+        upass:pass.value
+    }
+    
+    //var member = [id.value, name.value, pass.value];
+    memberArray.push(member); //json을 배열에 탑재!!
+}
+function init(){
+    id=document.getElementById("id");
+    n=document.getElementById("n");
+    pass=document.getElementById("pass");
+}
+window.addEventListener("load",function(){
+    init();
+});
 </script>
 </head>
 <body>
@@ -47,9 +74,9 @@ button{
             <!-- 버튼에 의한 무조건적인 전송 방지
             방지안하게되면, 새로고침 때문에 페이지가 갱신  -->
             <form  onsubmit="event.preventDefault()">
-                <input type="text" name="id" placeholder="ID입력..."/>                
-                <input type="text" name="pass" placeholder="Password입력..."/>                
-                <input type="text" name="name" placeholder="Name 입력..."/>  
+                <input type="text" id="id"  placeholder="ID입력..."/>                
+                <input type="text" id="pass" placeholder="Password입력..."/>                
+                <input type="text" id="n" placeholder="Name 입력..."/>  
                 
                 <button onClick="regist()">등록</button>
                 <button onClick="remove()">지우기</button>

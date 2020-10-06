@@ -31,7 +31,10 @@ function init(){
     var marker = new google.maps.Marker({
         position: pos ,
         animation:google.maps.Animation.BOUNCE ,
-        icon:"../images/ shooting/e1.png"  
+        icon:{
+            url:"../images/shooting/e1.png",
+            scaledSize:new google.maps.Size(45,45)
+        } 
     });
     marker.setMap(map); //마커를 적용할 맵 객체
 }    

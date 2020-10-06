@@ -30,7 +30,7 @@ class Bullet{
         for(var i=0;i<enemyArray.lenght;i++){
             var result = collisionCheck(this.img , enemyArray[i].img);
             if(result){
-                console.log("맞췄어!!");
+                alert("맞췄어!!");
                 
                 //너죽(적군배열에서 요소 삭제 splice(index, 갯수), 화면에서도 삭제 removeChild)
                 var img = enemyArray[i].img;

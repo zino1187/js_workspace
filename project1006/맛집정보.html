@@ -72,24 +72,27 @@ function createMap(){
         zoom:17
     });
 
-    //지도에 마커 표시하기 (맛집들을...)
-    var marker = new google.maps.Marker({
-        position:new google.maps.LatLng(37.500453 , 127.036716), 
-        icon:{
-            url:"../images/food_icon/kfood.webp", 
-            scaledSize:new google.maps.Size(45,45)
-        }
-    });
-    //마커를 적용할 맵 지정 
-    marker.setMap(map);
+    for(var i=0;i<storeArray.length;i++){
+        var store = storeArray[i]; //한개의 제이슨이 담겨진다..
 
-    //정보창 띄우기 
-    var popup = new google.maps.InfoWindow({
-        content:"한식맛집이에용"
-    });
-    //팝업을 적용할 맵과 마커지정 
-    popup.open(map, marker);
+        //지도에 마커 표시하기 (맛집들을...)
+        var marker = new google.maps.Marker({
+            position:new google.maps.LatLng(store.pos.lati , store.pos.longi), 
+            icon:{
+                url:store.url, 
+                scaledSize:new google.maps.Size(45,45)
+            }
+        });
+        //마커를 적용할 맵 지정 
+        marker.setMap(map);
 
+        //정보창 띄우기 
+        var popup = new google.maps.InfoWindow({
+            content:store.content
+        });
+        //팝업을 적용할 맵과 마커지정 
+        popup.open(map, marker);
+    }
 }
 
 </script>

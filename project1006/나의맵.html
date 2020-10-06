@@ -18,13 +18,22 @@ var myMap;//div
 
 function init(){
     myMap = document.getElementById("myMap");
+    var pos=new google.maps.LatLng(37.500453, 127.036716);
+
     var mapProp={
-        center:new google.maps.LatLng(37.500453, 127.036716),
+        center:pos,
         zoom:17
     };
-
     //구글맵 객체 생성 
     var map = new google.maps.Map(myMap, mapProp); //그려질div, 옵션
+
+    //마커생성 
+    var marker = new google.maps.Marker({
+        position: pos ,
+        animation:google.maps.Animation.BOUNCE ,
+        icon:"../images/shooting/e1.png"  
+    });
+    marker.setMap(map); //마커를 적용할 맵 객체
 }    
 </script>
 </head>
@@ -32,4 +41,4 @@ function init(){
     <div id="myMap">구글 지도 나올 예정</div>    
 </body>
 </html>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZnvglOCJZXdrv9k96uXeEDOVGyLg_gJc&callback=init"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=&callback=init"></script>

@@ -12,6 +12,49 @@
 }    
 </style>
 <script>
+var storeArray=[
+    {
+        content:"맥도날드",
+        pos:{
+            lati:37.500153, 
+            longi:127.036116
+        },
+        url:"../images/food_icon/mc.webp"
+    },
+    {
+        content:"김밥천국",
+        pos:{
+            lati:37.500253, 
+            longi:127.036216
+        },
+        url:"../images/food_icon/kfood.webp"
+    },
+    {
+        content:"베스킨라빈스",
+        pos:{
+            lati:37.500353, 
+            longi:127.036316
+        },
+        url:"../images/food_icon/ice.webp"
+    },
+    {
+        content:"피자헛",
+        pos:{
+            lati:37.500453, 
+            longi:127.036416
+        },
+        url:"../images/food_icon/pizza.webp"
+    },
+    {
+        content:"빕스",
+        pos:{
+            lati:37.500553, 
+            longi:127.036516
+        },
+        url:"../images/food_icon/b.webp"
+    }
+]; //맛집들을 보유할 일차원 배열, 현재 길이는 0, 왜? 텅비었으니깐..
+
 var myMap;
 //초기화
 function init(){
@@ -39,6 +82,14 @@ function createMap(){
     });
     //마커를 적용할 맵 지정 
     marker.setMap(map);
+
+    //정보창 띄우기 
+    var popup = new google.maps.InfoWindow({
+        content:"한식맛집이에용"
+    });
+    //팝업을 적용할 맵과 마커지정 
+    popup.open(map, marker);
+
 }
 
 </script>

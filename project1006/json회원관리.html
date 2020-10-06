@@ -55,8 +55,35 @@ function regist(){
     }
     
     //var member = [id.value, name.value, pass.value];
-    memberArray.push(member); //json을 배열에 탑재!!
+    memberArray.push(member); //json을 배열에 탑재!!\
+
+    printData();
 }
+
+function printData(){
+    
+    var area=document.getElementById("result-area");
+    var str="<table width='100%' border='1px'>";
+
+    str+="<tr>";    
+    str+="<td>아이디</td>";    
+    str+="<td>비밀번호</td>";    
+    str+="<td>이름</td>";    
+    str+="</tr>";    
+    for(var i=0;i<memberArray.length;i++){
+        var member = memberArray[i];
+        str+="<tr>";    
+        str+="<td>"+member.uid+"</td>";    
+        str+="<td>"+member.upass+"</td>";    
+        str+="<td>"+member.uname+"</td>";    
+        str+="</tr>";    
+    }
+    str+="</table>";        
+
+    area.innerHTML=str;
+
+}
+
 function init(){
     id=document.getElementById("id");
     n=document.getElementById("n");

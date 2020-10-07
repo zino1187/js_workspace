@@ -1,4 +1,4 @@
-{
+var movie={
 	"marvel" : [
 		{
 			"movie_id" : 1,

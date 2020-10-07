@@ -21,6 +21,12 @@ class Thumbnail{
         this.img.style.width=(this.width-(bd*2))+"px";
         this.img.style.height=(this.height-(bd*2))+"px";
 
+        //이미지에 이벤트 구현하기 
+        this.img.addEventListener("click" , function(){
+            alert("나의 경로는 "+this.src);
+            getDetail(this.src, '제목');
+        });
+
         //조립 
         this.div.appendChild(this.img);//div에 이미지 넣기 
         this.container.appendChild(this.div);

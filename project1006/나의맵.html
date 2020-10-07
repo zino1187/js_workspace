@@ -37,7 +37,19 @@ function init(){
         } 
     });
     marker.setMap(map); //마커를 적용할 맵 객체
+
+    //마커에 클릭이벤트 부여하기 
+    google.maps.event.addListener(marker, "click" , function(){
+        map.setZoom(20);
+
+        //정보창 띄우기 
+        var pop = new google.maps.InfoWindow({
+            content:"여기가 역삼 맛집이에용^^"
+        });
+        pop.open(map, marker);
+    });
 }    
+
 </script>
 </head>
 <body>

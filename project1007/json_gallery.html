@@ -43,6 +43,35 @@
     background:darksalmon;
 }
 </style>
+<script src="./data.json"></script>
+<script src="./Thumbnail.js"></script>
+<script>
+var head, photo,desc, thumb;
+
+//영화 목록을 생성한다!!(데이터는 movie라는 변수에 json 배열 형태로 들어있다..)
+function createThumb(){
+    //container, width, height, bd, src
+    new Thumbnail(thumb, 100, 90, 5, "../images/shooting/e1.png");
+}
+
+//자동으로 움직이게 하려면, 반드시 자동호출이 필요하므로..
+function gameLoop(){
+    console.log("gameLoop() called...");
+}
+
+function init(){
+    head = document.getElementById("head");
+    photo = document.getElementById("photo");
+    desc = document.getElementById("desc");
+    thumb = document.getElementById("thumb");
+}
+window.addEventListener("load",function(){
+    init();
+    createThumb();
+
+    //setInterval("gameLoop()",10);
+});
+</script>
 </head>
 <body>
     <div class="wrapper">
@@ -51,7 +80,7 @@
             <div id="photo">영화이미지 나올곳</div>
             <div id="desc">영화 설명</div>
         </div>
-        <div id="thumb">아래쪽</div>
+        <div id="thumb"></div>
     </div>    
 </body>
 </html>

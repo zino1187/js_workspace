@@ -25,9 +25,12 @@ class Pointer{
     }
 
     tick(){
-
+        //console.log("포인터의  tick()...");
+        //포인터위치 = 기존위치 + a*(목표지점과의 남은거리)
+        this.x = this.x + this.a*(this.targetX - this.x);
     }
     render(){
-
+        //console.log("포인터의  render()...");
+        this.div.style.left= this.x+"px";
     }
 }

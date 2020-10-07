@@ -45,7 +45,7 @@
     height:100px;
     
     position: relative; /*자식때문에...*/
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 </style>
 <script src="./data.json"></script>
@@ -54,6 +54,7 @@
 <script>
 var head, photo,desc, thumb;
 var thumbArray=new Array(); //Thumbnail 인스턴스를 보유할 배열
+var pointer;
 
 //영화 목록을 생성한다!!(데이터는 movie라는 변수에 json 배열 형태로 들어있다..)
 function createThumb(){
@@ -69,7 +70,7 @@ function createThumb(){
 //포인터 생성하기
 function createPointer(){
     //container,width, height,bd,x,y,targetX
-    var pointer = new Pointer(thumb,100, 90,5,0,0,0);
+    pointer = new Pointer(thumb,100, 90,5,0,0,0);
 }
 
 //영화에 대한 상세정보 처리 
@@ -100,6 +101,8 @@ function getDetail(index){
 //자동으로 움직이게 하려면, 반드시 자동호출이 필요하므로..
 function gameLoop(){
     console.log("gameLoop() called...");
+    pointer.tick();
+    pointer.render();
 }
 
 function init(){
@@ -112,8 +115,12 @@ window.addEventListener("load",function(){
     init();
     createThumb();
     createPointer();
+    //키보드 이벤트 구현하기 
+    document.body.addEventListener("keydown", function(){
+        alert("키 눌렀어?");
+    });
 
-    //setInterval("gameLoop()",10);
+    setInterval("gameLoop()",10);
 });
 </script>
 </head>
@@ -124,7 +131,9 @@ window.addEventListener("load",function(){
             <div id="photo"></div>
             <div id="desc">영화 설명</div>
         </div>
-        <div id="thumb"></div>
+        <div id="thumb">
+            <div id="box"></div>
+        </div>
     </div>    
 </body>
 </html>

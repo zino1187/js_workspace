@@ -34,6 +34,9 @@ class Thumbnail{
             console.log("index : ",index);
             //alert("저는 thumbArray의 "+index+"번째에 있으니, marvel 배열의  "+index+"번째를 이용할겁니다");
             getDetail(index);
+
+            //포인터의 targetX값을 나의 좌표와 일치 
+            pointer.targetX=me.x;
         });
 
         //조립 

@@ -41,6 +41,7 @@
     width:100%;
     height:100px;
     background:darksalmon;
+    position: relative; /*자식때문에...*/
 }
 </style>
 <script src="./data.json"></script>
@@ -51,7 +52,9 @@ var head, photo,desc, thumb;
 //영화 목록을 생성한다!!(데이터는 movie라는 변수에 json 배열 형태로 들어있다..)
 function createThumb(){
     //container, width, height, bd, src
-    new Thumbnail(thumb, 100, 90, 5, "../images/shooting/e1.png");
+    for(var i=0;i<10;i++){
+        new Thumbnail(thumb, 100, 90, 5, "../images/shooting/e1.png", i*100);
+    }
 }
 
 //자동으로 움직이게 하려면, 반드시 자동호출이 필요하므로..
